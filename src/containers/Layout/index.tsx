@@ -1,8 +1,11 @@
-import { PureComponent } from "react";
+import { lazy, PureComponent } from "react";
 import PropTypes from "prop-types";
+import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { loadingSelector } from "./selector";
 import { getLoaderState } from "./action";
+
+const GuestDashboardContainer = lazy(() => import("../GuestDashboard"));
 
 export class LayoutContainer extends PureComponent<any, any> {
     static propTypes = {
@@ -16,9 +19,15 @@ export class LayoutContainer extends PureComponent<any, any> {
 
     render() {
         return (
-            <div>
-                <h1>TEST LAYOUT</h1>
-            </div>
+            <Switch>
+                <Route
+                    exact
+                    path={"/"}
+                    render={(props: any) => {
+                      return <GuestDashboardContainer {...this.props} {...props} />;
+                    }}
+                />
+            </Switch>
         )
     }
 }
