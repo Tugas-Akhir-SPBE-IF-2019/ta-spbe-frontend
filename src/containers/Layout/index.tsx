@@ -6,6 +6,7 @@ import { loadingSelector } from "./selector";
 import { getLoaderState } from "./action";
 
 const GuestDashboardContainer = lazy(() => import("../GuestDashboard"));
+const UploadDocumentsContainer = lazy(() => import("../UploadDocuments"));
 
 export class LayoutContainer extends PureComponent<any, any> {
     static propTypes = {
@@ -25,6 +26,12 @@ export class LayoutContainer extends PureComponent<any, any> {
                     path={"/"}
                     render={(props: any) => {
                       return <GuestDashboardContainer {...this.props} {...props} />;
+                    }}
+                />
+                <Route
+                    path={"/upload"}
+                    render={(props: any) => {
+                      return <UploadDocumentsContainer {...this.props} {...props} />;
                     }}
                 />
             </Switch>
