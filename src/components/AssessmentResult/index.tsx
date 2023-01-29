@@ -82,7 +82,7 @@ const AssessmentResultComponent = (props: any) => {
                             </Container>
                             <Row className="text-center my-3">
                                 <Col>
-                                    <Button href="/validate" variant="secondary" type="submit" className="mx-auto">Validasi</Button>
+                                    <Button href="/validate/1" variant="secondary" type="submit" className="mx-auto">Validasi</Button>
                                 </Col>
                             </Row>
                         </Form>

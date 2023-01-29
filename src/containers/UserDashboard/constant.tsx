@@ -1,0 +1,4 @@
+export const GET_ASSESSMENT_LIST =
+    "TugasAkhirSPBE/App/GET_ASSESSMENT_LIST";
+export const SET_ASSESSMENT_LIST =
+    "TugasAkhirSPBE/App/SET_ASSESSMENT_LIST";
