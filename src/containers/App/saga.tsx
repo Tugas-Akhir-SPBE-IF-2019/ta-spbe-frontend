@@ -3,6 +3,7 @@ import { watchAppSaga } from "../Layout/saga";
 import { watchGuestDashboardSaga } from "../GuestDashboard/saga";
 import { watchUploadDocumentsSaga } from "../UploadDocuments/saga";
 import { watchAssessmentResultSaga } from "../AssessmentResult/saga";
+import { watchValidateResultSaga } from "../ValidateResult/saga";
 
 export default function* Saga() {
     yield all([
@@ -10,5 +11,6 @@ export default function* Saga() {
         watchGuestDashboardSaga(),
         watchUploadDocumentsSaga(),
         watchAssessmentResultSaga(),
+        watchValidateResultSaga(),
     ]);
 }
