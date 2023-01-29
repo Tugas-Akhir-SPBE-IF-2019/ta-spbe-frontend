@@ -5,6 +5,7 @@ import uploadDocumentsReducer from "../UploadDocuments/reducer";
 import assessmentResultReducer from "../AssessmentResult/reducer";
 import validateResultReducer from "../ValidateResult/reducer";
 import userDashboardReducer from "../UserDashboard/reducer";
+import loginReducer from "../Login/reducer";
 
 const Reducer = combineReducers({
     layoutReducer,
@@ -13,6 +14,7 @@ const Reducer = combineReducers({
     assessmentResultReducer,
     validateResultReducer,
     userDashboardReducer,
+    loginReducer,
 });
 
 export default Reducer;
