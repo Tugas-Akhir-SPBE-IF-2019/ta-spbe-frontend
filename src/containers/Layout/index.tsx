@@ -7,6 +7,7 @@ import { getLoaderState } from "./action";
 
 const GuestDashboardContainer = lazy(() => import("../GuestDashboard"));
 const UploadDocumentsContainer = lazy(() => import("../UploadDocuments"));
+const AssessmentResultContainer = lazy(() => import("../AssessmentResult"));
 
 export class LayoutContainer extends PureComponent<any, any> {
     static propTypes = {
@@ -32,6 +33,12 @@ export class LayoutContainer extends PureComponent<any, any> {
                     path={"/upload"}
                     render={(props: any) => {
                       return <UploadDocumentsContainer {...this.props} {...props} />;
+                    }}
+                />
+                <Route
+                    path={"/result/:id"}
+                    render={(props: any) => {
+                      return <AssessmentResultContainer {...this.props} {...props} />;
                     }}
                 />
             </Switch>
