@@ -10,6 +10,7 @@ const UploadDocumentsContainer = lazy(() => import("../UploadDocuments"));
 const AssessmentResultContainer = lazy(() => import("../AssessmentResult"));
 const ValidateResultContainer = lazy(() => import("../ValidateResult"));
 const UserDashboardContainer = lazy(() => import("../UserDashboard"));
+const LoginContainer = lazy(() => import("../Login"));
 
 export class LayoutContainer extends PureComponent<any, any> {
     static propTypes = {
@@ -53,6 +54,12 @@ export class LayoutContainer extends PureComponent<any, any> {
                     path={"/dashboard"}
                     render={(props: any) => {
                       return <UserDashboardContainer {...this.props} {...props} />;
+                    }}
+                />
+                <Route
+                    path={"/login"}
+                    render={(props: any) => {
+                      return <LoginContainer {...this.props} {...props} />;
                     }}
                 />
             </Switch>
