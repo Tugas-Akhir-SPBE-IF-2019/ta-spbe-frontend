@@ -1,0 +1,4 @@
+export const UPLOAD_DOCUMENTS =
+    "TugasAkhirSPBE/App/UPLOAD_DOCUMENTS";
+export const SUCCESS_UPLOAD_DOCUMENTS =
+    "TugasAkhirSPBE/App/SUCCESS_UPLOAD_DOCUMENTS";
