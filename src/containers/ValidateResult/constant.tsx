@@ -1,0 +1,4 @@
+export const SEND_VALIDATION =
+    "TugasAkhirSPBE/App/SEND_VALIDATION";
+export const SUCCESS_SEND_VALIDATION =
+    "TugasAkhirSPBE/App/SUCCESS_SEND_VALIDATION";
