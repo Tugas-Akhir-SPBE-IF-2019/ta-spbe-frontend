@@ -4,6 +4,7 @@ import guestDashboardReducer from "../GuestDashboard/reducer";
 import uploadDocumentsReducer from "../UploadDocuments/reducer";
 import assessmentResultReducer from "../AssessmentResult/reducer";
 import validateResultReducer from "../ValidateResult/reducer";
+import userDashboardReducer from "../UserDashboard/reducer";
 
 const Reducer = combineReducers({
     layoutReducer,
@@ -11,6 +12,7 @@ const Reducer = combineReducers({
     uploadDocumentsReducer,
     assessmentResultReducer,
     validateResultReducer,
+    userDashboardReducer,
 });
 
 export default Reducer;
