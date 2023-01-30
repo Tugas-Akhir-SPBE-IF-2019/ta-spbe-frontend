@@ -8,7 +8,7 @@ const cancelAxiosRequest = () => {
 };
 
 const getApiUrl = () => {
-    const url = "http://localhost:80/";
+    const url = process.env.REACT_APP_API_URL;
     return url;
 };
 
