@@ -36,29 +36,17 @@ export const payloadGenerator = (
     params: any,
     data: any,
 ) => {
-    // const key = getAppAuthKey();
-    // const token = encryptJWTTokenV2(getAppAuthToken(), key);
-    // let extendedBearer = appendSecret(token, key);
     let header = {};
-    // if (key != null && key !== "") {
-    //     header = {
-    //         "Content-Type": "text/plain",
-    //         Authorization: `Bearer ${extendedBearer?.token}`,
-    //         "X-DGP-nonce": extendedBearer?.nonce,
-    //     };
-    //     if (data) {
-    //         if (url.includes("complaint-handling/update-status")) {
-    //             data = data;
-    //         } else {
-    //             data = encrypt(JSON.stringify(data), base64DecodeUrl(key));
-    //         }
-    //     }
-    // } else {
+    if (method === "POST") {
+        header = {
+            "Content-Type": "multipart/form-data",
+        };
+    }
+    else {
         header = {
             "Content-Type": "application/json",
-            // Authorization: `Bearer ${getAppAuthToken()}`,
         };
-    // }
+    }
     const payload = {
         method: method ? method : undefined,
         url: url ? url : undefined,
@@ -70,3 +58,7 @@ export const payloadGenerator = (
     };
     return payload;
 };
+
+export const ASSESSMENT_URL = `${getApiUrl()}/assessments`;
+export const ASSESSMENT_INDEX_URL = `${ASSESSMENT_URL}/index`;
+export const ASSESSMENT_UPLOAD_URL = `${ASSESSMENT_URL}/documents/upload`;
