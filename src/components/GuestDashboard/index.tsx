@@ -17,29 +17,20 @@ const GuestDashboardComponent = (props: any) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Kabupaten Lamongan</td>
-                        <td>4.7</td>
-                        <td>25-01-2023</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Kabupaten Phakphak Barat</td>
-                        <td>3.4</td>
-                        <td>25-01-2023</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>RRI</td>
-                        <td>2.1</td>
-                        <td>25-01-2023</td>
-                    </tr>
+                    {props?.indexResponse?.length !== 0 && (props.indexResponse.map((item: any, index: number) => {
+                        return (
+                            <tr key={index}>
+                                <td>{index + 1}</td>
+                                <td>{item.institution_name}</td>
+                                <td>{item.spbe_index}</td>
+                                <td>{item.submitted_date}</td>
+                            </tr>
+                        )  
+                    }))}
                 </tbody>
             </Table>
         </>
     )
-
 }
 
 export default GuestDashboardComponent;
