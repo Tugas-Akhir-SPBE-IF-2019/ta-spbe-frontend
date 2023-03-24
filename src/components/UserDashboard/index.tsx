@@ -1,40 +1,37 @@
 import { lazy } from 'react';
-import { Table, Button } from 'react-bootstrap';
+import { Table, Row, Col, Button } from 'react-bootstrap';
 
 const NavBar = lazy(() => import("../../components/NavBar"));
+const Search = lazy(() => import("../../components/General/Search"));
+const TextDropdown = lazy(() => import("../../components/General/TextDropdown"));
+const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
+const CustomTable = lazy(() => import("../../components/General/CustomTable"));
 
 const UserDashboardComponent = (props: any) => {
     return (
         <>
             <NavBar/>
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        <td>No</td>
-                        <td>Nama Institusi</td>
-                        <td>Status</td>
-                        <td>Tanggal Penilaian</td>
-                        <td>Lihat Detail</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {props?.assessmentResponse?.length !== 0 && (props.assessmentResponse.map((item: any, index: number) => {
-                        return (
-                            <tr key={index}>
-                                <td>{index + 1}</td>
-                                <td>{item.institution_name}</td>
-                                <td>
-                                    {(item.status === 1 && "Sedang Diproses") ||
-                                    (item.status === 2 && "Selesai") ||
-                                    (item.status === 3 && "Sudah Divalidasi")}
-                                </td>
-                                <td>{item.submitted_date}</td>
-                                <td><Button className={"fw-bold " + (item.status === 1 && "disabled")} href={`/result/${item.id}`} variant="secondary" type="submit">Hasil</Button></td>
-                            </tr>
-                        )  
-                    }))}
-                </tbody>
-            </Table>
+            <Row className="px-5 pt-5">
+                <Col>
+                    <Row>
+                        <Col>
+                            <h1 className="mb-3">Dashboard</h1>
+                        </Col>
+                    </Row>
+                    <Search/>
+                    <Row className="my-5">
+                        <TextDropdown placeholder="Pilih Jumlah Instansi"/>
+                        <TextDropdown placeholder="Pilih Status"/>
+                        <TextDropdown placeholder="Pilih Tanggal"/>
+                    </Row>
+                    <Row className="mb-5">
+                        <Col xs={4} md={3} lg={2}>
+                            <PurpleButton text="Filter" />
+                        </Col>
+                    </Row>
+                    <CustomTable isUserTable {...props} checkTextColor={props.checkTextColor} />
+                </Col>
+            </Row>
         </>
     )
 
