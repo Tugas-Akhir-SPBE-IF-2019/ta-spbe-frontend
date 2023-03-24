@@ -57,6 +57,14 @@ td {
     color: var(--orange);
 }
 
+.text-huge {
+    font-size: 100px;
+}
+
+.text-big {
+    font-size: 30px;
+}
+
 .page-item:first-child {
     border-radius: 0 !important;
 }
