@@ -16,9 +16,14 @@ export class UserDashboardContainer extends PureComponent<any, any> {
         super(props);
     }
 
+    componentDidMount() {
+        this.props.getAssessmentData();
+    }
+
     render() {
+        const { assessmentResponse } = this.props;
         return (
-            <UserDashboardComponent />
+            <UserDashboardComponent assessmentResponse={assessmentResponse} />
         )
     }
 }

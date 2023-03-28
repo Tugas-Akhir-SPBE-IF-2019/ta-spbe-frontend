@@ -18,27 +18,21 @@ const UserDashboardComponent = (props: any) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Kabupaten Lamongan</td>
-                        <td>Selesai</td>
-                        <td>21-01-2023</td>
-                        <td><Button href="/result/1" variant="secondary" type="submit">Hasil</Button></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Kabupaten Phakphak Barat</td>
-                        <td>Selesai</td>
-                        <td>23-01-2023</td>
-                        <td><Button href="/result/1" variant="secondary" type="submit">Hasil</Button></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>RRI</td>
-                        <td>Sedang Diproses</td>
-                        <td>25-01-2023</td>
-                        <td><Button disabled variant="secondary">Hasil</Button></td>
-                    </tr>
+                    {props?.assessmentResponse?.length !== 0 && (props.assessmentResponse.map((item: any, index: number) => {
+                        return (
+                            <tr key={index}>
+                                <td>{index + 1}</td>
+                                <td>{item.institution_name}</td>
+                                <td>
+                                    {(item.status === 1 && "Sedang Diproses") ||
+                                    (item.status === 2 && "Selesai") ||
+                                    (item.status === 3 && "Sudah Divalidasi")}
+                                </td>
+                                <td>{item.submitted_date}</td>
+                                <td><Button className={"fw-bold " + (item.status === 1 && "disabled")} href={`/result/${item.id}`} variant="secondary" type="submit">Hasil</Button></td>
+                            </tr>
+                        )  
+                    }))}
                 </tbody>
             </Table>
         </>
