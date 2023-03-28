@@ -14,11 +14,28 @@ export class AssessmentResultContainer extends PureComponent<any, any> {
 
     constructor(props: any) {
         super(props);
+        this.handleParseHTML = this.handleParseHTML.bind(this);
+    }
+
+    componentDidMount() {
+        const { id } = this.props.match.params;
+        this.props.getAssessmentResultData(id);
+    }
+
+    private handleParseHTML(raw: any): any {
+        const parse = require('html-react-parser');
+        return parse(String(raw));
     }
 
     render() {
+        const { id } = this.props.match.params;
+        const { assessmentResultResponse } = this.props;
         return (
-            <AssessmentResultComponent />
+            <AssessmentResultComponent
+                assessmentId={id}
+                assessmentResultResponse={assessmentResultResponse}
+                handleParseHTML={this.handleParseHTML}
+            />
         )
     }
 }
