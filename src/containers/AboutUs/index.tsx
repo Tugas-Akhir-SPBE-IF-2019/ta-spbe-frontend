@@ -10,11 +10,24 @@ export class AboutUsContainer extends PureComponent<any, any> {
 
     constructor(props: any) {
         super(props);
+
+        this.state = {
+            showLink: false,
+        };
+        this.setShowLink = this.setShowLink.bind(this);
+    }
+
+    private setShowLink(): void {
+        this.setState({
+            ...this.state,
+            showLink: !this.state.showLink,
+        });
     }
 
     render() {
+        const { showLink } = this.state;
         return (
-            <AboutUsComponent/>
+            <AboutUsComponent setShowLink={this.setShowLink} showLink={showLink}/>
         )
     }
 }

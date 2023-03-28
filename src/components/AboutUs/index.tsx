@@ -13,9 +13,21 @@ const AboutUsComponent = (props: any) => {
                 <Col xs={4} className="ps-5 pt-5">
                     <h1 className="text-huge text-purple">Tentang<br/>Kami</h1>
                     <p className="text-big text-purple my-5 pb-5">Sekelompok mahasiswa yang antusias, pekerja keras, dan cepat beradaptasi</p>
-                    <Row>
+                    <Row className={"" + (!props?.showLink && "d-none")}>
+                        <Col>
+                            <a href="https://www.linkedin.com/in/alifahrb/" target="_blank" className="text-purple">Alifah</a>
+                            <br/>
+                            <a href="https://www.linkedin.com/in/makramab/" target="_blank" className="text-purple">Akram</a>
+                        </Col>
+                        <Col>
+                            <a href="https://www.linkedin.com/in/afifahfq/" target="_blank" className="text-purple">Afifah</a>
+                            <br/>
+                            <a href="https://www.linkedin.com/in/awwalak/" target="_blank" className="text-purple">Awwala</a>
+                        </Col>
+                    </Row>
+                    <Row className={props?.showLink && "d-none"}>
                         <Col xs={6}>
-                            <PurpleButton text="Lanjut Baca" />
+                            <PurpleButton text="Lanjut Baca" onClick={props?.setShowLink} />
                         </Col>
                     </Row>
                 </Col>
