@@ -1,69 +1,203 @@
 import { lazy } from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Row, Col, Form } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 
 const NavBar = lazy(() => import("../../components/NavBar"));
+const TextDropdown = lazy(() => import("../../components/General/TextDropdown"));
+const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
+const CircledNumber = lazy(() => import("../../components/General/CircledNumber"));
+const CustomCheckbox = lazy(() => import("../../components/General/CustomCheckbox"));
+const CustomUpload = lazy(() => import("../../components/General/CustomUpload"));
 
 const UploadDocumentsComponent = (props: any) => {
     return (
         <>
             <NavBar/>
-            <Container>
-                <Row className="text-center">
-                    <Col>
-                        <h1>Unggah Dokumen</h1>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <Form className="text-start">
-                            <Form.Group>
-                                <Form.Label>Nama Institusi</Form.Label>
-                                <Form.Select
-                                    name="institution_name"
+            <Row className="p-3">
+                <Col className="custom-shadow p-3 me-2">
+                    <Form.Group className="mb-4">
+                        <Form.Label className="fw-bold mb-2">Nama Institusi*</Form.Label>
+                        <TextDropdown placeholder="Pilih Nama Institusi" xs={12} />
+                    </Form.Group>
+                    <Form.Group>
+                        <Row className="py-3">
+                            <Col className="d-flex align-items-center justify-content-between p-0">
+                                <Form.Label className="fw-bold">Nomor Indikator*</Form.Label>
+                                <Row>
+                                    <Col className="">
+                                        <PurpleButton text="Pilih Semua" />
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
+                        <hr/>
+                        <Row className="py-3">
+                            <Col className="d-flex align-items-center">
+                                <CircledNumber number={1} />
+                                <p>Arsitektur SPBE</p>
+                                <CustomCheckbox
+                                    id="indicator_number"
+                                    name="indicator_number"
+                                    value="1"
                                     onChange={(e) => props?.handleInputChange(e, false)}
-                                >
-                                    <option value="">Silakan pilih nama institusi</option>
-                                    {props?.institutionOptions?.length !== 0 && (props.institutionOptions.map((item: string, index: number) => {
-                                        return (
-                                            <option value={item} key={index}>{item}</option>
-                                        )
-                                    }))}
-                                </Form.Select>
-
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Nomor Indikator</Form.Label>
-                                <Form.Check type="radio" name="indicator_number" label="1" value="1" onChange={(e) => props?.handleInputChange(e, false)}/>
-                                <Form.Check type="radio" name="indicator_number" label="2" value="2" onChange={(e) => props?.handleInputChange(e, false)}/>
-                                <Form.Check type="radio" name="indicator_number" label="3" value="3" onChange={(e) => props?.handleInputChange(e, false)}/>
-                                <Form.Check type="radio" name="indicator_number" label="4" value="4" onChange={(e) => props?.handleInputChange(e, false)}/>
-                                <Form.Check type="radio" name="indicator_number" label="5" value="5" onChange={(e) => props?.handleInputChange(e, false)}/>
-                                <Form.Check type="radio" name="indicator_number" label="6" value="6" onChange={(e) => props?.handleInputChange(e, false)}/>
-                                <Form.Check type="radio" name="indicator_number" label="7" value="7" onChange={(e) => props?.handleInputChange(e, false)}/>
-                                <Form.Check type="radio" name="indicator_number" label="8" value="8" onChange={(e) => props?.handleInputChange(e, false)}/>
-                                <Form.Check type="radio" name="indicator_number" label="9" value="9" onChange={(e) => props?.handleInputChange(e, false)}/>
-                                <Form.Check type="radio" name="indicator_number" label="10" value="10" onChange={(e) => props?.handleInputChange(e, false)}/>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Dokumen Pendukung</Form.Label>
-                                <Form.Control type="file" accept="application/pdf" name="supporting_document" onChange={(e) => props?.handleInputChange(e, true)}/>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Dokumen Lama</Form.Label>
-                                <Form.Control type="file" accept="application/pdf" name="old_document" onChange={(e) => props?.handleInputChange(e, true)}/>
-                            </Form.Group>
-                            <Row className="text-center my-3">
-                                <Col>
-                                    <Button as="input" variant="secondary" type="submit" value="Submit" className="mx-auto" onClick={(e) => {props?.handleUploadDocuments(e)}} />
-                                </Col>
-                            </Row>
-                            <Row className="text-center">
-                                <h1>{props?.uploadMessageResponse}</h1>
-                            </Row>
-                        </Form>
-                    </Col>
-                </Row>
-            </Container>
+                                />
+                            </Col>
+                        </Row>
+                        <hr/>
+                        <Row className="py-3">
+                            <Col className="d-flex align-items-center">
+                                <CircledNumber number={2} />
+                                <p>Peta Rencana SPBE</p>
+                                <CustomCheckbox
+                                    id="indicator_number"
+                                    name="indicator_number"
+                                    value="2"
+                                    onChange={(e) => props?.handleInputChange(e, false)}
+                                />
+                            </Col>
+                        </Row>
+                        <hr/>
+                        <Row className="py-3">
+                            <Col className="d-flex align-items-center">
+                                <CircledNumber number={3} />
+                                <p>Manajemen Data</p>
+                                <CustomCheckbox
+                                    id="indicator_number"
+                                    name="indicator_number"
+                                    value="3"
+                                    onChange={(e) => props?.handleInputChange(e, false)}
+                                />
+                            </Col>
+                        </Row>
+                        <hr/>
+                        <Row className="py-3">
+                            <Col className="d-flex align-items-center">
+                                <CircledNumber number={4} />
+                                <p>Pembangunan Aplikasi SPBE</p>
+                                <CustomCheckbox
+                                    id="indicator_number"
+                                    name="indicator_number"
+                                    value="4"
+                                    onChange={(e) => props?.handleInputChange(e, false)}
+                                />
+                            </Col>
+                        </Row>
+                        <hr/>
+                        <Row className="py-3">
+                            <Col className="d-flex align-items-center">
+                                <CircledNumber number={5} />
+                                <p>Layanan Pusat Data</p>
+                                <CustomCheckbox
+                                    id="indicator_number"
+                                    name="indicator_number"
+                                    value="5"
+                                    onChange={(e) => props?.handleInputChange(e, false)}
+                                />
+                            </Col>
+                        </Row>
+                        <hr/>
+                        <Row className="py-3">
+                            <Col className="d-flex align-items-center">
+                                <CircledNumber number={6} />
+                                <p>Layanan Jaringan Intra</p>
+                                <CustomCheckbox
+                                    id="indicator_number"
+                                    name="indicator_number"
+                                    value="6"
+                                    onChange={(e) => props?.handleInputChange(e, false)}
+                                />
+                            </Col>
+                        </Row>
+                        <hr/>
+                        <Row className="py-3">
+                            <Col className="d-flex align-items-center">
+                                <CircledNumber number={7} />
+                                <p>Penggunaan Sistem Penghubung</p>
+                                <CustomCheckbox
+                                    id="indicator_number"
+                                    name="indicator_number"
+                                    value="7"
+                                    onChange={(e) => props?.handleInputChange(e, false)}
+                                />
+                            </Col>
+                        </Row>
+                        <hr/>
+                        <Row className="py-3">
+                            <Col className="d-flex align-items-center">
+                                <CircledNumber number={8} />
+                                <p>Manajemen Keamanan Informasi</p>
+                                <CustomCheckbox
+                                    id="indicator_number"
+                                    name="indicator_number"
+                                    value="8"
+                                    onChange={(e) => props?.handleInputChange(e, false)}
+                                />
+                            </Col>
+                        </Row>
+                        <hr/>
+                        <Row className="py-3">
+                            <Col className="d-flex align-items-center">
+                                <CircledNumber number={9} />
+                                <p>Audit TIK</p>
+                                <CustomCheckbox
+                                    id="indicator_number"
+                                    name="indicator_number"
+                                    value="9"
+                                    onChange={(e) => props?.handleInputChange(e, false)}
+                                />
+                            </Col>
+                        </Row>
+                        <hr/>
+                        <Row className="py-3">
+                            <Col className="d-flex align-items-center">
+                                <CircledNumber number={10} />
+                                <p>Tim Koordinasi SPBE</p>
+                                <CustomCheckbox
+                                    id="indicator_number"
+                                    name="indicator_number"
+                                    value="10"
+                                    onChange={(e) => props?.handleInputChange(e, false)}
+                                />
+                            </Col>
+                        </Row>
+                        <hr/>
+                        <Row>
+                            <Col className="d-flex justify-content-end">
+                                <p className="text-red fw-bold me-4 pe-2 pointer">Reset&nbsp;</p>
+                            </Col>
+                        </Row>
+                    </Form.Group>
+                </Col>
+                <Col className="custom-shadow p-3 ms-2">
+                    <Form.Group className="mb-5">
+                        <Row>
+                            <Col className="d-flex align-items-center mb-2 p-0">
+                                <FontAwesomeIcon icon={faCircleInfo} />
+                                <Form.Label className="fw-bold ms-2">Dokumen Pendukung*</Form.Label>
+                            </Col>
+                            <CustomUpload />
+                        </Row>
+                    </Form.Group>
+                    <Form.Group className="mb-5">
+                        <Row>
+                            <Col className="d-flex align-items-center mb-2 p-0">
+                                <Form.Label className="fw-bold">Notulensi/Undangan Rapat</Form.Label>
+                            </Col>
+                            <CustomUpload />
+                        </Row>
+                    </Form.Group>
+                    <Form.Group>
+                        <Row>
+                            <Col className="d-flex align-items-center mb-2 p-0">
+                                <FontAwesomeIcon icon={faCircleInfo} />
+                                <Form.Label className="fw-bold ms-2">Dokumen Lama</Form.Label>
+                            </Col>
+                            <CustomUpload />
+                        </Row>
+                    </Form.Group>
+                </Col>
+            </Row>
         </>
     )
 

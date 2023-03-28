@@ -20,9 +20,9 @@ const GuestDashboardComponent = (props: any) => {
                     </Row>
                     <Search/>
                     <Row className="my-5">
-                        <TextDropdown placeholder="Pilih Jumlah Instansi"/>
-                        <TextDropdown placeholder="Pilih Indeks"/>
-                        <TextDropdown placeholder="Pilih Tanggal"/>
+                        <TextDropdown placeholder="Pilih Jumlah Instansi" xs={4}/>
+                        <TextDropdown placeholder="Pilih Indeks" xs={4}/>
+                        <TextDropdown placeholder="Pilih Tanggal" xs={4}/>
                     </Row>
                     <Row className="mb-5">
                         <Col xs={4} md={3} lg={2}>

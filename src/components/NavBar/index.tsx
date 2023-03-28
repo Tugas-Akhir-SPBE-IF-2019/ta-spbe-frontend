@@ -5,7 +5,7 @@ import { faCertificate } from '@fortawesome/free-solid-svg-icons';
 const NavBar = (props: any) => {
     return (
         <Navbar className="bg-purple" variant="dark">
-            <Container className="text-white">
+            <Container className="text-white m-auto">
                 <Navbar.Brand href="/">
                     <FontAwesomeIcon icon={faCertificate} className="mx-1" />
                     TA SPBE

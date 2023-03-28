@@ -1,11 +1,11 @@
 import { Col, InputGroup, Form } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 const TextDropdown = (props: any) => {
     return (
         <>
-            <Col xs={4}>
+            <Col xs={props?.xs}>
                 <InputGroup className="custom-border">
                     <Form.Control
                         type="text"

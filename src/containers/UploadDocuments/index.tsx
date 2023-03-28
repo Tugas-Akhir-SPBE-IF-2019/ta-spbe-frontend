@@ -70,7 +70,6 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
     render() {
         const { uploadMessageResponse } = this.props;
         const { institutionOptions } = this.state;
-        console.log(this.state);
         return (
             <UploadDocumentsComponent
                 uploadMessageResponse={uploadMessageResponse}
