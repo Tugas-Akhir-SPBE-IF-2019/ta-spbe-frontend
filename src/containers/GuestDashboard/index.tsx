@@ -16,9 +16,14 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
         super(props);
     }
 
+    componentDidMount() {
+        this.props.getIndexData();
+    }
+
     render() {
+        const { indexResponse } = this.props;
         return (
-            <GuestDashboardComponent />
+            <GuestDashboardComponent indexResponse={indexResponse} />
         )
     }
 }
@@ -38,4 +43,4 @@ function mapDispatchToProps(dispatch: any) {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(GuestDashboardComponent);
+)(GuestDashboardContainer);

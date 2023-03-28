@@ -23,10 +23,8 @@ export function* callApi(
         const payload = payloadGenerator(method, url, params, data);
         try {
             const request = yield call(hitApi, payload);
-            const { data, headers } = request;
-            const contentType = headers["content-type"]
-                ? headers["content-type"].split(";")[0]
-                : "";
+            const { status, data, headers } = request;
+            console.log(request);
             // if (authKey && contentType === "text/plain") {
             //     const decrypted: any = yield call(
             //         decryptBody,
@@ -74,7 +72,7 @@ export function* callApi(
             //         out = data;
             //     }
             // } else {
-                out = request;
+                out = data;
             // }
         } catch (error: any) {
             /* console.log(error.response.data);
