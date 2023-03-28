@@ -20,19 +20,24 @@ const AssessmentResultComponent = (props: any) => {
                             <Form.Group as={Row}>
                                 <Form.Label column sm={3}>Nama Institusi</Form.Label>
                                 <Col sm={9}>
-                                    <Form.Control type="text" value="Kabupaten Phakphak Barat" />
+                                    <Form.Control type="text" value={props?.assessmentResultResponse?.institution_name} />
                                 </Col>
                             </Form.Group>
                             <Form.Group as={Row}>
                                 <Form.Label column sm={3}>Tanggal</Form.Label>
                                 <Col sm={9}>
-                                    <Form.Control type="text" value="01-01-2023" />
+                                    <Form.Control type="text" value={props?.assessmentResultResponse?.submitted_date} />
                                 </Col>
                             </Form.Group>
                             <Form.Group as={Row}>
                                 <Form.Label column sm={3}>Status</Form.Label>
                                 <Col sm={9}>
-                                    <Form.Control type="text" value="Selesai" />
+                                    {props?.assessmentResultResponse?.assessment_status === 2 &&
+                                        <Form.Control type="text" value="Selesai" />
+                                    }
+                                    {props?.assessmentResultResponse?.assessment_status === 3 &&
+                                        <Form.Control type="text" value="Sudah Divalidasi" />
+                                    }
                                 </Col>
                             </Form.Group>
                             <Form.Label>Hasil:</Form.Label>
@@ -40,49 +45,49 @@ const AssessmentResultComponent = (props: any) => {
                                 <Form.Group as={Row}>
                                     <Form.Label column sm={3}>Domain</Form.Label>
                                     <Col sm={9}>
-                                        <Form.Control type="text" value="Kebijakan Internal SPBE" />
+                                        <Form.Control type="text" value={props?.assessmentResultResponse?.result?.domain} />
                                     </Col>
                                 </Form.Group>
                                 <Form.Group as={Row}>
                                     <Form.Label column sm={3}>Aspek</Form.Label>
                                     <Col sm={9}>
-                                        <Form.Control type="text" value="Kebijakan Internal Tata Kelola SPBE" />
+                                        <Form.Control type="text" value={props?.assessmentResultResponse?.result?.aspect} />
                                     </Col>
                                 </Form.Group>
                                 <Form.Group as={Row}>
                                     <Form.Label column sm={3}>Indikator</Form.Label>
                                     <Col sm={9}>
-                                        <Form.Control type="text" value="2" />
+                                        <Form.Control type="text" value={props?.assessmentResultResponse?.result?.indicator_number} />
                                     </Col>
                                 </Form.Group>
                                 <Form.Group as={Row}>
                                     <Form.Label column sm={3}>Level</Form.Label>
                                     <Col sm={9}>
-                                        <Form.Control type="text" value="0" />
+                                        <Form.Control type="text" value={props?.assessmentResultResponse?.result?.level} />
                                     </Col>
                                 </Form.Group>
                                 <Form.Group as={Row}>
                                     <Form.Label column sm={3}>Penjelasan</Form.Label>
                                     <Col sm={9}>
-                                        <Form.Control type="text" value="WIP" />
+                                        <Form.Control type="text" value={props?.assessmentResultResponse?.result?.explanation} />
                                     </Col>
                                 </Form.Group>
                                 <Form.Group as={Row}>
                                     <Form.Label column sm={3}>Data Dukung</Form.Label>
                                     <Col sm={9}>
-                                        <Image src={dummy_img} />
+                                        <Image src={props?.assessmentResultResponse?.result?.support_document} />
                                     </Col>
                                 </Form.Group>
                                 <Form.Group as={Row}>
                                     <Form.Label column sm={3}>Bukti dalam Dokumen</Form.Label>
                                     <Col sm={9}>
-                                        <Form.Control type="text" value="WIP" />
+                                        {props?.handleParseHTML(props?.assessmentResultResponse?.result?.proof)}
                                     </Col>
                                 </Form.Group>
                             </Container>
                             <Row className="text-center my-3">
                                 <Col>
-                                    <Button href="/validate/1" variant="secondary" type="submit" className="mx-auto">Validasi</Button>
+                                    <Button href={`/validate/${props?.assessmentId}`} variant="secondary" type="submit" className="mx-auto">Validasi</Button>
                                 </Col>
                             </Row>
                         </Form>
