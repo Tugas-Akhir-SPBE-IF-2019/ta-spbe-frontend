@@ -12,8 +12,8 @@ const AboutUsComponent = (props: any) => {
             <Row className="px-5 mx-5 pt-5 mt-5">
                 <Col xs={4} className="ps-5 pt-5">
                     <h1 className="text-huge text-purple">Tentang<br/>Kami</h1>
-                    <p className="text-big text-purple my-5 pb-5">Sekelompok mahasiswa yang antusias, pekerja keras, dan cepat beradaptasi</p>
-                    <Row className={"" + (!props?.showLink && "d-none")}>
+                    <p className="text-big text-purple my-5">Sekelompok mahasiswa yang antusias, pekerja keras, dan cepat beradaptasi</p>
+                    <Row className={"text-bigger fw-bold " + (!props?.showLink && "d-none")}>
                         <Col>
                             <a href="https://www.linkedin.com/in/alifahrb/" target="_blank" className="text-purple">Alifah</a>
                             <br/>
@@ -25,7 +25,7 @@ const AboutUsComponent = (props: any) => {
                             <a href="https://www.linkedin.com/in/awwalak/" target="_blank" className="text-purple">Awwala</a>
                         </Col>
                     </Row>
-                    <Row className={props?.showLink && "d-none"}>
+                    <Row className={"pt-5 " + (props?.showLink && "d-none")}>
                         <Col xs={6}>
                             <PurpleButton text="Lanjut Baca" onClick={props?.setShowLink} />
                         </Col>
