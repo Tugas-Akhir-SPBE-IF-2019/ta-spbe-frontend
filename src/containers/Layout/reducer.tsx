@@ -1,7 +1,7 @@
 import { SET_LOADER_STATE } from "./constant";
 
 const initialState = {
-    loading: true,
+    loading: false,
 };
 
 const layoutReducer = (state = initialState, action: any) => {
