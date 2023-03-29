@@ -147,7 +147,7 @@ const AssessmentResultComponent = (props: any) => {
                             </Carousel>
                         </Col>
                     </Row>
-                    <Row className="justify-content-center">
+                    <Row className="justify-content-center my-3">
                         <Col xs={2}>
                             <PurpleButton text="Validasi Hasil" />
                         </Col>
