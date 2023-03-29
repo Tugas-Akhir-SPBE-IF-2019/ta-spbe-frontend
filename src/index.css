@@ -38,6 +38,10 @@ hr {
     background-color: var(--purple) !important;
 }
 
+.bg-light-purple {
+    background-color: var(--purple10) !important;
+}
+
 .text-purple {
     color: var(--purple);
 }
@@ -90,15 +94,29 @@ hr {
     width: 40px;
 }
 
-.form-check-input[type=checkbox] {
+.width-label {
+    width: 6rem;
+}
+
+.width-fit {
+    width: fit-content;
+}
+
+.form-check-input {
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 0.35rem;
     border: 1px solid var(--purple) !important;
 }
 
-.form-check-input[type=checkbox]:checked {
+.form-check-input:checked {
     background-color: var(--purple) !important;
+}
+
+.form-check-input[type=radio] {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem !important;
 }
 
 .pointer {
