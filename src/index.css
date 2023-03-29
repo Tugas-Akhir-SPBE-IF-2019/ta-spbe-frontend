@@ -9,8 +9,11 @@
     --purple25: #D0CBF1;
     --purple10: #E7E5F4;
     --blue: #114EA1;
+    --blue-bg: #CEF5FF;
     --green: #1F9254;
+    --green-bg: #EBF9F1;
     --orange: #CD6200;
+    --orange-bg: #FEF2E5;
     --red: #A30D11;
 }
 
@@ -40,6 +43,18 @@ hr {
 
 .bg-light-purple {
     background-color: var(--purple10) !important;
+}
+
+.bg-blue {
+    background-color: var(--blue-bg) !important;
+}
+
+.bg-green {
+    background-color: var(--green-bg) !important;
+}
+
+.bg-orange {
+    background-color: var(--orange-bg) !important;
 }
 
 .text-purple {
@@ -95,7 +110,7 @@ hr {
 }
 
 .width-label {
-    width: 6rem;
+    width: 10rem;
 }
 
 .width-fit {
