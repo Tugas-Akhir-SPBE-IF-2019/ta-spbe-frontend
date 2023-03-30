@@ -1,13 +1,150 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+    /* font-family: 'Poppins', sans-serif; */
+    font-family: 'Montserrat', sans-serif;
+    margin: 0 !important;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+    --purple: #624DE3;
+    --purple25: #D0CBF1;
+    --purple10: #E7E5F4;
+    --blue: #114EA1;
+    --blue-bg: #CEF5FF;
+    --green: #1F9254;
+    --green-bg: #EBF9F1;
+    --orange: #CD6200;
+    --orange-bg: #FEF2E5;
+    --red: #A30D11;
+}
+
+td {
+    padding: 25px !important;
+}
+
+hr {
+    border-top: 1px solid var(--purple25) !important;
+}
+
+.custom-border {
+    border: 1px solid var(--purple10) !important;
+    border-radius: 5px !important;
+    /* For tables */
+    border-collapse: separate !important;
+    border-spacing: 0;
+}
+
+.custom-shadow {
+    box-shadow: 0 4px 4px var(--purple10);
+}
+
+.bg-purple {
+    background-color: var(--purple) !important;
+}
+
+.bg-light-purple {
+    background-color: var(--purple10) !important;
+}
+
+.bg-blue {
+    background-color: var(--blue-bg) !important;
+}
+
+.bg-green {
+    background-color: var(--green-bg) !important;
+}
+
+.bg-orange {
+    background-color: var(--orange-bg) !important;
+}
+
+.text-purple {
+    color: var(--purple);
+}
+
+.text-blue {
+    color: var(--blue);
+}
+
+.text-green {
+    color: var(--green);
+}
+
+.text-orange {
+    color: var(--orange);
+}
+
+.text-red {
+    color: var(--red);
+}
+
+.text-huge {
+    font-size: 100px;
+}
+
+.text-bigger {
+    font-size: 40px;
+}
+
+.text-big {
+    font-size: 30px;
+}
+
+.page-item:first-child {
+    border-radius: 0 !important;
+}
+
+.page-link {
+    border: none !important;
+    border-radius: 50%;
+    color: var(--purple) !important;
+}
+
+.active>.page-link, .page-link.active {
+    background-color: var(--purple) !important;
+    border-color: var(--purple) !important;
+    color: white !important;
+}
+
+.circle-fit {
+    width: 40px;
+}
+
+.width-label {
+    width: 10rem;
+}
+
+.width-fit {
+    width: fit-content;
+}
+
+.height-fit {
+    height: fit-content;
+}
+
+.form-check-input {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 0.35rem;
+    border: 1px solid var(--purple) !important;
+}
+
+.form-check-input:checked {
+    background-color: var(--purple) !important;
+}
+
+.form-check-input[type=radio] {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem !important;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.upload {
+    border: 3px dashed var(--purple25);
+    background-color: var(--purple10);
+    border-radius: 0.25rem;
+    cursor: pointer;
 }

@@ -14,11 +14,29 @@ export class UserDashboardContainer extends PureComponent<any, any> {
 
     constructor(props: any) {
         super(props);
+        this.checkTextColor = this.checkTextColor.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.getAssessmentData();
+    }
+
+    private checkTextColor(status: number): string {
+        if (status === 1) {
+            return "text-orange"
+        }
+        else if (status === 2) {
+            return "text-green"
+        }
+        else {
+            return "text-blue"
+        }
     }
 
     render() {
+        const { assessmentResponse } = this.props;
         return (
-            <UserDashboardComponent />
+            <UserDashboardComponent assessmentResponse={assessmentResponse} checkTextColor={this.checkTextColor} />
         )
     }
 }
