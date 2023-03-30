@@ -117,6 +117,10 @@ hr {
     width: fit-content;
 }
 
+.height-fit {
+    height: fit-content;
+}
+
 .form-check-input {
     width: 1.5rem;
     height: 1.5rem;
