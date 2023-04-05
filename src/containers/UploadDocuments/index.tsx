@@ -17,14 +17,15 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
         super(props);
         this.state = {
             institution_name: "",
-            indicator_number: "",
-            supporting_document: null,
+            indicator_number: [],
+            supporting_document: [],
             old_document: null,
-            institutionOptions: [],
+            institution_options: [],
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleUploadDocuments = this.handleUploadDocuments.bind(this);
         this.setInsitutionList = this.setInsitutionList.bind(this);
+        this.isChecked = this.isChecked.bind(this);
     }
 
     componentDidMount() {
@@ -41,23 +42,41 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
 
         this.setState({
             ...this.state,
-            institutionOptions: valueList,
+            institution_options: valueList,
         })
     }
 
-    private handleInputChange(e: any, isFiles: boolean): void {
-        if (!isFiles) {
+    private handleInputChange(e: any, type: string): void {
+        if (type === "CHECK") {
             const { name, value } = e.target;
-            this.setState({
-                ...this.state,
-                [name]: value,
-            })
+            const arr = this.state[name];
+            if (arr.indexOf(value) === -1) {
+                this.setState({
+                    ...this.state,
+                    [name]: [...arr, value],
+                })
+            }
+            else {
+                const newArr = arr.filter((el) => el !== value);
+                this.setState({
+                    ...this.state,
+                    [name]: newArr,
+                })
+            }
         }
-        else {
+        else if (type === "FILES") {
             const { name, files } = e.target;
             this.setState({
                 ...this.state,
                 [name]: files[0],
+            })
+        }
+        else {
+            // Type === RADIO / SELECT / SELECTALL / RESET
+            const { name, value } = e.target;
+            this.setState({
+                ...this.state,
+                [name]: value,
             })
         }
     }
@@ -67,16 +86,25 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
         this.props.uploadDocumentsData(this.state);
     }
 
+    private isChecked (el: string): boolean {
+        const { indicator_number } = this.state;
+        if (indicator_number.indexOf(el) === -1) {
+            return false
+        }
+        return true
+    }
+
     render() {
+        console.log(this.state);
         const { uploadMessageResponse } = this.props;
-        const { institutionOptions } = this.state;
+        const { institution_options } = this.state;
         return (
             <UploadDocumentsComponent
                 uploadMessageResponse={uploadMessageResponse}
                 handleInputChange={this.handleInputChange}
                 handleUploadDocuments={this.handleUploadDocuments}
-                institutionOptions={institutionOptions}
-
+                institution_options={institution_options}
+                isChecked={this.isChecked}
             />
         )
     }

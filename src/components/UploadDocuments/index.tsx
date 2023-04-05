@@ -18,7 +18,13 @@ const UploadDocumentsComponent = (props: any) => {
                 <Col className="custom-shadow p-3 me-2">
                     <Form.Group className="mb-4">
                         <Form.Label className="fw-bold mb-2">Nama Institusi*</Form.Label>
-                        <TextDropdown placeholder="Pilih Nama Institusi" xs={12} />
+                        <TextDropdown
+                            placeholder="Pilih Nama Institusi"
+                            xs={12}
+                            options={props?.institution_options}
+                            name="institution_name"
+                            onChange={(e) => props?.handleInputChange(e, "SELECT")}
+                        />
                     </Form.Group>
                     <Form.Group>
                         <Row className="py-3">
@@ -26,7 +32,17 @@ const UploadDocumentsComponent = (props: any) => {
                                 <Form.Label className="fw-bold">Nomor Indikator*</Form.Label>
                                 <Row>
                                     <Col className="">
-                                        <PurpleButton text="Pilih Semua" />
+                                        <PurpleButton
+                                            text="Pilih Semua"
+                                            onClick={() => props?.handleInputChange(
+                                                {
+                                                    target: {
+                                                        name: "indicator_number",
+                                                        value: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+                                                    }
+                                                }, "SELECTALL"
+                                            )}
+                                        />
                                     </Col>
                                 </Row>
                             </Col>
@@ -40,7 +56,8 @@ const UploadDocumentsComponent = (props: any) => {
                                     id="indicator_number"
                                     name="indicator_number"
                                     value="1"
-                                    onChange={(e) => props?.handleInputChange(e, false)}
+                                    onChange={(e) => props?.handleInputChange(e, "CHECK")}
+                                    checked={props?.isChecked("1")}
                                 />
                             </Col>
                         </Row>
@@ -53,7 +70,8 @@ const UploadDocumentsComponent = (props: any) => {
                                     id="indicator_number"
                                     name="indicator_number"
                                     value="2"
-                                    onChange={(e) => props?.handleInputChange(e, false)}
+                                    onChange={(e) => props?.handleInputChange(e, "CHECK")}
+                                    checked={props?.isChecked("2")}
                                 />
                             </Col>
                         </Row>
@@ -66,7 +84,8 @@ const UploadDocumentsComponent = (props: any) => {
                                     id="indicator_number"
                                     name="indicator_number"
                                     value="3"
-                                    onChange={(e) => props?.handleInputChange(e, false)}
+                                    onChange={(e) => props?.handleInputChange(e, "CHECK")}
+                                    checked={props?.isChecked("3")}
                                 />
                             </Col>
                         </Row>
@@ -79,7 +98,8 @@ const UploadDocumentsComponent = (props: any) => {
                                     id="indicator_number"
                                     name="indicator_number"
                                     value="4"
-                                    onChange={(e) => props?.handleInputChange(e, false)}
+                                    onChange={(e) => props?.handleInputChange(e, "CHECK")}
+                                    checked={props?.isChecked("4")}
                                 />
                             </Col>
                         </Row>
@@ -92,7 +112,8 @@ const UploadDocumentsComponent = (props: any) => {
                                     id="indicator_number"
                                     name="indicator_number"
                                     value="5"
-                                    onChange={(e) => props?.handleInputChange(e, false)}
+                                    onChange={(e) => props?.handleInputChange(e, "CHECK")}
+                                    checked={props?.isChecked("5")}
                                 />
                             </Col>
                         </Row>
@@ -105,7 +126,8 @@ const UploadDocumentsComponent = (props: any) => {
                                     id="indicator_number"
                                     name="indicator_number"
                                     value="6"
-                                    onChange={(e) => props?.handleInputChange(e, false)}
+                                    onChange={(e) => props?.handleInputChange(e, "CHECK")}
+                                    checked={props?.isChecked("6")}
                                 />
                             </Col>
                         </Row>
@@ -118,7 +140,8 @@ const UploadDocumentsComponent = (props: any) => {
                                     id="indicator_number"
                                     name="indicator_number"
                                     value="7"
-                                    onChange={(e) => props?.handleInputChange(e, false)}
+                                    onChange={(e) => props?.handleInputChange(e, "CHECK")}
+                                    checked={props?.isChecked("7")}
                                 />
                             </Col>
                         </Row>
@@ -131,7 +154,8 @@ const UploadDocumentsComponent = (props: any) => {
                                     id="indicator_number"
                                     name="indicator_number"
                                     value="8"
-                                    onChange={(e) => props?.handleInputChange(e, false)}
+                                    onChange={(e) => props?.handleInputChange(e, "CHECK")}
+                                    checked={props?.isChecked("8")}
                                 />
                             </Col>
                         </Row>
@@ -144,7 +168,8 @@ const UploadDocumentsComponent = (props: any) => {
                                     id="indicator_number"
                                     name="indicator_number"
                                     value="9"
-                                    onChange={(e) => props?.handleInputChange(e, false)}
+                                    onChange={(e) => props?.handleInputChange(e, "CHECK")}
+                                    checked={props?.isChecked("9")}
                                 />
                             </Col>
                         </Row>
@@ -157,14 +182,24 @@ const UploadDocumentsComponent = (props: any) => {
                                     id="indicator_number"
                                     name="indicator_number"
                                     value="10"
-                                    onChange={(e) => props?.handleInputChange(e, false)}
+                                    onChange={(e) => props?.handleInputChange(e, "CHECK")}
+                                    checked={props?.isChecked("10")}
                                 />
                             </Col>
                         </Row>
                         <hr/>
                         <Row>
                             <Col className="d-flex justify-content-end">
-                                <p className="text-red fw-bold me-4 pe-2 pointer">Reset&nbsp;</p>
+                                <p className="text-red fw-bold me-4 pe-2 pointer"
+                                    onClick={() => props?.handleInputChange(
+                                        {
+                                            target: {
+                                                name: "indicator_number",
+                                                value: []
+                                            }
+                                        }, "RESET"
+                                    )}
+                                >Reset&nbsp;</p>
                             </Col>
                         </Row>
                     </Form.Group>
@@ -176,7 +211,10 @@ const UploadDocumentsComponent = (props: any) => {
                                 <FontAwesomeIcon icon={faCircleInfo} />
                                 <Form.Label className="fw-bold ms-2">Dokumen Pendukung*</Form.Label>
                             </Col>
-                            <CustomUpload />
+                            <CustomUpload
+                                name="supporting_document"
+                                onChange={(e) => props?.handleInputChange(e, "FILES")}
+                            />
                         </Row>
                     </Form.Group>
                     <Form.Group className="mb-5">
@@ -198,9 +236,16 @@ const UploadDocumentsComponent = (props: any) => {
                     </Form.Group>
                 </Col>
             </Row>
+            <Row className="justify-content-end m-3">
+                <Col xs={2}>
+                    <PurpleButton
+                        text="Kirim"
+                        onClick={(e) => {props?.handleUploadDocuments(e)}}
+                    />
+                </Col>
+            </Row>
         </>
     )
-
 }
 
 export default UploadDocumentsComponent;

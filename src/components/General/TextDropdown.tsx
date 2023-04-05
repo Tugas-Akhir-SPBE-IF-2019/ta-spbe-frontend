@@ -6,6 +6,20 @@ const TextDropdown = (props: any) => {
     return (
         <>
             <Col xs={props?.xs}>
+                {props?.options
+                ?
+                    <Form.Select className="custom-border shadow-none text-purple"
+                        name={props?.name}
+                        onChange={props?.onChange}
+                    >
+                        <option value="">Silakan pilih nama institusi</option>
+                        {props?.options?.length !== 0 && (props.options.map((item: string, index: number) => {
+                            return (
+                                <option value={item} key={index}>{item}</option>
+                            )
+                        }))}
+                    </Form.Select>
+                :
                 <InputGroup className="custom-border">
                     <Form.Control
                         type="text"
@@ -18,6 +32,7 @@ const TextDropdown = (props: any) => {
                         <FontAwesomeIcon icon={faAngleDown} className="text-purple" />
                     </InputGroup.Text>
                 </InputGroup>
+                }
             </Col>
         </>
     )

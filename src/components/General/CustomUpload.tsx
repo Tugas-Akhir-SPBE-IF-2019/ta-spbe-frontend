@@ -17,7 +17,7 @@ const CustomUpload = (props: any) => {
                     <p className="fw-bold">Unggah Dokumen Disini</p>
                 </Col>
             </Row>
-            <Form.Control type="file" multiple ref={hiddenFileInput} className="d-none"/>
+            <Form.Control type="file" multiple ref={hiddenFileInput} name={props?.name} className="d-none" onChange={props?.onChange}/>
         </>
     )
 }

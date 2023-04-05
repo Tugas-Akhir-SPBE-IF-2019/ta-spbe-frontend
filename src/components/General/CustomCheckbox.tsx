@@ -10,6 +10,7 @@ const CustomCheckbox = (props: any) => {
                 name={props.name}
                 value={props?.value}
                 onChange={props?.onChange}
+                checked={props?.checked}
             />
         </>
     )
