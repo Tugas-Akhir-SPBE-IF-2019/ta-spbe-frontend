@@ -14,6 +14,7 @@ const UserDashboardContainer = lazy(() => import("../UserDashboard"));
 const LoginContainer = lazy(() => import("../Login"));
 const AboutUsContainer = lazy(() => import("../AboutUs"));
 const ProfileContainer = lazy(() => import("../Profile"));
+const TutorialContainer = lazy(() => import("../Tutorial"));
 
 export class LayoutContainer extends PureComponent<any, any> {
     static propTypes = {
@@ -79,6 +80,12 @@ export class LayoutContainer extends PureComponent<any, any> {
                             path={"/profile"}
                             render={(props: any) => {
                             return <ProfileContainer {...this.props} {...props} />;
+                            }}
+                        />
+                        <Route
+                            path={"/tutorial"}
+                            render={(props: any) => {
+                            return <TutorialContainer {...this.props} {...props} />;
                             }}
                         />
                     </Switch>

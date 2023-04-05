@@ -37,6 +37,13 @@ hr {
     box-shadow: 0 4px 4px var(--purple10);
 }
 
+.custom-tabs {
+    border: 1px solid var(--purple25) !important;
+    border-left: none !important;
+    border-radius: 0 0 5px 5px !important;
+    box-shadow: 4px 4px 4px var(--purple25);
+}
+
 .bg-purple {
     background-color: var(--purple) !important;
 }
@@ -103,6 +110,24 @@ hr {
     background-color: var(--purple) !important;
     border-color: var(--purple) !important;
     color: white !important;
+}
+
+.nav-link>.nav-tabs ,.nav-tabs .nav-link {
+    border: 1px solid var(--purple25) !important;
+    border-radius: 5px 0 0 5px !important;
+    background-color: var(--purple10) !important;
+    color: var(--purple) !important;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    border-style: solid none solid solid !important;
+    border-color: var(--purple25) !important;
+    background-color: white !important;
+    color: black !important;
+}
+
+.nav-tabs {
+    border-bottom: none !important;
 }
 
 .circle-fit {
