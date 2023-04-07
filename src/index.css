@@ -6,6 +6,7 @@
 
 :root {
     --purple: #624DE3;
+    --purple50: #ABA0EB;
     --purple25: #D0CBF1;
     --purple10: #E7E5F4;
     --blue: #114EA1;
@@ -23,6 +24,11 @@ td {
 
 hr {
     border-top: 1px solid var(--purple25) !important;
+    opacity: 1 !important;
+}
+
+.profile-hr {
+    border-top: 1px solid var(--purple50) !important;
 }
 
 .form-select {
@@ -35,6 +41,10 @@ hr {
     /* For tables */
     border-collapse: separate !important;
     border-spacing: 0;
+}
+
+.custom-border-opaque {
+    border: 1px solid var(--purple) !important;
 }
 
 .custom-shadow {
