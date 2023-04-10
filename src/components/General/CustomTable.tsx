@@ -9,20 +9,20 @@ const CustomTable = (props: any) => {
                 <Table className="custom-border custom-shadow text-center">
                     <thead>
                         <tr className="fw-bold">
-                            <td>No</td>
-                            <td>Nama Institusi</td>
-                            <td>Tanggal Penilaian</td>
-                            <td>Indeks</td>
+                            <td className="custom-td">No</td>
+                            <td className="custom-td">Nama Institusi</td>
+                            <td className="custom-td">Tanggal Penilaian</td>
+                            <td className="custom-td">Indeks</td>
                         </tr>
                     </thead>
                     <tbody>
                         {props?.indexResponse?.length !== 0 && (props.indexResponse.map((item: any, index: number) => {
                             return (
                                 <tr key={index}>
-                                    <td>{index + 1}</td>
-                                    <td>{item.institution_name}</td>
-                                    <td>{item.submitted_date}</td>
-                                    <td>{item.spbe_index}</td>
+                                    <td className="custom-td">{index + 1}</td>
+                                    <td className="custom-td">{item.institution_name}</td>
+                                    <td className="custom-td">{item.submitted_date}</td>
+                                    <td className="custom-td">{item.spbe_index}</td>
                                 </tr>
                             )  
                         }))}
@@ -33,26 +33,26 @@ const CustomTable = (props: any) => {
                 <Table className="custom-border custom-shadow text-center">
                     <thead>
                         <tr className="fw-bold">
-                            <td>No</td>
-                            <td>Nama Institusi</td>
-                            <td>Status</td>
-                            <td>Tanggal Penilaian</td>
-                            <td>Aksi</td>
+                            <td className="custom-td">No</td>
+                            <td className="custom-td">Nama Institusi</td>
+                            <td className="custom-td">Status</td>
+                            <td className="custom-td">Tanggal Penilaian</td>
+                            <td className="custom-td">Aksi</td>
                         </tr>
                     </thead>
                     <tbody>
                         {props?.assessmentResponse?.length !== 0 && (props.assessmentResponse.map((item: any, index: number) => {
                             return (
                                 <tr key={index}>
-                                    <td>{index + 1}</td>
-                                    <td>{item.institution_name}</td>
-                                    <td className={props.checkTextColor(item.status) + " pointer"} onClick={() => props?.toggleModal()}>
+                                    <td className="custom-td">{index + 1}</td>
+                                    <td className="custom-td">{item.institution_name}</td>
+                                    <td className={props.checkTextColor(item.status) + " pointer custom-td"} onClick={() => props?.toggleModal()}>
                                         {(item.status === 1 && "Sedang Diproses") ||
                                         (item.status === 2 && "Selesai") ||
                                         (item.status === 3 && "Sudah Divalidasi")}
                                     </td>
-                                    <td>{item.submitted_date}</td>
-                                    <td>
+                                    <td className="custom-td">{item.submitted_date}</td>
+                                    <td className="custom-td">
                                         <Image src={inspect_img} />
                                         <Image src={delete_img} />
                                     </td>

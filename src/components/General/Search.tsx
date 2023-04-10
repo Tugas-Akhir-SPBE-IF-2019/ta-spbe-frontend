@@ -14,6 +14,8 @@ const Search = (props: any) => {
                             aria-label="Cari Nama Instansi"
                             aria-describedby="addon-search"
                             className="px-3 py-2 border border-0 shadow-none"
+                            name={props?.name}
+                            onChange={props?.onChange}
                         />
                         <InputGroup.Text id="addon-search" className="px-3 py-2 bg-white border-0">
                             <FontAwesomeIcon icon={faMagnifyingGlass} className="text-purple" />

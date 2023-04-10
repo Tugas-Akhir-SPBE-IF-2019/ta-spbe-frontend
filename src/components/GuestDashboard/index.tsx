@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Row, Col, Table } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 const NavBar = lazy(() => import("../../components/NavBar"));
 const Search = lazy(() => import("../../components/General/Search"));
@@ -18,15 +18,42 @@ const GuestDashboardComponent = (props: any) => {
                             <h1 className="mb-3">Beranda</h1>
                         </Col>
                     </Row>
-                    <Search/>
+                    <Search
+                        name="institution"
+                        onChange={(e) => props?.handleInputChange(e, "INSTITUTION")}
+                    />
                     <Row className="my-5">
-                        <TextDropdown placeholder="Pilih Jumlah Instansi" xs={4}/>
-                        <TextDropdown placeholder="Pilih Indeks" xs={4}/>
-                        <TextDropdown placeholder="Pilih Tanggal" xs={4}/>
+                        <TextDropdown
+                            placeholder="Pilih Jumlah Instansi"
+                            xs={4}
+                            text
+                            name="limit"
+                            onChange={(e) => props?.handleInputChange(e, "LIMIT")}
+                        />
+                        <TextDropdown
+                            placeholder="Pilih Indeks"
+                            xs={4}
+                            dict={[
+                                {text: "1-2", value: 1},
+                                {text: "2-3", value: 2},
+                                {text: "3-4", value: 3},
+                            ]}
+                            name="index"
+                            onChange={(e) => props?.handleInputChange(e, "INDEX")}
+                        />
+                        <TextDropdown
+                            placeholder="Pilih Tanggal"
+                            xs={4}
+                            date
+                            onChange={(e) => props?.handleInputChange(e, "DATE")}
+                        />
                     </Row>
                     <Row className="mb-5">
                         <Col xs={4} md={3} lg={2}>
-                            <PurpleButton text="Filter" />
+                            <PurpleButton
+                                text="Filter"
+                                onClick={() => props?.submitFilter()}
+                            />
                         </Col>
                     </Row>
                     <CustomTable isGuestTable {...props} />

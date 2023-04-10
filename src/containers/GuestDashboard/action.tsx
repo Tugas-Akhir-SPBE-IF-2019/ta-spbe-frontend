@@ -1,8 +1,9 @@
 import { GET_INDEX_LIST, SET_INDEX_LIST } from "./constant";
 
-export function getIndexList() {
+export function getIndexList(params: any) {
     return {
         type: GET_INDEX_LIST,
+        params,
     };
 }
 

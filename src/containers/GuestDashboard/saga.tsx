@@ -6,11 +6,12 @@ import { ASSESSMENT_INDEX_URL } from "../../config/api";
 import { sortByDate } from "../../utils/helper";
 
 export function* handleGetIndexList(action: any): any {
+    const { params } = action;
     let res = yield call(
         callApi,
         "GET",
         ASSESSMENT_INDEX_URL,
-        null,
+        params,
         null,
         true,
         true,

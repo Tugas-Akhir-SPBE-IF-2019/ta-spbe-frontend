@@ -77,7 +77,7 @@ const UserDashboardComponent = (props: any) => {
                     </Row>
                     <Search/>
                     <Row className="my-5">
-                        <TextDropdown placeholder="Pilih Jumlah Instansi" xs={4}/>
+                        <TextDropdown placeholder="Pilih Jumlah Instansi" xs={4} text/>
                         <TextDropdown placeholder="Pilih Status" xs={4}/>
                         <TextDropdown placeholder="Pilih Tanggal" xs={4}/>
                     </Row>
