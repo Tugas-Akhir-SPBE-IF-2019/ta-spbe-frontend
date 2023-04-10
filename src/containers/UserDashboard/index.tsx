@@ -81,7 +81,6 @@ export class UserDashboardContainer extends PureComponent<any, any> {
     render() {
         const { assessmentResponse } = this.props;
         const { showModal } = this.state;
-        console.log(this.state);
         return (
             <UserDashboardComponent
                 assessmentResponse={assessmentResponse}
