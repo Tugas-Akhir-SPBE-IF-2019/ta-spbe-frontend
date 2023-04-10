@@ -14,7 +14,11 @@ export class UserDashboardContainer extends PureComponent<any, any> {
 
     constructor(props: any) {
         super(props);
+        this.state = {
+            showModal: false,
+        }
         this.checkTextColor = this.checkTextColor.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
     }
 
     componentDidMount() {
@@ -33,10 +37,24 @@ export class UserDashboardContainer extends PureComponent<any, any> {
         }
     }
 
+    private toggleModal(): void {
+        const { showModal } = this.state;
+        this.setState({
+            ...this.state,
+            showModal: !showModal,
+        })
+    }
+
     render() {
         const { assessmentResponse } = this.props;
+        const { showModal } = this.state;
         return (
-            <UserDashboardComponent assessmentResponse={assessmentResponse} checkTextColor={this.checkTextColor} />
+            <UserDashboardComponent
+                assessmentResponse={assessmentResponse}
+                checkTextColor={this.checkTextColor}
+                showModal={showModal}
+                toggleModal={this.toggleModal}
+            />
         )
     }
 }

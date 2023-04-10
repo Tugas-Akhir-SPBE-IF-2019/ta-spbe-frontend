@@ -46,7 +46,7 @@ const CustomTable = (props: any) => {
                                 <tr key={index}>
                                     <td>{index + 1}</td>
                                     <td>{item.institution_name}</td>
-                                    <td className={props.checkTextColor(item.status)}>
+                                    <td className={props.checkTextColor(item.status) + " pointer"} onClick={() => props?.toggleModal()}>
                                         {(item.status === 1 && "Sedang Diproses") ||
                                         (item.status === 2 && "Selesai") ||
                                         (item.status === 3 && "Sudah Divalidasi")}

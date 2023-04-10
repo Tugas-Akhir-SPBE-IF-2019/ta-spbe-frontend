@@ -27,6 +27,11 @@ hr {
     opacity: 1 !important;
 }
 
+.modal-dialog {
+    max-width: 90vw !important;
+    margin: auto !important;
+}
+
 .profile-hr {
     border-top: 1px solid var(--purple50) !important;
 }

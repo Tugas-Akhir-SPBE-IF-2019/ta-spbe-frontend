@@ -1,5 +1,6 @@
 import { lazy } from 'react';
-import { Table, Row, Col, Button } from 'react-bootstrap';
+import { Modal, Row, Col, Image } from 'react-bootstrap';
+import temp_img from "../../assets/temp.png";
 
 const NavBar = lazy(() => import("../../components/NavBar"));
 const Search = lazy(() => import("../../components/General/Search"));
@@ -13,6 +14,62 @@ const UserDashboardComponent = (props: any) => {
             <NavBar/>
             <Row className="px-5 pt-5">
                 <Col>
+                    <Modal show={props?.showModal} onHide={props?.toggleModal}>
+                        <Modal.Body>
+                            <Row className="text-center px-3 pt-3 gap-3">
+                                <Col className="custom-shadow">
+                                    <h3 className="mb-3">Dokumen Unggahan</h3>
+                                    <Row className="text-start my-3">
+                                        <Col xs={8}>
+                                            <p>Judul Dokumen</p>
+                                        </Col>
+                                        <Col xs={4}>
+                                            <p>Tipe</p>
+                                        </Col>
+                                    </Row>
+                                    <hr/>
+                                    <Row className="text-start my-3">
+                                        <Col xs={8}>
+                                            <h6><u>Dokumen A</u></h6>
+                                        </Col>
+                                        <Col xs={4}>
+                                            <h6 className="text-green bg-green width-fit px-3 py-2 rounded">Dokumen Baru</h6>
+                                        </Col>
+                                    </Row>
+                                    <hr/>
+                                    <Row className="text-start my-3">
+                                        <Col xs={8}>
+                                            <h6><u>Dokumen A</u></h6>
+                                        </Col>
+                                        <Col xs={4}>
+                                            <h6 className="text-orange bg-orange width-fit px-3 py-2 rounded">Dokumen Lama</h6>
+                                        </Col>
+                                    </Row>
+                                    <hr/>
+                                    <Row className="text-start my-3">
+                                        <Col xs={8}>
+                                            <h6><u>Dokumen A</u></h6>
+                                        </Col>
+                                        <Col xs={4}>
+                                            <h6 className="text-blue bg-blue width-fit px-3 py-2 rounded">Dokumen Pendukung</h6>
+                                        </Col>
+                                    </Row>
+                                    <hr/>
+                                </Col>
+                                <Col xs={4} className="custom-shadow">
+                                    <h3>Status Penilaian</h3>
+                                    <Image src={temp_img} fluid className="p-3" />
+                                </Col>
+                            </Row>
+                        </Modal.Body>
+                        <Modal.Footer className="justify-content-start">
+                            <Row>
+                                <Col>
+                                    <PurpleButton text="Kembali" onClick={() => props?.toggleModal()} />
+                                </Col>
+                            </Row>
+                        </Modal.Footer>
+                    </Modal>
                     <Row>
                         <Col>
                             <h1 className="mb-3">Dashboard</h1>
@@ -29,7 +86,7 @@ const UserDashboardComponent = (props: any) => {
                             <PurpleButton text="Filter" />
                         </Col>
                     </Row>
-                    <CustomTable isUserTable {...props} checkTextColor={props.checkTextColor} />
+                    <CustomTable isUserTable {...props} checkTextColor={props.checkTextColor} toggleModal={props?.toggleModal} />
                 </Col>
             </Row>
         </>
