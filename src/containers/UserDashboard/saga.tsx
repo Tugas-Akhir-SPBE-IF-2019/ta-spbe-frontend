@@ -6,11 +6,12 @@ import { ASSESSMENT_URL } from "../../config/api";
 import { sortByDate } from "../../utils/helper";
 
 export function* handleGetAssessmentList(action: any): any {
+    const { params } = action;
     let res = yield call(
         callApi,
         "GET",
         ASSESSMENT_URL,
-        null,
+        params,
         null,
         true,
         true,

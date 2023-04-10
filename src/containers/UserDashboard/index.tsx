@@ -16,9 +16,18 @@ export class UserDashboardContainer extends PureComponent<any, any> {
         super(props);
         this.state = {
             showModal: false,
+            limit: "",
+            page: "",
+            institution: "",
+            dates: "",
+            start_date: "",
+            end_date: "",
+            status: "",
         }
         this.checkTextColor = this.checkTextColor.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.submitFilter = this.submitFilter.bind(this);
     }
 
     componentDidMount() {
@@ -45,15 +54,42 @@ export class UserDashboardContainer extends PureComponent<any, any> {
         })
     }
 
+    private handleInputChange(e: any, type: string): void {
+        if (type === "DATE") {
+            const { value } = e.target;
+            let dates = value.split(" - ");
+            this.setState({
+                ...this.state,
+                start_date: dates[0],
+                end_date: dates[1],
+            });
+        }
+        else {
+            // Type === INSTITUTION / LIMIT / STATUS
+            const { name, value } = e.target;
+            this.setState({
+                ...this.state,
+                [name]: value,
+            });
+        }
+    }
+
+    private submitFilter(): void {
+        this.props.getAssessmentData(this.state);
+    }
+
     render() {
         const { assessmentResponse } = this.props;
         const { showModal } = this.state;
+        console.log(this.state);
         return (
             <UserDashboardComponent
                 assessmentResponse={assessmentResponse}
                 checkTextColor={this.checkTextColor}
                 showModal={showModal}
                 toggleModal={this.toggleModal}
+                handleInputChange={this.handleInputChange}
+                submitFilter={this.submitFilter}
             />
         )
     }
@@ -67,7 +103,7 @@ const mapStateToProps = (state: any) => {
   
 function mapDispatchToProps(dispatch: any) {
     return {
-        getAssessmentData: () => dispatch(getAssessmentList()),
+        getAssessmentData: (params: any) => dispatch(getAssessmentList(params)),
     };
 }
   

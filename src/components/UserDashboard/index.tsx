@@ -75,15 +75,42 @@ const UserDashboardComponent = (props: any) => {
                             <h1 className="mb-3">Dashboard</h1>
                         </Col>
                     </Row>
-                    <Search/>
+                    <Search
+                        name="institution"
+                        onChange={(e) => props?.handleInputChange(e, "INSTITUTION")}
+                    />
                     <Row className="my-5">
-                        <TextDropdown placeholder="Pilih Jumlah Instansi" xs={4} text/>
-                        <TextDropdown placeholder="Pilih Status" xs={4}/>
-                        <TextDropdown placeholder="Pilih Tanggal" xs={4}/>
+                        <TextDropdown
+                            placeholder="Pilih Jumlah Instansi"
+                            xs={4}
+                            text
+                            name="limit"
+                            onChange={(e) => props?.handleInputChange(e, "LIMIT")}
+                        />
+                        <TextDropdown
+                            placeholder="Pilih Status"
+                            xs={4}
+                            dict={[
+                                {text: "Sedang Diproses", value: 1},
+                                {text: "Selesai", value: 2},
+                                {text: "Sudah Divalidasi", value: 3},
+                            ]}
+                            name="status"
+                            onChange={(e) => props?.handleInputChange(e, "STATUS")}
+                        />
+                        <TextDropdown
+                            placeholder="Pilih Tanggal"
+                            xs={4}
+                            date
+                            onChange={(e) => props?.handleInputChange(e, "DATE")}
+                        />
                     </Row>
                     <Row className="mb-5">
                         <Col xs={4} md={3} lg={2}>
-                            <PurpleButton text="Filter" />
+                            <PurpleButton
+                                text="Filter"
+                                onClick={() => props?.submitFilter()}
+                            />
                         </Col>
                     </Row>
                     <CustomTable isUserTable {...props} checkTextColor={props.checkTextColor} toggleModal={props?.toggleModal} />

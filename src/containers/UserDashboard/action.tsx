@@ -1,8 +1,9 @@
 import { GET_ASSESSMENT_LIST, SET_ASSESSMENT_LIST } from "./constant";
 
-export function getAssessmentList() {
+export function getAssessmentList(params: any) {
     return {
         type: GET_ASSESSMENT_LIST,
+        params,
     };
 }
 
