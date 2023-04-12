@@ -16,8 +16,7 @@ export function* handleUploadDocuments(action: any): any {
         true,
         true
     );
-    console.log(res);
-    // yield put(successUploadDocuments(res.string));
+    yield put(successUploadDocuments(res.string));
 }
 
 export function* watchUploadDocumentsSaga() {
