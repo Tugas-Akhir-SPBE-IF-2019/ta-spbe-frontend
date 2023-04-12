@@ -19,13 +19,15 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
             institution_name: "",
             indicator_number: [],
             supporting_document: [],
-            old_document: null,
+            old_document: [],
             institution_options: [],
+            meeting_minutes: [],
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleUploadDocuments = this.handleUploadDocuments.bind(this);
         this.setInsitutionList = this.setInsitutionList.bind(this);
         this.isChecked = this.isChecked.bind(this);
+        this.deleteFile = this.deleteFile.bind(this);
     }
 
     componentDidMount() {
@@ -66,9 +68,10 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
         }
         else if (type === "FILES") {
             const { name, files } = e.target;
+            const filesArray = Array.from(files)
             this.setState({
                 ...this.state,
-                [name]: files[0],
+                [name]: filesArray,
             })
         }
         else {
@@ -94,17 +97,30 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
         return true
     }
 
+    private deleteFile (index: number, name: string): void {
+        let new_list = [...this.state[name]];
+        new_list.splice(index, 1);
+        this.setState({
+            ...this.state,
+            [name]: new_list,
+        })
+    }
+
     render() {
         console.log(this.state);
         const { uploadMessageResponse } = this.props;
-        const { institution_options } = this.state;
+        const { institution_options, old_document, supporting_document, meeting_minutes } = this.state;
         return (
             <UploadDocumentsComponent
                 uploadMessageResponse={uploadMessageResponse}
                 handleInputChange={this.handleInputChange}
                 handleUploadDocuments={this.handleUploadDocuments}
                 institution_options={institution_options}
+                old_document={old_document}
+                supporting_document={supporting_document}
+                meeting_minutes={meeting_minutes}
                 isChecked={this.isChecked}
+                deleteFile={this.deleteFile}
             />
         )
     }

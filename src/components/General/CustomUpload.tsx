@@ -11,13 +11,20 @@ const CustomUpload = (props: any) => {
 
     return (
         <>
-            <Row className="text-center upload py-4" onClick={handleClick}>
+            <Row className="text-center upload py-4 mb-2" onClick={handleClick}>
                 <Col>
                     <FontAwesomeIcon icon={faCloudArrowUp} size="6x" className="text-purple mb-2" />
                     <p className="fw-bold">Unggah Dokumen Disini</p>
                 </Col>
             </Row>
-            <Form.Control type="file" multiple ref={hiddenFileInput} name={props?.name} className="d-none" onChange={props?.onChange}/>
+            <Form.Control
+                type="file"
+                multiple
+                ref={hiddenFileInput}
+                name={props?.name}
+                className="d-none"
+                onChange={props?.onChange}
+            />
         </>
     )
 }

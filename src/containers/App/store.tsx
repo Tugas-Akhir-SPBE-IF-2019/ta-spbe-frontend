@@ -9,7 +9,10 @@ let sagaMiddleware = createSagaMiddleware();
 const store = configureStore({
     reducer: Reducer,
     middleware: (getDefaultMiddleware) => [
-        ...getDefaultMiddleware(),
+        ...getDefaultMiddleware({
+            // Need more research
+            serializableCheck: false,
+        }),
         sagaMiddleware,
     ],
 });

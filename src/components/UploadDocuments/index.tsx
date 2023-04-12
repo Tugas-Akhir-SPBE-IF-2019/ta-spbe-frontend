@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Row, Col, Form } from 'react-bootstrap';
+import { Row, Col, Form, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 
@@ -9,6 +9,7 @@ const PurpleButton = lazy(() => import("../../components/General/PurpleButton"))
 const CircledNumber = lazy(() => import("../../components/General/CircledNumber"));
 const CustomCheckbox = lazy(() => import("../../components/General/CustomCheckbox"));
 const CustomUpload = lazy(() => import("../../components/General/CustomUpload"));
+const FileItems = lazy(() => import("../../components/General/FileItems"));
 
 const UploadDocumentsComponent = (props: any) => {
     return (
@@ -208,12 +209,27 @@ const UploadDocumentsComponent = (props: any) => {
                     <Form.Group className="mb-5">
                         <Row>
                             <Col className="d-flex align-items-center mb-2 p-0">
-                                <FontAwesomeIcon icon={faCircleInfo} />
+                                <OverlayTrigger
+                                    key="supporting_document"
+                                    placement="right"
+                                    overlay={
+                                        <Tooltip>
+                                            Dokumen pendukung merupakan Dokumen Peraturan Instansi tentang SPBE yang terbaru
+                                        </Tooltip>
+                                    }
+                                >
+                                    <FontAwesomeIcon icon={faCircleInfo} />
+                                </OverlayTrigger>
                                 <Form.Label className="fw-bold ms-2">Dokumen Pendukung*</Form.Label>
                             </Col>
                             <CustomUpload
                                 name="supporting_document"
                                 onChange={(e) => props?.handleInputChange(e, "FILES")}
+                            />
+                            <FileItems
+                                items={props?.supporting_document}
+                                name="supporting_document"
+                                onDelete={props?.deleteFile}
                             />
                         </Row>
                     </Form.Group>
@@ -222,16 +238,42 @@ const UploadDocumentsComponent = (props: any) => {
                             <Col className="d-flex align-items-center mb-2 p-0">
                                 <Form.Label className="fw-bold">Notulensi/Undangan Rapat</Form.Label>
                             </Col>
-                            <CustomUpload />
+                            <CustomUpload
+                                name="meeting_minutes"
+                                onChange={(e) => props?.handleInputChange(e, "FILES")}
+                            />
+                            <FileItems
+                                items={props?.meeting_minutes}
+                                name="meeting_minutes"
+                                onDelete={props?.deleteFile}
+                            />
                         </Row>
                     </Form.Group>
                     <Form.Group>
                         <Row>
                             <Col className="d-flex align-items-center mb-2 p-0">
-                                <FontAwesomeIcon icon={faCircleInfo} />
+                                <OverlayTrigger
+                                    key="supporting_document"
+                                    placement="right"
+                                    overlay={
+                                        <Tooltip>
+                                            Dokumen lama merupakan Dokumen Peraturan Instansi tentang SPBE yang sudah digantikan oleh peraturan baru
+                                        </Tooltip>
+                                    }
+                                >
+                                    <FontAwesomeIcon icon={faCircleInfo} />
+                                </OverlayTrigger>
                                 <Form.Label className="fw-bold ms-2">Dokumen Lama</Form.Label>
                             </Col>
-                            <CustomUpload />
+                            <CustomUpload
+                                name="old_document"
+                                onChange={(e) => props?.handleInputChange(e, "FILES")}
+                            />
+                            <FileItems
+                                items={props?.old_document}
+                                name="old_document"
+                                onDelete={props?.deleteFile}
+                            />
                         </Row>
                     </Form.Group>
                 </Col>
