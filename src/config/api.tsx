@@ -73,3 +73,7 @@ export const ASSESSMENT_URL = `${getApiUrl()}/assessments`;
 export const ASSESSMENT_INDEX_URL = `${ASSESSMENT_URL}/index`;
 export const ASSESSMENT_UPLOAD_URL = `${ASSESSMENT_URL}/documents/upload`;
 export const LOGIN_URL = `${getApiUrl()}/auth/google/validate`;
+export const PROFILE_URL = `${getApiUrl()}/users`;
+export const BIODATA_URL = `${PROFILE_URL}/profile`;
+export const EVALUATION_DATA_URL = `${PROFILE_URL}/evaluation`;
+export const JOB_DATA_URL = `${PROFILE_URL}/job`;

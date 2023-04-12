@@ -6,6 +6,7 @@ import { watchAssessmentResultSaga } from "../AssessmentResult/saga";
 import { watchValidateResultSaga } from "../ValidateResult/saga";
 import { watchUserDashboardSaga } from "../UserDashboard/saga";
 import { watchLoginSaga } from "../Login/saga";
+import { watchProfileSaga } from "../Profile/saga";
 
 export default function* Saga() {
     yield all([
@@ -16,5 +17,6 @@ export default function* Saga() {
         watchValidateResultSaga(),
         watchUserDashboardSaga(),
         watchLoginSaga(),
+        watchProfileSaga(),
     ]);
 }

@@ -6,6 +6,7 @@ import assessmentResultReducer from "../AssessmentResult/reducer";
 import validateResultReducer from "../ValidateResult/reducer";
 import userDashboardReducer from "../UserDashboard/reducer";
 import loginReducer from "../Login/reducer";
+import profileReducer from "../Profile/reducer";
 
 const Reducer = combineReducers({
     layoutReducer,
@@ -15,6 +16,7 @@ const Reducer = combineReducers({
     validateResultReducer,
     userDashboardReducer,
     loginReducer,
+    profileReducer,
 });
 
 export default Reducer;
