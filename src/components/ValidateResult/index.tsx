@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Row, Col, Form } from 'react-bootstrap';
+import { Row, Col, Form, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 
@@ -28,81 +28,100 @@ const ValidateResultComponent = (props: any) => {
                             <h6>Kebijakan Internal Tata Kelola SPBE</h6>
                         </Col>
                     </Row>
-                    <Row className="custom-border custom-shadow my-3" id="1">
-                        <Col>
-                            <Row className="align-items-center mt-4">
-                                <Col xs={4}>
-                                    <h6>Indikator</h6>
+                    {props?.listItem.length !== 0 && (props.listItem.map((item: any, index: number) => {
+                        return (
+                            <Row className="custom-border custom-shadow my-3" id={item.indicator_number} key={index}>
+                                <Col>
+                                    <Row className="align-items-center mt-4">
+                                        <Col xs={4}>
+                                            <h6>Indikator</h6>
+                                        </Col>
+                                        <Col className="p-0">
+                                            <CircledNumber number={item.indicator_number} />
+                                        </Col>
+                                    </Row>
+                                    <Row className="align-items-center my-5">
+                                        <Col xs={4}>
+                                            <h6>Kesesuaian Hasil</h6>
+                                        </Col>
+                                        <Col className="d-flex align-items-center p-0">
+                                            <CustomRadio
+                                                label="Ya"
+                                                id={`result_correct-${index}`}
+                                                name={`result_correct-${index}`}
+                                                value={1}
+                                                onChange={(e: any) => {props?.handleInputChange(e, "BOOL", index)}}
+                                            />
+                                        </Col>
+                                        <Col className="d-flex align-items-center p-0">
+                                            <CustomRadio
+                                                label="Tidak"
+                                                id={`result_correct-${index}`}
+                                                name={`result_correct-${index}`}
+                                                value={0}
+                                                onChange={(e: any) => {props?.handleInputChange(e, "BOOL", index)}}
+                                            />
+                                        </Col>
+                                    </Row>
+                                    <Row className="align-items-center my-5">
+                                        <Col xs={4}>
+                                            <h6>Level Seharusnya</h6>
+                                        </Col>
+                                        <Col className="d-flex align-items-center p-0">
+                                            <CustomRadio
+                                                label="1"
+                                                id={`correct_level-${index}`}
+                                                name={`correct_level-${index}`}
+                                                value={1}
+                                                onChange={(e: any) => {props?.handleInputChange(e, "INT", index)}}
+                                            />
+                                        </Col>
+                                        <Col className="d-flex align-items-center p-0">
+                                            <CustomRadio
+                                                label="2"
+                                                id={`correct_level-${index}`}
+                                                name={`correct_level-${index}`}
+                                                value={2}
+                                                onChange={(e: any) => {props?.handleInputChange(e, "INT", index)}}
+                                            />
+                                        </Col>
+                                        <Col className="d-flex align-items-center p-0">
+                                            <CustomRadio
+                                                label="3"
+                                                id={`correct_level-${index}`}
+                                                name={`correct_level-${index}`}
+                                                value={3}
+                                                onChange={(e: any) => {props?.handleInputChange(e, "INT", index)}}
+                                            />
+                                        </Col>
+                                        <Col className="d-flex align-items-center p-0">
+                                            <CustomRadio
+                                                label="4"
+                                                id={`correct_level-${index}`}
+                                                name={`correct_level-${index}`}
+                                                value={4}
+                                                onChange={(e: any) => {props?.handleInputChange(e, "INT", index)}}
+                                            />
+                                        </Col>
+                                        <Col className="d-flex align-items-center p-0">
+                                            <CustomRadio
+                                                label="5"
+                                                id={`correct_level-${index}`}
+                                                name={`correct_level-${index}`}
+                                                value={5}
+                                                onChange={(e: any) => {props?.handleInputChange(e, "INT", index)}}
+                                            />
+                                        </Col>
+                                    </Row>
                                 </Col>
-                                <Col className="p-0">
-                                    <CircledNumber number="1" />
+                                <Col className="mt-4">
+                                    <Form.Control onChange={(e: any) => {props?.handleInputChange(e, "STR", index)}} as="textarea" name="explanation" rows={8} placeholder="Berikan penjelasan..." className="shadow-none" />
                                 </Col>
                             </Row>
-                            <Row className="align-items-center my-5">
-                                <Col xs={4}>
-                                    <h6>Kesesuaian Hasil</h6>
-                                </Col>
-                                <Col className="d-flex align-items-center p-0">
-                                    <CustomRadio
-                                        label="Ya"
-                                        id="is_correct"
-                                        name="is_correct"
-                                    />
-                                </Col>
-                                <Col className="d-flex align-items-center p-0">
-                                    <CustomRadio
-                                        label="Tidak"
-                                        id="is_correct"
-                                        name="is_correct"
-                                    />
-                                </Col>
-                            </Row>
-                            <Row className="align-items-center my-5">
-                                <Col xs={4}>
-                                    <h6>Level Seharusnya</h6>
-                                </Col>
-                                <Col className="d-flex align-items-center p-0">
-                                    <CustomRadio
-                                        label="1"
-                                        id="correct_level"
-                                        name="correct_level"
-                                    />
-                                </Col>
-                                <Col className="d-flex align-items-center p-0">
-                                    <CustomRadio
-                                        label="2"
-                                        id="correct_level"
-                                        name="correct_level"
-                                    />
-                                </Col>
-                                <Col className="d-flex align-items-center p-0">
-                                    <CustomRadio
-                                        label="3"
-                                        id="correct_level"
-                                        name="correct_level"
-                                    />
-                                </Col>
-                                <Col className="d-flex align-items-center p-0">
-                                    <CustomRadio
-                                        label="4"
-                                        id="correct_level"
-                                        name="correct_level"
-                                    />
-                                </Col>
-                                <Col className="d-flex align-items-center p-0">
-                                    <CustomRadio
-                                        label="5"
-                                        id="correct_level"
-                                        name="correct_level"
-                                    />
-                                </Col>
-                            </Row>
-                        </Col>
-                        <Col className="mt-4">
-                            <Form.Control as="textarea" rows={8} placeholder="Berikan penjelasan..." />
-                        </Col>
-                    </Row>
-                    <Row className="custom-border custom-shadow my-3" id="2">
+                        )
+                    }))}
+                    
+                    {/* <Row className="custom-border custom-shadow my-3" id="2">
                         <Col>
                             <Row className="align-items-center mt-4">
                                 <Col xs={4}>
@@ -175,25 +194,34 @@ const ValidateResultComponent = (props: any) => {
                         <Col className="mt-4">
                             <Form.Control as="textarea" rows={8} placeholder="Berikan penjelasan..." />
                         </Col>
-                    </Row>
+                    </Row> */}
                     <Row className="my-2">
                         <Col>
                             <Row>
                                 <Col className="d-flex align-items-center justify-content-center">
                                     <h6 className="width-fit me-2">Indikator</h6>
-                                    <FontAwesomeIcon icon={faCircleInfo} />
+                                    <OverlayTrigger
+                                        placement="top"
+                                        overlay={
+                                            <Tooltip>
+                                                Tekan nomor-nomor di bawah untuk lompat ke indikator terkait
+                                            </Tooltip>
+                                        }
+                                    >
+                                        <FontAwesomeIcon icon={faCircleInfo} className="pointer" />
+                                    </OverlayTrigger>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col>
-                                    <CustomLink />
+                                    <CustomLink link_list={props?.link_list} />
                                 </Col>
                             </Row>
                         </Col>
                     </Row>
                     <Row className="justify-content-center">
                         <Col xs={2}>
-                            <PurpleButton text="Kirim" />
+                            <PurpleButton text="Kirim" onClick={(e: any) => props?.handleSendValidation(e)} />
                         </Col>
                     </Row>
                 </Col>
