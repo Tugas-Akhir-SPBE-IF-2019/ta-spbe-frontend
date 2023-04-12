@@ -1,6 +1,7 @@
 import { Table, Pagination, Image } from 'react-bootstrap';
 import inspect_img from "../../assets/Analyze.png";
 import delete_img from "../../assets/Waste.png";
+import { Link } from "react-router-dom";
 
 const CustomTable = (props: any) => {
     return (
@@ -53,7 +54,7 @@ const CustomTable = (props: any) => {
                                     </td>
                                     <td className="custom-td">{item.submitted_date}</td>
                                     <td className="custom-td">
-                                        <Image src={inspect_img} />
+                                        <Link to={`/result/${item.id}`}><Image src={inspect_img} /></Link>
                                         <Image src={delete_img} />
                                     </td>
                                 </tr>

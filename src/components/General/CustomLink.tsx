@@ -1,38 +1,23 @@
 import { Nav } from 'react-bootstrap';
 
 const CustomLink = (props: any) => {
+    const default_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     return (
         <Nav className="justify-content-center">
-            <Nav.Item>
-                <Nav.Link href="#1"><u className="text-purple">1</u></Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link href="#2"><u className="text-purple">2</u></Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link href="#3" disabled><u>3</u></Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link href="#4" disabled><u>4</u></Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link href="#5" disabled><u>5</u></Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link href="#6" disabled><u>6</u></Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link href="#7" disabled><u>7</u></Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link href="#8" disabled><u>8</u></Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link href="#9" disabled><u>9</u></Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link href="#10" disabled><u>10</u></Nav.Link>
-            </Nav.Item>
+            {props?.link_list && (default_list.map((item: number, index: number) => {
+                return (
+                    <>{props?.link_list.includes(item)
+                    ?
+                        <Nav.Item key={index}>
+                            <Nav.Link href={`#${item}`}><u className="text-purple">{item}</u></Nav.Link>
+                        </Nav.Item>
+                    :
+                        <Nav.Item key={index}>
+                            <Nav.Link href={`#${item}`} disabled><u>{item}</u></Nav.Link>
+                        </Nav.Item>
+                    }</>
+                )
+            }))}
         </Nav>
     )
 }

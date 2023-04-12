@@ -1,9 +1,10 @@
 import { lazy } from 'react';
-import { Row, Col, Image, Carousel } from 'react-bootstrap';
+import { Row, Col, Image, Carousel, OverlayTrigger, Popover, Tooltip } from 'react-bootstrap';
 import dummy_img from "../../assets/logo-itb.jpg";
 import dummy_img2 from "../../assets/about-us.jpg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo, faClone } from '@fortawesome/free-solid-svg-icons';
+import { Link } from "react-router-dom";
 
 const NavBar = lazy(() => import("../../components/NavBar"));
 const BlockLabel = lazy(() => import("../../components/General/BlockLabel"));
@@ -56,12 +57,21 @@ const AssessmentResultComponent = (props: any) => {
                             <Row>
                                 <Col className="d-flex align-items-center justify-content-center">
                                     <h6 className="width-fit me-2">Indikator</h6>
-                                    <FontAwesomeIcon icon={faCircleInfo} />
+                                    <OverlayTrigger
+                                        placement="top"
+                                        overlay={
+                                            <Tooltip>
+                                                Tekan nomor-nomor di bawah untuk lompat ke indikator terkait
+                                            </Tooltip>
+                                        }
+                                    >
+                                        <FontAwesomeIcon icon={faCircleInfo} className="pointer" />
+                                    </OverlayTrigger>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col>
-                                    <CustomLink />
+                                    <CustomLink link_list={props?.link_list} />
                                 </Col>
                             </Row>
                         </Col>
@@ -69,87 +79,105 @@ const AssessmentResultComponent = (props: any) => {
                     <Row className="mx-5">
                         <h6 className="fw-bold">Hasil</h6>
                     </Row>
-                    <Row className="custom-shadow custom-border m-3 p-3">
-                        <Col>
-                            <Row className="my-3">
-                                <Col xs={4}>
-                                    <h6>Domain</h6>
-                                </Col>
-                                <Col>
-                                    <p>{props?.assessmentResultResponse?.result?.domain}</p>
-                                </Col>
-                            </Row>
-                            <Row className="my-3">
-                                <Col xs={4}>
-                                    <h6>Aspek</h6>
-                                </Col>
-                                <Col>
-                                    <p>{props?.assessmentResultResponse?.result?.aspect}</p>
-                                </Col>
-                            </Row>
-                            <Row className="align-items-center">
-                                <Col xs={4} className="mt-2 mb-3">
-                                    <h6>Indikator</h6>
-                                </Col>
-                                <Col>
-                                    <CircledNumber number={props?.assessmentResultResponse?.result?.indicator_number} />
-                                </Col>
-                            </Row>
-                            <Row className="align-items-center">
-                                <Col xs={4} className="my-2">
-                                    <h6>Level</h6>
-                                </Col>
-                                <Col>
-                                    <CircledNumber number={props?.assessmentResultResponse?.result?.level} />
-                                </Col>
-                            </Row>
-                            <Row className="my-3">
-                                <Col xs={4}>
-                                    <h6>Data Dukung</h6>
-                                </Col>
-                                <Col>
-                                    <p>{props?.assessmentResultResponse?.result?.support_document}</p>
-                                </Col>
-                            </Row>
-                        </Col>
-                        <Col>
-                            <Row className="my-3">
-                                <h6>Penjelasan</h6>
-                            </Row>
-                            <Row className="bg-light-purple custom-border p-2">
-                                <Col>
-                                    <p className="text-break">{props?.assessmentResultResponse?.result?.explanation}</p>
-                                </Col>
-                                <Col xs={1}>
-                                    <FontAwesomeIcon icon={faClone} className="pointer text-purple" />
-                                </Col>
-                            </Row>
-                        </Col>
-                    </Row>
-                    <Row className="my-3">
-                        <h6 className="fw-bold text-center">Bukti dalam Dokumen</h6>
-                    </Row>
-                    <Row className="justify-content-center my-3">
-                        <Col xs={6}>
-                            <Carousel variant="dark" slide={false}>
-                                <Carousel.Item>
-                                    <Image src={dummy_img} className="d-block w-75 mx-auto mb-3"/>
-                                </Carousel.Item>
-                                <Carousel.Item>
-                                    <Image src={dummy_img2} className="d-block w-75 mx-auto mb-3"/>
-                                </Carousel.Item>
-                                <Carousel.Item>
-                                    <Image src={dummy_img} className="d-block w-75 mx-auto mb-3"/>
-                                </Carousel.Item>
-                                <Carousel.Item>
-                                    <Image src={dummy_img2} className="d-block w-75 mx-auto mb-3"/>
-                                </Carousel.Item>
-                            </Carousel>
-                        </Col>
-                    </Row>
+                    {props?.assessmentResultResponse !== null && (props.assessmentResultResponse.result?.map((item: any, index: number) => {
+                        return (
+                            <>
+                                <Row className="custom-shadow custom-border m-3 p-3" id={item.indicator_number}>
+                                    <Col>
+                                        <Row className="my-3">
+                                            <Col xs={4}>
+                                                <h6>Domain</h6>
+                                            </Col>
+                                            <Col>
+                                                <p>{item.domain}</p>
+                                            </Col>
+                                        </Row>
+                                        <Row className="my-3">
+                                            <Col xs={4}>
+                                                <h6>Aspek</h6>
+                                            </Col>
+                                            <Col>
+                                                <p>{item.aspect}</p>
+                                            </Col>
+                                        </Row>
+                                        <Row className="align-items-center">
+                                            <Col xs={4} className="mt-2 mb-3">
+                                                <h6>Indikator</h6>
+                                            </Col>
+                                            <Col>
+                                                <CircledNumber number={item.indicator_number} />
+                                            </Col>
+                                        </Row>
+                                        <Row className="align-items-center">
+                                            <Col xs={4} className="my-2">
+                                                <h6>Level</h6>
+                                            </Col>
+                                            <Col>
+                                                <CircledNumber number={item.level} />
+                                            </Col>
+                                        </Row>
+                                        <Row className="my-3">
+                                            <Col xs={4}>
+                                                <h6>Data Dukung</h6>
+                                            </Col>
+                                            <Col>
+                                                <p>{item.support_document_name}</p>
+                                            </Col>
+                                        </Row>
+                                    </Col>
+                                    <Col>
+                                        <Row className="my-3">
+                                            <h6>Penjelasan</h6>
+                                        </Row>
+                                        <Row className="bg-light-purple custom-border p-2">
+                                            <Col>
+                                                <p className="text-break">{item.explanation}</p>
+                                            </Col>
+                                            <Col xs={1}>
+                                                <OverlayTrigger
+                                                    trigger="click"
+                                                    placement="top"
+                                                    rootClose
+                                                    overlay={
+                                                        <Popover>
+                                                            <Popover.Body>
+                                                                Berhasil disalin!
+                                                            </Popover.Body>
+                                                        </Popover>
+                                                    }
+                                                >
+                                                    <FontAwesomeIcon icon={faClone} className="pointer text-purple" onClick={() => props?.copyText(item.explanation)} />
+                                                </OverlayTrigger>
+                                            </Col>
+                                        </Row>
+                                    </Col>
+                                </Row>
+                                <Row className="my-3">
+                                    <h6 className="fw-bold text-center">Bukti dalam Dokumen</h6>
+                                </Row>
+                                <Row className="justify-content-center mt-3 mb-5">
+                                    <Col xs={6}>
+                                        <Carousel variant="dark" slide={false}>
+                                            {item.photo_proof?.length !== 0 && (item.photo_proof.map((photo: any, idx: number) => {
+                                                return (
+                                                    <Carousel.Item>
+                                                        <a href={photo.document_link} target='_blank'>
+                                                            <Image src={photo.photo_link} className="d-block w-75 mx-auto mb-3"/>
+                                                        </a>
+                                                    </Carousel.Item>
+                                                )
+                                            }))}
+                                        </Carousel>
+                                    </Col>
+                                </Row>
+                            </>
+                        )
+                    }))}
                     <Row className="justify-content-center my-3">
                         <Col xs={2}>
-                            <PurpleButton text="Validasi Hasil" />
+                            <Link to={`/validate/${props?.assessmentId}`}>
+                                <PurpleButton text="Validasi Hasil" />
+                            </Link>
                         </Col>
                     </Row>
                 </Col>
