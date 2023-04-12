@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Button } from 'react-bootstrap';
 
 const NavBar = lazy(() => import("../../components/NavBar"));
 const Search = lazy(() => import("../../components/General/Search"));

@@ -1,12 +1,26 @@
-import { put, takeLatest } from "redux-saga/effects";
+import { put, takeLatest, call } from "redux-saga/effects";
 import { successLoginWithGoogle } from "./action";
-import { SUCCESS_LOGIN_WITH_GOOGLE } from "./constant";
+import { LOGIN_WITH_GOOGLE } from "./constant";
+import { callApi } from "../Layout/saga";
+import { LOGIN_URL } from "../../config/api";
 
 export function* handleLoginWithGoogle(action: any): any {
-    let res = "Success";
-    yield put(successLoginWithGoogle(res));
+    const { params } = action;
+    let res = yield call(
+        callApi,
+        "POST",
+        LOGIN_URL,
+        null,
+        params,
+        true,
+        true,
+        true
+    );
+    if (res) {
+        yield put(successLoginWithGoogle(res));
+    }
 }
 
 export function* watchLoginSaga() {
-    yield takeLatest(SUCCESS_LOGIN_WITH_GOOGLE, handleLoginWithGoogle);
+    yield takeLatest(LOGIN_WITH_GOOGLE, handleLoginWithGoogle);
 }

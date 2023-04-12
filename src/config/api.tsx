@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getAuthToken, getRefreshToken } from "../utils/general";
 
 let CANCEL_TOKEN_SOURCE = axios.CancelToken.source();
 
@@ -38,13 +39,22 @@ export const payloadGenerator = (
 ) => {
     let header = {};
     if (method === "POST") {
-        header = {
-            "Content-Type": "multipart/form-data",
-        };
+        if (url.includes("/auth/google/validate")) {
+            header = {
+                "Content-Type": "application/json",
+            };
+        }
+        else {
+            header = {
+                "Content-Type": "multipart/form-data",
+                Authorization: `Bearer ${getAuthToken()}`,
+            };
+        }
     }
     else {
         header = {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${getAuthToken()}`,
         };
     }
     const payload = {
@@ -62,3 +72,4 @@ export const payloadGenerator = (
 export const ASSESSMENT_URL = `${getApiUrl()}/assessments`;
 export const ASSESSMENT_INDEX_URL = `${ASSESSMENT_URL}/index`;
 export const ASSESSMENT_UPLOAD_URL = `${ASSESSMENT_URL}/documents/upload`;
+export const LOGIN_URL = `${getApiUrl()}/auth/google/validate`;

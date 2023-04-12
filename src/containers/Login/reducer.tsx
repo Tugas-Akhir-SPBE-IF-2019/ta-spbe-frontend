@@ -1,7 +1,7 @@
 import { SUCCESS_LOGIN_WITH_GOOGLE } from "./constant";
 
 const initialState = {
-    loginMessage: "",
+    loginMessage: null,
 };
 
 const loginReducer = (state = initialState, action: any) => {
