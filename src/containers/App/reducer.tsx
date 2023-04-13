@@ -7,6 +7,7 @@ import validateResultReducer from "../ValidateResult/reducer";
 import userDashboardReducer from "../UserDashboard/reducer";
 import loginReducer from "../Login/reducer";
 import profileReducer from "../Profile/reducer";
+import editBiodataReducer from "../EditProfileBio/reducer";
 
 const Reducer = combineReducers({
     layoutReducer,
@@ -17,6 +18,7 @@ const Reducer = combineReducers({
     userDashboardReducer,
     loginReducer,
     profileReducer,
+    editBiodataReducer
 });
 
 export default Reducer;

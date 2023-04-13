@@ -14,7 +14,7 @@ const EditProfileBioComponent = (props: any) => {
                 <Col>
                     <Row className="justify-content-end">
                         <Col xs={2}>
-                            <PurpleButton text="Simpan" />
+                            <PurpleButton text="Simpan" onClick={(e: any) => props?.handleUpdateBiodata(e)} />
                         </Col>
                     </Row>
                     <Row className="text-center">
@@ -31,23 +31,58 @@ const EditProfileBioComponent = (props: any) => {
                             <Form>
                                 <Form.Group className="my-4">
                                     <Form.Label className="text-purple mb-2">Nama Lengkap</Form.Label>
-                                    <Form.Control type="text" placeholder="Tuliskan Nama Lengkap" className="py-3 custom-border shadow-none" />
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Tuliskan Nama Lengkap"
+                                        value={props?.name}
+                                        onChange={(e: any) => props?.handleInputChange(e)}
+                                        name="name"
+                                        className="py-3 custom-border shadow-none"
+                                    />
                                 </Form.Group>
                                 <Form.Group className="my-4">
                                     <Form.Label className="text-purple mb-2">Nomor Kontak</Form.Label>
-                                    <Form.Control type="text" placeholder="Tuliskan Nomor Kontak" className="py-3 custom-border shadow-none" />
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Tuliskan Nomor Kontak"
+                                        value={props?.contact_number}
+                                        onChange={(e: any) => props?.handleInputChange(e)}
+                                        name="contact_number"
+                                        className="py-3 custom-border shadow-none"
+                                    />
                                 </Form.Group>
                                 <Form.Group className="my-4">
                                     <Form.Label className="text-purple mb-2">Email</Form.Label>
-                                    <Form.Control type="email" placeholder="Tuliskan Email" className="py-3 custom-border shadow-none" />
+                                    <Form.Control
+                                    type="email"
+                                    placeholder="Tuliskan Email"
+                                    value={props?.email}
+                                    onChange={(e: any) => props?.handleInputChange(e)}
+                                    name="email"
+                                    className="py-3 custom-border shadow-none"
+                                    />
                                 </Form.Group>
                                 <Form.Group className="my-4">
                                     <Form.Label className="text-purple mb-2">Profil Linkedin</Form.Label>
-                                    <Form.Control type="text" placeholder="Tuliskan Profil Linkedin" className="py-3 custom-border shadow-none" />
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Tuliskan Profil Linkedin"
+                                        value={props?.linkedin_profile}
+                                        onChange={(e: any) => props?.handleInputChange(e)}
+                                        name="linkedin_profile"
+                                        className="py-3 custom-border shadow-none"
+                                    />
                                 </Form.Group>
                                 <Form.Group className="my-4">
                                     <Form.Label className="text-purple mb-2">Alamat Rumah</Form.Label>
-                                    <Form.Control type="text" placeholder="Tuliskan Alamat Rumah" className="py-3 custom-border shadow-none" />
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Tuliskan Alamat Rumah"
+                                        value={props?.address}
+                                        onChange={(e: any) => props?.handleInputChange(e)}
+                                        name="address"
+                                        className="py-3 custom-border shadow-none"
+                                    />
                                 </Form.Group>
                             </Form>
                         </Col>

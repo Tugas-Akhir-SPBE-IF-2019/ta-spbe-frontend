@@ -2,6 +2,7 @@ import { lazy } from 'react';
 import { Row, Col, Image } from 'react-bootstrap';
 import default_img from "../../assets/default-profpic.png";
 import progress_bar from "../../assets/progress-bar.png";
+import { Link } from "react-router-dom";
 
 const NavBar = lazy(() => import("../../components/NavBar"));
 const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
@@ -16,7 +17,9 @@ const ProfileComponent = (props: any) => {
                 <Col>
                     <Row className="justify-content-end">
                         <Col xs={2}>
-                            <PurpleButton text="Edit Profil" />
+                            <Link to="/edit-profile/biodata">
+                                <PurpleButton text="Edit Profil" />
+                            </Link>
                         </Col>
                     </Row>
                     <Row className="text-center my-5">
