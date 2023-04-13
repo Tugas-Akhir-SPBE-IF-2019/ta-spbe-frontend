@@ -24,11 +24,13 @@ export class ValidateResultContainer extends PureComponent<any, any> {
             },
             listItem: [],
             link_list: [],
+            showModal: false,
         };
         this.handleParseHTML = this.handleParseHTML.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSendValidation = this.handleSendValidation.bind(this);
         this.initField = this.initField.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
     }
 
     componentDidMount() {
@@ -39,6 +41,9 @@ export class ValidateResultContainer extends PureComponent<any, any> {
     componentDidUpdate(prevProps: any) {
         if (prevProps.assessmentResultResponse !== this.props.assessmentResultResponse) {
             this.initField();
+        }
+        if (prevProps.validationMessageResponse !== this.props.validationMessageResponse) {
+            this.toggleModal();
         }
     }
     
@@ -101,9 +106,17 @@ export class ValidateResultContainer extends PureComponent<any, any> {
         this.props.sendValidationData(formValues);
     }
 
+    private toggleModal(): void {
+        const { showModal } = this.state;
+        this.setState({
+            ...this.state,
+            showModal: !showModal,
+        })
+    }
+
     render() {
         const { assessmentResultResponse, validationMessageResponse } = this.props;
-        const { listItem, link_list } = this.state;
+        const { listItem, link_list, showModal } = this.state;
         return (
             <ValidateResultComponent
                 assessmentResultResponse={assessmentResultResponse}
@@ -113,6 +126,8 @@ export class ValidateResultContainer extends PureComponent<any, any> {
                 handleSendValidation={this.handleSendValidation}
                 listItem={listItem}
                 link_list={link_list}
+                toggleModal={this.toggleModal}
+                showModal={showModal}
             />
         )
     }

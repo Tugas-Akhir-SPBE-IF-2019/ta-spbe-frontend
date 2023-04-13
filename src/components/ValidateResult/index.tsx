@@ -1,7 +1,8 @@
 import { lazy } from 'react';
-import { Row, Col, Form, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Row, Col, Form, OverlayTrigger, Tooltip, Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import { Link } from "react-router-dom";
 
 const NavBar = lazy(() => import("../../components/NavBar"));
 const CircledNumber = lazy(() => import("../../components/General/CircledNumber"));
@@ -14,6 +15,24 @@ const ValidateResultComponent = (props: any) => {
     return (
         <>
             <NavBar/>
+            <Modal show={props?.showModal} onHide={props?.toggleModal}>
+                <Modal.Body>
+                    <Row className="text-center p-5">
+                        <Col>
+                            <p className="fw-bold">Hasil berhasil divalidasi!</p>
+                        </Col>
+                    </Row>
+                </Modal.Body>
+                <Modal.Footer className="justify-content-start">
+                    <Row>
+                        <Col>
+                            <Link to="/dashboard">
+                                <PurpleButton text="Selesai"/>
+                            </Link>
+                        </Col>
+                    </Row>
+                </Modal.Footer>
+            </Modal>
             <Row className="p-3">
                 <Col>
                     <Row>

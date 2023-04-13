@@ -22,16 +22,24 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
             old_document: [],
             institution_options: [],
             meeting_minutes: [],
+            show_modal: false,
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleUploadDocuments = this.handleUploadDocuments.bind(this);
         this.setInsitutionList = this.setInsitutionList.bind(this);
         this.isChecked = this.isChecked.bind(this);
         this.deleteFile = this.deleteFile.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
     }
 
     componentDidMount() {
         this.setInsitutionList();
+    }
+
+    componentDidUpdate(prevProps: any) {
+        if (prevProps.uploadMessageResponse !== this.props.uploadMessageResponse) {
+            this.toggleModal();
+        }
     }
 
     private setInsitutionList(): void {
@@ -106,9 +114,17 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
         })
     }
 
+    private toggleModal(): void {
+        const { showModal } = this.state;
+        this.setState({
+            ...this.state,
+            showModal: !showModal,
+        })
+    }
+
     render() {
         const { uploadMessageResponse } = this.props;
-        const { institution_options, old_document, supporting_document, meeting_minutes } = this.state;
+        const { institution_options, old_document, supporting_document, meeting_minutes, showModal } = this.state;
         return (
             <UploadDocumentsComponent
                 uploadMessageResponse={uploadMessageResponse}
@@ -120,6 +136,8 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
                 meeting_minutes={meeting_minutes}
                 isChecked={this.isChecked}
                 deleteFile={this.deleteFile}
+                toggleModal={this.toggleModal}
+                showModal={showModal}
             />
         )
     }
