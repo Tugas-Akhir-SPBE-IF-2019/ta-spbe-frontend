@@ -19,7 +19,7 @@ const ValidateResultComponent = (props: any) => {
                 <Modal.Body>
                     <Row className="text-center p-5">
                         <Col>
-                            <p className="fw-bold">Hasil berhasil divalidasi!</p>
+                            <p className="fw-bold">Hasil penilaian berhasil divalidasi!</p>
                         </Col>
                     </Row>
                 </Modal.Body>
@@ -139,81 +139,6 @@ const ValidateResultComponent = (props: any) => {
                             </Row>
                         )
                     }))}
-                    
-                    {/* <Row className="custom-border custom-shadow my-3" id="2">
-                        <Col>
-                            <Row className="align-items-center mt-4">
-                                <Col xs={4}>
-                                    <h6>Indikator</h6>
-                                </Col>
-                                <Col className="p-0">
-                                    <CircledNumber number="2" />
-                                </Col>
-                            </Row>
-                            <Row className="align-items-center my-5">
-                                <Col xs={4}>
-                                    <h6>Kesesuaian Hasil</h6>
-                                </Col>
-                                <Col className="d-flex align-items-center p-0">
-                                    <CustomRadio
-                                        label="Ya"
-                                        id="is_correct"
-                                        name="is_correct"
-                                    />
-                                </Col>
-                                <Col className="d-flex align-items-center p-0">
-                                    <CustomRadio
-                                        label="Tidak"
-                                        id="is_correct"
-                                        name="is_correct"
-                                    />
-                                </Col>
-                            </Row>
-                            <Row className="align-items-center my-5">
-                                <Col xs={4}>
-                                    <h6>Level Seharusnya</h6>
-                                </Col>
-                                <Col className="d-flex align-items-center p-0">
-                                    <CustomRadio
-                                        label="1"
-                                        id="correct_level"
-                                        name="correct_level"
-                                    />
-                                </Col>
-                                <Col className="d-flex align-items-center p-0">
-                                    <CustomRadio
-                                        label="2"
-                                        id="correct_level"
-                                        name="correct_level"
-                                    />
-                                </Col>
-                                <Col className="d-flex align-items-center p-0">
-                                    <CustomRadio
-                                        label="3"
-                                        id="correct_level"
-                                        name="correct_level"
-                                    />
-                                </Col>
-                                <Col className="d-flex align-items-center p-0">
-                                    <CustomRadio
-                                        label="4"
-                                        id="correct_level"
-                                        name="correct_level"
-                                    />
-                                </Col>
-                                <Col className="d-flex align-items-center p-0">
-                                    <CustomRadio
-                                        label="5"
-                                        id="correct_level"
-                                        name="correct_level"
-                                    />
-                                </Col>
-                            </Row>
-                        </Col>
-                        <Col className="mt-4">
-                            <Form.Control as="textarea" rows={8} placeholder="Berikan penjelasan..." />
-                        </Col>
-                    </Row> */}
                     <Row className="my-2">
                         <Col>
                             <Row>
