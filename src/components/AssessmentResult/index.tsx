@@ -37,7 +37,6 @@ const AssessmentResultComponent = (props: any) => {
                                 <Col className="d-flex align-items-center my-2">
                                     <BlockLabel text="Status" />
                                     <StatusLabel text={props?.assessmentResultResponse?.assessment_status} />
-                                    {/* <h6>{props?.assessmentResultResponse?.assessment_status}</h6> */}
                                 </Col>
                             </Row>
                         </Col>
@@ -52,22 +51,22 @@ const AssessmentResultComponent = (props: any) => {
                             </Row>
                         </Col>
                     </Row>
-                    <Row className="my-2">
+                    <Row className="py-3 my-3 sticky-top bg-white">
                         <Col>
                             <Row>
-                                <Col className="d-flex align-items-center justify-content-center">
-                                    <h6 className="width-fit me-2">Indikator</h6>
-                                    <OverlayTrigger
-                                        placement="top"
-                                        overlay={
-                                            <Tooltip>
-                                                Tekan nomor-nomor di bawah untuk lompat ke indikator terkait
-                                            </Tooltip>
-                                        }
-                                    >
+                                <OverlayTrigger
+                                    placement="bottom"
+                                    overlay={
+                                        <Tooltip>
+                                            Tekan nomor-nomor di bawah untuk lompat ke indikator terkait
+                                        </Tooltip>
+                                    }
+                                >
+                                    <Col className="d-flex align-items-center justify-content-center">
+                                        <h6 className="width-fit me-2">Indikator</h6>
                                         <FontAwesomeIcon icon={faCircleInfo} className="pointer" />
-                                    </OverlayTrigger>
-                                </Col>
+                                    </Col>
+                                </OverlayTrigger>
                             </Row>
                             <Row>
                                 <Col>

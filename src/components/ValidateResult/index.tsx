@@ -47,6 +47,30 @@ const ValidateResultComponent = (props: any) => {
                             <h6>Kebijakan Internal Tata Kelola SPBE</h6>
                         </Col>
                     </Row>
+                    <Row className="py-3 my-3 sticky-top bg-white">
+                        <Col>
+                            <Row>
+                                <OverlayTrigger
+                                    placement="bottom"
+                                    overlay={
+                                        <Tooltip>
+                                            Tekan nomor-nomor di bawah untuk lompat ke indikator terkait
+                                        </Tooltip>
+                                    }
+                                >
+                                    <Col className="d-flex align-items-center justify-content-center">
+                                        <h6 className="width-fit me-2">Indikator</h6>
+                                        <FontAwesomeIcon icon={faCircleInfo} className="pointer" />
+                                    </Col>    
+                                </OverlayTrigger>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <CustomLink link_list={props?.link_list} />
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
                     {props?.listItem.length !== 0 && (props.listItem.map((item: any, index: number) => {
                         return (
                             <Row className="custom-border custom-shadow my-3" id={item.indicator_number} key={index}>
@@ -139,30 +163,6 @@ const ValidateResultComponent = (props: any) => {
                             </Row>
                         )
                     }))}
-                    <Row className="my-2">
-                        <Col>
-                            <Row>
-                                <Col className="d-flex align-items-center justify-content-center">
-                                    <h6 className="width-fit me-2">Indikator</h6>
-                                    <OverlayTrigger
-                                        placement="top"
-                                        overlay={
-                                            <Tooltip>
-                                                Tekan nomor-nomor di bawah untuk lompat ke indikator terkait
-                                            </Tooltip>
-                                        }
-                                    >
-                                        <FontAwesomeIcon icon={faCircleInfo} className="pointer" />
-                                    </OverlayTrigger>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col>
-                                    <CustomLink link_list={props?.link_list} />
-                                </Col>
-                            </Row>
-                        </Col>
-                    </Row>
                     <Row className="justify-content-center">
                         <Col xs={2}>
                             <PurpleButton text="Kirim" onClick={(e: any) => props?.handleSendValidation(e)} />
