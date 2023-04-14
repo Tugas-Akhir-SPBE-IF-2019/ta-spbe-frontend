@@ -1,5 +1,11 @@
+import moment from 'moment';
+
 export const sortByDate = (indexList: any)  => {
     return indexList.sort((x: any, y: any) => +new Date(y.submitted_date) - +new Date(x.submitted_date));
+}
+
+export const formatDate = (date: any)  => {
+    return moment(date).format("DD-MM-YYYY");
 }
 
 export const checkTextColor = (status: number)  => {

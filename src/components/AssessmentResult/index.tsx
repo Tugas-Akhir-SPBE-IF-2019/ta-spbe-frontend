@@ -5,6 +5,7 @@ import dummy_img2 from "../../assets/about-us.jpg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo, faClone } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
+import { formatDate } from '../../utils/helper';
 
 const NavBar = lazy(() => import("../../components/NavBar"));
 const BlockLabel = lazy(() => import("../../components/General/BlockLabel"));
@@ -31,7 +32,7 @@ const AssessmentResultComponent = (props: any) => {
                             <Row>
                                 <Col className="d-flex align-items-center my-2">
                                     <BlockLabel text="Tanggal" />
-                                    <h6>{props?.assessmentResultResponse?.submitted_date}</h6>
+                                    <h6>{formatDate(props?.assessmentResultResponse?.submitted_date)}</h6>
                                 </Col>
                             </Row>
                             <Row>

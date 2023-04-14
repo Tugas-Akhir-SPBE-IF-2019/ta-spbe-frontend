@@ -3,7 +3,7 @@ import inspect_img from "../../assets/Analyze.png";
 import delete_img from "../../assets/Waste.png";
 import { Link } from "react-router-dom";
 import { sortByDate } from '../../utils/helper';
-import { checkTextColor } from '../../utils/helper';
+import { checkTextColor, formatDate } from '../../utils/helper';
 
 const CustomTable = (props: any) => {
     let sortedContent: any[] = [];
@@ -35,7 +35,7 @@ const CustomTable = (props: any) => {
                                 <tr key={index}>
                                     <td className="custom-td">{index + 1}</td>
                                     <td className="custom-td">{item.institution_name}</td>
-                                    <td className="custom-td">{item.submitted_date}</td>
+                                    <td className="custom-td">{formatDate(item.submitted_date)}</td>
                                     <td className="custom-td">{item.spbe_index}</td>
                                 </tr>
                             )  
@@ -65,7 +65,7 @@ const CustomTable = (props: any) => {
                                         (item.status === 2 && "Selesai") ||
                                         (item.status === 3 && "Sudah Divalidasi")}
                                     </td>
-                                    <td className="custom-td">{item.submitted_date}</td>
+                                    <td className="custom-td">{formatDate(item.submitted_date)}</td>
                                     <td className="custom-td">
                                         <Link to={`/result/${item.id}`}><Image src={inspect_img} /></Link>
                                         <Image src={delete_img} />
