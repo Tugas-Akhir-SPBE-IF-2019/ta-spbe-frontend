@@ -1,7 +1,6 @@
 import { lazy } from 'react';
 import { Row, Col, Image, Carousel, OverlayTrigger, Popover, Tooltip } from 'react-bootstrap';
 import dummy_img from "../../assets/logo-itb.jpg";
-import dummy_img2 from "../../assets/about-us.jpg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo, faClone } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
@@ -13,7 +12,6 @@ const StatusLabel = lazy(() => import("../../components/General/StatusLabel"));
 const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
 const CustomLink = lazy(() => import("../../components/General/CustomLink"));
 const CircledNumber = lazy(() => import("../../components/General/CircledNumber"));
-
 
 const AssessmentResultComponent = (props: any) => {
     return (
@@ -38,7 +36,8 @@ const AssessmentResultComponent = (props: any) => {
                             <Row>
                                 <Col className="d-flex align-items-center my-2">
                                     <BlockLabel text="Status" />
-                                    <h6>{props?.assessmentResultResponse?.assessment_status}</h6>
+                                    <StatusLabel text={props?.assessmentResultResponse?.assessment_status} />
+                                    {/* <h6>{props?.assessmentResultResponse?.assessment_status}</h6> */}
                                 </Col>
                             </Row>
                         </Col>

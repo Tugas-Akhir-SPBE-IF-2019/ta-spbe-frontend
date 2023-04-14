@@ -1,9 +1,9 @@
-import { checkTextColor, checkBackgroundColor } from "../../utils/helper";
+import { checkTextColor, checkBackgroundColor, checkStatus } from "../../utils/helper";
 
 const StatusLabel = (props: any) => {
     return (
-        <div className="bg-light-purple width-label text-center me-3">
-            <h6 className="text-purple p-2">{props?.text}</h6>
+        <div className="width-fit">
+            <h6 className={`px-4 py-2 rounded-pill ${checkTextColor(props?.text)} ${checkBackgroundColor(props?.text)}`}>{checkStatus(props?.text)}</h6>
         </div>
     )
 }

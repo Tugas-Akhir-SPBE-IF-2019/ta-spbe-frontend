@@ -10,24 +10,36 @@ export const formatDate = (date: any)  => {
 
 export const checkTextColor = (status: number)  => {
     if (status === 1) {
-        return "text-orange"
+        return "text-orange";
     }
     else if (status === 2) {
-        return "text-green"
+        return "text-green";
     }
     else {
-        return "text-blue"
+        return "text-blue";
     }
 }
 
 export const checkBackgroundColor = (status: number)  => {
     if (status === 1) {
-        return "bg-orange"
+        return "bg-orange";
     }
     else if (status === 2) {
-        return "bg-green"
+        return "bg-green";
     }
     else {
-        return "bg-blue"
+        return "bg-blue";
+    }
+}
+
+export const checkStatus = (status: number)  => {
+    if (status === 1) {
+        return "Sedang Diproses";
+    }
+    else if (status === 2) {
+        return "Selesai";
+    }
+    else {
+        return "Sudah Divalidasi";
     }
 }
