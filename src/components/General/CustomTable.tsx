@@ -3,6 +3,7 @@ import inspect_img from "../../assets/Analyze.png";
 import delete_img from "../../assets/Waste.png";
 import { Link } from "react-router-dom";
 import { sortByDate } from '../../utils/helper';
+import { checkTextColor } from '../../utils/helper';
 
 const CustomTable = (props: any) => {
     let sortedContent: any[] = [];
@@ -59,7 +60,7 @@ const CustomTable = (props: any) => {
                                 <tr key={index}>
                                     <td className="custom-td">{index + 1}</td>
                                     <td className="custom-td">{item.institution_name}</td>
-                                    <td className={props.checkTextColor(item.status) + " pointer custom-td"} onClick={() => props?.toggleModal()}>
+                                    <td className={checkTextColor(item.status) + " pointer custom-td"} onClick={() => props?.toggleModal()}>
                                         {(item.status === 1 && "Sedang Diproses") ||
                                         (item.status === 2 && "Selesai") ||
                                         (item.status === 3 && "Sudah Divalidasi")}

@@ -230,16 +230,18 @@ const UploadDocumentsComponent = (props: any) => {
                             <Col className="d-flex align-items-center mb-2 p-0">
                                 <OverlayTrigger
                                     key="supporting_document"
-                                    placement="right"
+                                    placement="bottom"
                                     overlay={
                                         <Tooltip>
                                             Dokumen pendukung merupakan Dokumen Peraturan Instansi tentang SPBE yang terbaru
                                         </Tooltip>
                                     }
                                 >
-                                    <FontAwesomeIcon icon={faCircleInfo} />
+                                    <div>
+                                        <FontAwesomeIcon icon={faCircleInfo} />
+                                        <Form.Label className="fw-bold ms-2">Dokumen Pendukung*</Form.Label>
+                                    </div>
                                 </OverlayTrigger>
-                                <Form.Label className="fw-bold ms-2">Dokumen Pendukung*</Form.Label>
                             </Col>
                             <CustomUpload
                                 name="supporting_document"
@@ -273,16 +275,18 @@ const UploadDocumentsComponent = (props: any) => {
                             <Col className="d-flex align-items-center mb-2 p-0">
                                 <OverlayTrigger
                                     key="supporting_document"
-                                    placement="right"
+                                    placement="bottom"
                                     overlay={
                                         <Tooltip>
                                             Dokumen lama merupakan Dokumen Peraturan Instansi tentang SPBE yang sudah digantikan oleh peraturan baru
                                         </Tooltip>
                                     }
                                 >
-                                    <FontAwesomeIcon icon={faCircleInfo} />
+                                    <div>
+                                        <FontAwesomeIcon icon={faCircleInfo} />
+                                        <Form.Label className="fw-bold ms-2">Dokumen Lama</Form.Label>
+                                    </div>
                                 </OverlayTrigger>
-                                <Form.Label className="fw-bold ms-2">Dokumen Lama</Form.Label>
                             </Col>
                             <CustomUpload
                                 name="old_document"

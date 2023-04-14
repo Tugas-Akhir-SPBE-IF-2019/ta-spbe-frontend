@@ -27,7 +27,6 @@ export class UserDashboardContainer extends PureComponent<any, any> {
             total_pages: 0,
             page_component: [],
         }
-        this.checkTextColor = this.checkTextColor.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.submitFilter = this.submitFilter.bind(this);
@@ -88,18 +87,6 @@ export class UserDashboardContainer extends PureComponent<any, any> {
         }
     }
 
-    private checkTextColor(status: number): string {
-        if (status === 1) {
-            return "text-orange"
-        }
-        else if (status === 2) {
-            return "text-green"
-        }
-        else {
-            return "text-blue"
-        }
-    }
-
     private toggleModal(): void {
         const { showModal } = this.state;
         this.setState({
@@ -147,7 +134,6 @@ export class UserDashboardContainer extends PureComponent<any, any> {
         return (
             <UserDashboardComponent
                 assessmentResponse={assessmentResponse}
-                checkTextColor={this.checkTextColor}
                 showModal={showModal}
                 toggleModal={this.toggleModal}
                 handleInputChange={this.handleInputChange}

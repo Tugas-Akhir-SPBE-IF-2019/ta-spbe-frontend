@@ -113,7 +113,7 @@ const UserDashboardComponent = (props: any) => {
                             />
                         </Col>
                     </Row>
-                    <CustomTable isUserTable {...props} checkTextColor={props.checkTextColor} toggleModal={props?.toggleModal} />
+                    <CustomTable isUserTable {...props} toggleModal={props?.toggleModal} />
                 </Col>
             </Row>
         </>
