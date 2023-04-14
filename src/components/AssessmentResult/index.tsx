@@ -125,8 +125,6 @@ const AssessmentResultComponent = (props: any) => {
                                                 <p>{item.support_document_name}</p>
                                             </Col>
                                         </Row>
-                                    </Col>
-                                    <Col>
                                         <Row className="my-3">
                                             <h6>Penjelasan</h6>
                                         </Row>
@@ -152,23 +150,25 @@ const AssessmentResultComponent = (props: any) => {
                                             </Col>
                                         </Row>
                                     </Col>
-                                </Row>
-                                <Row className="my-3">
-                                    <h6 className="fw-bold text-center">Bukti dalam Dokumen</h6>
-                                </Row>
-                                <Row className="justify-content-center mt-3 mb-5">
-                                    <Col xs={6}>
-                                        <Carousel variant="dark" slide={false}>
-                                            {item.photo_proof?.length !== 0 && (item.photo_proof.map((photo: any, idx: number) => {
-                                                return (
-                                                    <Carousel.Item>
-                                                        <a href={photo.document_link} target='_blank'>
-                                                            <Image src={photo.photo_link} className="d-block w-75 mx-auto mb-3"/>
-                                                        </a>
-                                                    </Carousel.Item>
-                                                )
-                                            }))}
-                                        </Carousel>
+                                    <Col>
+                                        <Row className="my-3">
+                                            <h6 className="fw-bold text-center">Bukti dalam Dokumen</h6>
+                                        </Row>
+                                        <Row className="">
+                                            <Col>
+                                                <Carousel variant="dark" slide={false}>
+                                                    {item.photo_proof?.length !== 0 && (item.photo_proof.map((photo: any, idx: number) => {
+                                                        return (
+                                                            <Carousel.Item>
+                                                                <a href={photo.document_link} target='_blank'>
+                                                                    <Image src={photo.photo_link} className="border rounded" />
+                                                                </a>
+                                                            </Carousel.Item>
+                                                        )
+                                                    }))}
+                                                </Carousel>
+                                            </Col>
+                                        </Row>
                                     </Col>
                                 </Row>
                             </>
