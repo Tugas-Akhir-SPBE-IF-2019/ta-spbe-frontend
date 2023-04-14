@@ -24,7 +24,7 @@ const UploadDocumentsComponent = (props: any) => {
                         </Col>
                     </Row>
                 </Modal.Body>
-                <Modal.Footer className="justify-content-start">
+                <Modal.Footer>
                     <Row>
                         <Col>
                             <Link to="/dashboard">

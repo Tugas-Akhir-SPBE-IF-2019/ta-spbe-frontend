@@ -14,7 +14,7 @@ const UserDashboardComponent = (props: any) => {
             <NavBar/>
             <Row className="px-5 pt-5">
                 <Col>
-                    <Modal show={props?.showModal} onHide={props?.toggleModal}>
+                    <Modal show={props?.showModal} onHide={props?.toggleModal} centered>
                         <Modal.Body>
                             <Row className="text-center px-3 pt-3 gap-3">
                                 <Col className="custom-shadow">
@@ -62,7 +62,7 @@ const UserDashboardComponent = (props: any) => {
                                 </Col>
                             </Row>
                         </Modal.Body>
-                        <Modal.Footer className="justify-content-start">
+                        <Modal.Footer>
                             <Row>
                                 <Col>
                                     <PurpleButton text="Kembali" onClick={() => props?.toggleModal()} />
