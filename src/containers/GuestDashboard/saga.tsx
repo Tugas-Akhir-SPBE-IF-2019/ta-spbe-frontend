@@ -17,8 +17,7 @@ export function* handleGetIndexList(action: any): any {
         true,
         true
     );
-    let sortedRes = sortByDate(res.items)
-    yield put(setIndexList(sortedRes));
+    yield put(setIndexList(res));
 }
 
 export function* watchGuestDashboardSaga() {

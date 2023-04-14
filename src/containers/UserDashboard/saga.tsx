@@ -17,8 +17,7 @@ export function* handleGetAssessmentList(action: any): any {
         true,
         true
     );
-    let sortedRes = sortByDate(res.items)
-    yield put(setAssessmentList(sortedRes));
+    yield put(setAssessmentList(res));
 }
 
 export function* watchUserDashboardSaga() {

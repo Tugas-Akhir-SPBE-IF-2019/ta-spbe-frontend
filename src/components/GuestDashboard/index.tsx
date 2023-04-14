@@ -37,6 +37,7 @@ const GuestDashboardComponent = (props: any) => {
                                 {text: "1-2", value: 1},
                                 {text: "2-3", value: 2},
                                 {text: "3-4", value: 3},
+                                {text: "4-5", value: 4},
                             ]}
                             name="index"
                             onChange={(e) => props?.handleInputChange(e, "INDEX")}
@@ -52,7 +53,7 @@ const GuestDashboardComponent = (props: any) => {
                         <Col xs={4} md={3} lg={2}>
                             <PurpleButton
                                 text="Filter"
-                                onClick={() => props?.submitFilter()}
+                                onClick={() => props?.submitFilter(false)}
                             />
                         </Col>
                     </Row>

@@ -109,7 +109,7 @@ const UserDashboardComponent = (props: any) => {
                         <Col xs={4} md={3} lg={2}>
                             <PurpleButton
                                 text="Filter"
-                                onClick={() => props?.submitFilter()}
+                                onClick={() => props?.submitFilter(false)}
                             />
                         </Col>
                     </Row>

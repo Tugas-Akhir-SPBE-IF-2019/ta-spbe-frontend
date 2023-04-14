@@ -2,8 +2,20 @@ import { Table, Pagination, Image } from 'react-bootstrap';
 import inspect_img from "../../assets/Analyze.png";
 import delete_img from "../../assets/Waste.png";
 import { Link } from "react-router-dom";
+import { sortByDate } from '../../utils/helper';
 
 const CustomTable = (props: any) => {
+    let sortedContent: any[] = [];
+    let navigator = true;
+    if (props?.indexResponse?.items) {
+        sortedContent = sortByDate(props.indexResponse.items);
+    }
+    if (props?.assessmentResponse?.items) {
+        sortedContent = sortByDate(props.assessmentResponse.items);
+    }
+    if (props?.indexResponse?.total_pages === 1 || props?.assessmentResponse?.total_pages === 1) {
+        navigator = false;
+    }
     return (
         <>
             {props.isGuestTable &&
@@ -17,7 +29,7 @@ const CustomTable = (props: any) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {props?.indexResponse?.length !== 0 && (props.indexResponse.map((item: any, index: number) => {
+                        {sortedContent.length !== 0 && (sortedContent.map((item: any, index: number) => {
                             return (
                                 <tr key={index}>
                                     <td className="custom-td">{index + 1}</td>
@@ -42,7 +54,7 @@ const CustomTable = (props: any) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {props?.assessmentResponse?.length !== 0 && (props.assessmentResponse.map((item: any, index: number) => {
+                        {sortedContent.length !== 0 && (sortedContent.map((item: any, index: number) => {
                             return (
                                 <tr key={index}>
                                     <td className="custom-td">{index + 1}</td>
@@ -63,21 +75,14 @@ const CustomTable = (props: any) => {
                     </tbody>
                 </Table>
             }
-            {/* Dummy Pagination */}
             <Pagination className="justify-content-end mt-5">
-                <Pagination.Prev />
-                <Pagination.Item>{1}</Pagination.Item>
-                <Pagination.Ellipsis />
-
-                <Pagination.Item>{10}</Pagination.Item>
-                <Pagination.Item>{11}</Pagination.Item>
-                <Pagination.Item active>{12}</Pagination.Item>
-                <Pagination.Item>{13}</Pagination.Item>
-                <Pagination.Item>{14}</Pagination.Item>
-
-                <Pagination.Ellipsis />
-                <Pagination.Item>{20}</Pagination.Item>
-                <Pagination.Next />
+                {navigator &&
+                    <Pagination.Prev onClick={() => props?.handlePrev()} />
+                }
+                {props?.page_component}
+                {navigator &&
+                    <Pagination.Next onClick={() => props?.handleNext()} />
+                }
             </Pagination>
         </>
     )
