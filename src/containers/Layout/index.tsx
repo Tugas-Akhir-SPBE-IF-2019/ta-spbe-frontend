@@ -18,6 +18,7 @@ const TutorialContainer = lazy(() => import("../Tutorial"));
 const EditProfileBioContainer = lazy(() => import("../EditProfileBio"));
 const EditProfileWorkContainer = lazy(() => import("../EditProfileWork"));
 const EditProfileSPBEContainer = lazy(() => import("../EditProfileSPBE"));
+const EditProfileInstitutionContainer = lazy(() => import("../EditProfileInstitution"));
 
 export class LayoutContainer extends PureComponent<any, any> {
     static propTypes = {
@@ -107,6 +108,12 @@ export class LayoutContainer extends PureComponent<any, any> {
                             path={"/edit-profile/evaluation"}
                             render={(props: any) => {
                             return <EditProfileSPBEContainer {...this.props} {...props} />;
+                            }}
+                        />
+                        <Route
+                            path={"/edit-profile/institution"}
+                            render={(props: any) => {
+                            return <EditProfileInstitutionContainer {...this.props} {...props} />;
                             }}
                         />
                     </Switch>

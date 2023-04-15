@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Row, Col, Image } from 'react-bootstrap';
+import { Row, Col, Image, Button } from 'react-bootstrap';
 import default_img from "../../assets/default-profpic.png";
 import progress_bar from "../../assets/progress-bar.png";
 import { Link } from "react-router-dom";
@@ -160,7 +160,83 @@ const ProfileComponent = (props: any) => {
                                 </>
                             }
                         </Col>
-                        <Col className="mx-5 px-5 py-3">
+                        <Col className="mx-5 custom-border custom-shadow px-5 py-3">
+                            <h5 className="text-purple">Data Institusi</h5>
+                            <Row className="mt-3">
+                                <Col xs={4} className="p-0">
+                                    <p className="fw-bold">Peran</p>
+                                </Col>
+                                <Col>
+                                    <p>Asesor Internal</p>
+                                </Col>
+                            </Row>
+                            <Row className="mt-3">
+                                <Col xs={4} className="p-0">
+                                    <p className="fw-bold">Nama Institusi</p>
+                                </Col>
+                                <Col>
+                                    <p>Kabupaten Test 1</p>
+                                </Col>
+                            </Row>
+                            <hr className="mt-3" />
+                            <Row className="mt-3">
+                                <Col xs={4} className="p-0">
+                                    <p className="fw-bold">Peran</p>
+                                </Col>
+                                <Col>
+                                    <p>Asesor Eksternal</p>
+                                </Col>
+                            </Row>
+                            <Row className="mt-3">
+                                <Col xs={4} className="p-0">
+                                    <p className="fw-bold">Nama Institusi</p>
+                                </Col>
+                                <Col>
+                                    <p>Kabupaten Test 2</p>
+                                </Col>
+                            </Row>
+                            {props?.showAllInstitution
+                            ?
+                                <>
+                                    <hr className="mt-3" />
+                                    <Row className="mt-3">
+                                        <Col xs={4} className="p-0">
+                                            <p className="fw-bold">Peran</p>
+                                        </Col>
+                                        <Col>
+                                            <p>Asesor Eksternal</p>
+                                        </Col>
+                                    </Row>
+                                    <Row className="mt-3">
+                                        <Col xs={4} className="p-0">
+                                            <p className="fw-bold">Nama Institusi</p>
+                                        </Col>
+                                        <Col>
+                                            <p>Kabupaten Test 3</p>
+                                        </Col>
+                                    </Row>
+                                    <Row className="mt-5 justify-content-center">
+                                        <Col xs={6}>
+                                            <Link to="/edit-profile/institution">
+                                                <PurpleButton text="Tambah Institusi" />
+                                            </Link>
+                                        </Col>
+                                    </Row>
+                                </>
+                            :
+                                <Row className="mt-3">
+                                    <Col className="text-end p-0">
+                                        <Button
+                                            className="text-secondary bg-white border-0 p-0"
+                                            size="sm"
+                                            name="showAllInstitution"
+                                            onClick={(e: any) => props?.handleShow(e)}
+                                        >
+                                            Lihat Semua
+                                        </Button>
+                                    </Col>
+                                </Row>
+                            }
                         </Col>
                     </Row>
                 </Col>

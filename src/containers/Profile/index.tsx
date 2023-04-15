@@ -24,6 +24,10 @@ export class ProfileContainer extends PureComponent<any, any> {
 
     constructor(props: any) {
         super(props);
+        this.state = ({
+            showAllInstitution: false,
+        });
+        this.handleShow = this.handleShow.bind(this);
     }
 
     componentDidMount() {
@@ -32,13 +36,24 @@ export class ProfileContainer extends PureComponent<any, any> {
         this.props.getProfileJobData();
     }
 
+    private handleShow(e: any): void {
+        const { name } = e.target;
+        this.setState({
+            ...this.state,
+            [name]: !this.state[name],
+        });
+    }
+
     render() {
         const { biodataResponse, evaluationDataResponse, jobDataResponse } = this.props;
+        const { showAllInstitution } = this.state;
         return (
             <ProfileComponent
                 biodataResponse={biodataResponse}
                 evaluationDataResponse={evaluationDataResponse}
                 jobDataResponse={jobDataResponse}
+                handleShow={this.handleShow}
+                showAllInstitution={showAllInstitution}
             />
         )
     }
