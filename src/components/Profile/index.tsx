@@ -178,21 +178,12 @@ const ProfileComponent = (props: any) => {
                                     <p>Kabupaten Test 1</p>
                                 </Col>
                             </Row>
-                            <hr className="mt-3" />
                             <Row className="mt-3">
                                 <Col xs={4} className="p-0">
-                                    <p className="fw-bold">Peran</p>
+                                    <p className="fw-bold">Status</p>
                                 </Col>
                                 <Col>
-                                    <p>Asesor Eksternal</p>
-                                </Col>
-                            </Row>
-                            <Row className="mt-3">
-                                <Col xs={4} className="p-0">
-                                    <p className="fw-bold">Nama Institusi</p>
-                                </Col>
-                                <Col>
-                                    <p>Kabupaten Test 2</p>
+                                    <p className="text-orange bg-orange width-fit px-2">DIPROSES</p>
                                 </Col>
                             </Row>
                             {props?.showAllInstitution
@@ -212,7 +203,40 @@ const ProfileComponent = (props: any) => {
                                             <p className="fw-bold">Nama Institusi</p>
                                         </Col>
                                         <Col>
+                                            <p>Kabupaten Test 2</p>
+                                        </Col>
+                                    </Row>
+                                    <Row className="mt-3">
+                                        <Col xs={4} className="p-0">
+                                            <p className="fw-bold">Status</p>
+                                        </Col>
+                                        <Col>
+                                            <p className="text-green bg-green width-fit px-2">DITERIMA</p>
+                                        </Col>
+                                    </Row>
+                                    <hr className="mt-3" />
+                                    <Row className="mt-3">
+                                        <Col xs={4} className="p-0">
+                                            <p className="fw-bold">Peran</p>
+                                        </Col>
+                                        <Col>
+                                            <p>Asesor Eksternal</p>
+                                        </Col>
+                                    </Row>
+                                    <Row className="mt-3">
+                                        <Col xs={4} className="p-0">
+                                            <p className="fw-bold">Nama Institusi</p>
+                                        </Col>
+                                        <Col>
                                             <p>Kabupaten Test 3</p>
+                                        </Col>
+                                    </Row>
+                                    <Row className="mt-3">
+                                        <Col xs={4} className="p-0">
+                                            <p className="fw-bold">Status</p>
+                                        </Col>
+                                        <Col>
+                                            <p className="text-orange bg-orange width-fit px-2">DIPROSES</p>
                                         </Col>
                                     </Row>
                                     <Row className="mt-5 justify-content-center">
