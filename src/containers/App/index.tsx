@@ -4,6 +4,8 @@ import store from "./store";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap-daterangepicker/daterangepicker.css';
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 import LayoutContainer from "../Layout";
 
 class App extends PureComponent<RouteComponentProps, any> {
@@ -11,6 +13,7 @@ class App extends PureComponent<RouteComponentProps, any> {
         return (
             <Provider store={store}>
                 <LayoutContainer {...this.props} />
+                <ToastContainer />
             </Provider>
         );
     }

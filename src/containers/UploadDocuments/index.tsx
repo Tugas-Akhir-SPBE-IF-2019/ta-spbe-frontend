@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { uploadMessageSelector } from "./selector";
 import { uploadDocuments } from "./action";
 import { INSTITUTION_LIST } from "../../config/constant";
+import { showToast } from "../../utils/general";
 
 const UploadDocumentsComponent = lazy(() => import("../../components/UploadDocuments"));
 
@@ -30,6 +31,7 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
         this.isChecked = this.isChecked.bind(this);
         this.deleteFile = this.deleteFile.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
+        this.validateForm = this.validateForm.bind(this);
     }
 
     componentDidMount() {
@@ -80,7 +82,7 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
             this.setState({
                 ...this.state,
                 [name]: filesArray,
-            })
+            });
         }
         else {
             // Type === RADIO / SELECT / SELECTALL / RESET
@@ -94,7 +96,10 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
 
     private handleUploadDocuments(e: any): void {
         e.preventDefault();
-        this.props.uploadDocumentsData(this.state);
+
+        if (this.validateForm()) {
+            this.props.uploadDocumentsData(this.state);
+        }
     }
 
     private isChecked (el: string): boolean {
@@ -120,6 +125,22 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
             ...this.state,
             showModal: !showModal,
         })
+    }
+
+    private validateForm(): any {
+        const { institution_name, indicator_number, supporting_document } = this.state;
+        if (!institution_name) {
+            showToast("Nama Institusi Tidak Boleh Kosong!");
+        }
+        else if (indicator_number.length === 0) {
+            showToast("Nomor Indikator Tidak Boleh Kosong!");
+        }
+        else if (supporting_document.length === 0) {
+            showToast("Jumlah Dokumen Pendukung Minimal 1!");
+        }
+        else {
+            return true;
+        }
     }
 
     render() {

@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 export const getAuthToken = () => {
     const data = localStorage.getItem("AUTH_TOKEN");
     if (data) {
@@ -12,4 +14,8 @@ export const getRefreshToken = () => {
         return data;
     }
     return "";
+};
+
+export const showToast = (message: string) => {
+    toast.error(message);
 };

@@ -20,6 +20,7 @@ const CustomUpload = (props: any) => {
             <Form.Control
                 type="file"
                 multiple
+                value=""
                 ref={hiddenFileInput}
                 name={props?.name}
                 className="d-none"
