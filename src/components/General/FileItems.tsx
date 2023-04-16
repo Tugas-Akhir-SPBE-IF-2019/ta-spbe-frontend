@@ -11,7 +11,7 @@ const FileItems = (props: any) => {
                         <Col className="p-0 text-truncate">
                             <span>{item.name}</span>
                         </Col>
-                        <Col xs={1}>
+                        <Col xs={1} className="p-0 text-end">
                             <FontAwesomeIcon icon={faXmarkSquare} size="2x" className="text-red pointer" onClick={() => props?.onDelete(index, props?.name)} />
                         </Col>
                     </Row>
