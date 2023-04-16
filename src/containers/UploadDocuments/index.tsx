@@ -128,7 +128,19 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
     }
 
     private validateForm(): any {
-        const { institution_name, indicator_number, supporting_document } = this.state;
+        const { institution_name, indicator_number, supporting_document, old_document, meeting_minutes } = this.state;
+
+        let fileSize = 0;
+        for (let file of supporting_document) {
+            fileSize += file.size;
+        }
+        for (let file of old_document) {
+            fileSize += file.size;
+        }
+        for (let file of meeting_minutes) {
+            fileSize += file.size;
+        }
+
         if (!institution_name) {
             showToast("Nama Institusi Tidak Boleh Kosong!");
         }
@@ -137,6 +149,9 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
         }
         else if (supporting_document.length === 0) {
             showToast("Jumlah Dokumen Pendukung Minimal 1!");
+        }
+        else if (fileSize > 10485760) {
+            showToast("Ukuran total dokumen maksimal 10MB!");
         }
         else {
             return true;
