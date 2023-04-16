@@ -57,6 +57,12 @@ export const payloadGenerator = (
             };
         }
     }
+    else if (method === "PUT") {
+        header = {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${getAuthToken()}`,
+        };
+    }
     else {
         header = {
             "Content-Type": "application/json",

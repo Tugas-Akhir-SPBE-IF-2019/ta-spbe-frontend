@@ -36,7 +36,7 @@ export function* handleUpdateBiodata(action: any): any {
         true,
         true
     );
-    yield put(successUpdateBiodata(res));
+    yield put(successUpdateBiodata(res.message));
 }
 
 export function* watchEditBiodataSaga() {
