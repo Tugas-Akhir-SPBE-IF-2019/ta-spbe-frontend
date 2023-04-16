@@ -44,6 +44,12 @@ export const payloadGenerator = (
                 "Content-Type": "application/json",
             };
         }
+        else if (url.includes("/users")) {
+            header = {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${getAuthToken()}`,
+            };
+        }
         else {
             header = {
                 "Content-Type": "multipart/form-data",

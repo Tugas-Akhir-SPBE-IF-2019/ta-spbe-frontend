@@ -8,6 +8,7 @@ import userDashboardReducer from "../UserDashboard/reducer";
 import loginReducer from "../Login/reducer";
 import profileReducer from "../Profile/reducer";
 import editBiodataReducer from "../EditProfileBio/reducer";
+import editEvaluationDataReducer from "../EditProfileSPBE/reducer";
 
 const Reducer = combineReducers({
     layoutReducer,
@@ -18,7 +19,8 @@ const Reducer = combineReducers({
     userDashboardReducer,
     loginReducer,
     profileReducer,
-    editBiodataReducer
+    editBiodataReducer,
+    editEvaluationDataReducer
 });
 
 export default Reducer;

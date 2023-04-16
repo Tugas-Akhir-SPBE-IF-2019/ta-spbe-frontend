@@ -15,7 +15,7 @@ const EditProfileSPBEComponent = (props: any) => {
                 <Col>
                     <Row className="justify-content-end">
                         <Col xs={2}>
-                            <PurpleButton text="Simpan" />
+                            <PurpleButton text="Simpan" onClick={(e: any) => props?.handleUpdateEvaluationData(e)} />
                         </Col>
                     </Row>
                     <Row className="text-center mb-5">
@@ -32,15 +32,15 @@ const EditProfileSPBEComponent = (props: any) => {
                                         <Form>
                                             <Form.Group className="my-4">
                                                 <Form.Label className="text-purple mb-2">Peran</Form.Label>
-                                                <Form.Control type="text" placeholder="Tuliskan Peran" className="py-3 custom-border shadow-none" />
+                                                <Form.Control type="text" onChange={(e: any) => props?.handleInputChange(e, index)} name="role" placeholder="Tuliskan Peran" className="py-3 custom-border shadow-none" />
                                             </Form.Group>
                                             <Form.Group className="my-4">
                                                 <Form.Label className="text-purple mb-2">Instansi SPBE</Form.Label>
-                                                <Form.Control type="text" placeholder="Tuliskan Instansi SPBE" className="py-3 custom-border shadow-none" />
+                                                <Form.Control type="text" onChange={(e: any) => props?.handleInputChange(e, index)} name="institution_id" placeholder="Tuliskan Instansi SPBE" className="py-3 custom-border shadow-none" />
                                             </Form.Group>
                                             <Form.Group className="my-4">
                                                 <Form.Label className="text-purple mb-2">Tahun Evaluasi</Form.Label>
-                                                <Form.Control type="text" placeholder="Tuliskan Tahun Evaluasi" className="py-3 custom-border shadow-none" />
+                                                <Form.Control type="text" onChange={(e: any) => props?.handleInputChange(e, index)} name="evaluation_year" placeholder="Tuliskan Tahun Evaluasi" className="py-3 custom-border shadow-none" />
                                             </Form.Group>
                                         </Form>
                                         <hr className="profile-hr my-3"/>
