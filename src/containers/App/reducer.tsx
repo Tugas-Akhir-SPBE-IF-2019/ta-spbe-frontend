@@ -9,6 +9,7 @@ import loginReducer from "../Login/reducer";
 import profileReducer from "../Profile/reducer";
 import editBiodataReducer from "../EditProfileBio/reducer";
 import editEvaluationDataReducer from "../EditProfileSPBE/reducer";
+import editJobDataReducer from "../EditProfileWork/reducer";
 
 const Reducer = combineReducers({
     layoutReducer,
@@ -20,7 +21,8 @@ const Reducer = combineReducers({
     loginReducer,
     profileReducer,
     editBiodataReducer,
-    editEvaluationDataReducer
+    editEvaluationDataReducer,
+    editJobDataReducer
 });
 
 export default Reducer;

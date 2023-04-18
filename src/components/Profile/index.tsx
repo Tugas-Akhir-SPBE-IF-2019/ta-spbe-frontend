@@ -128,6 +128,7 @@ const ProfileComponent = (props: any) => {
                                     {jobDataResponse.map((item: any, index: number) => {
                                         return (
                                             <>
+                                                {index > 0 && <hr className="mt-3" />}
                                                 <Row className="mt-3">
                                                     <Col xs={4} className="p-0">
                                                         <p className="fw-bold">Pekerjaan/Jabatan</p>
@@ -152,7 +153,6 @@ const ProfileComponent = (props: any) => {
                                                         <p>{item.joined_year}</p>
                                                     </Col>
                                                 </Row>
-                                                {index > 0 && <hr className="mt-3" />}
                                             </>
                                         )
                                     })}
