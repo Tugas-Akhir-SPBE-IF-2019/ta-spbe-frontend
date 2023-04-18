@@ -78,11 +78,21 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
         }
         else if (type === "FILES") {
             const { name, files } = e.target;
-            const filesArray = Array.from(files)
-            this.setState({
-                ...this.state,
-                [name]: filesArray,
+            const filesArray = Array.from(files);
+            let valid = true;
+            filesArray.forEach(function (file: any) {
+                if (!file.name.endsWith("pdf")) {
+                    showToast("Semua file harus berbentuk PDF!");
+                    e.target.value = "";
+                    valid = false;
+                }
             });
+            if (valid) {
+                this.setState({
+                    ...this.state,
+                    [name]: filesArray,
+                });
+            }
         }
         else {
             // Type === RADIO / SELECT / SELECTALL / RESET
