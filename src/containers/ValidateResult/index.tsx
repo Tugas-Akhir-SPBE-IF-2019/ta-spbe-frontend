@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { assessmentResultSelector, validationMessageSelector } from "./selector";
 import { getAssessmentResult, sendValidation } from "./action";
+import { showToast } from "../../utils/general";
 
 const ValidateResultComponent = lazy(() => import("../../components/ValidateResult"));
 
@@ -31,6 +32,7 @@ export class ValidateResultContainer extends PureComponent<any, any> {
         this.handleSendValidation = this.handleSendValidation.bind(this);
         this.initField = this.initField.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
+        this.validateForm = this.validateForm.bind(this);
     }
 
     componentDidMount() {
@@ -103,7 +105,9 @@ export class ValidateResultContainer extends PureComponent<any, any> {
             data: this.state.listItem,
             id: id,
         }
-        this.props.sendValidationData(formValues);
+        if (this.validateForm()) {
+            this.props.sendValidationData(formValues);
+        }
     }
 
     private toggleModal(): void {
@@ -112,6 +116,23 @@ export class ValidateResultContainer extends PureComponent<any, any> {
             ...this.state,
             showModal: !showModal,
         })
+    }
+
+    private validateForm(): boolean {
+        const { listItem } = this.state;
+        for (let item of listItem) {
+            if (!item.result_correct) {
+                if (!item.correct_level) {
+                    showToast("Level yang benar harus diisi!");
+                    return false;
+                }
+                else if (!item.explanation.replaceAll(" ", "")) {
+                    showToast("Penjelasan harus diisi!");
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     render() {

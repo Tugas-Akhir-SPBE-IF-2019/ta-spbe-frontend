@@ -11,6 +11,7 @@ const CustomRadio = (props: any) => {
                 name={props.name}
                 value={props?.value}
                 onChange={props?.onChange}
+                disabled={props?.disabled}
             />
         </>
     )
