@@ -3,12 +3,13 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
     evaluationDataSelector,
-    successMessageaSelector
+    successMessageSelector
 } from "./selector";
 import {
     getEvaluationData,
     updateEvaluationData
 } from "./action";
+import { showToast } from "../../utils/general";
 
 const EditProfileSPBEComponent = lazy(() => import("../../components/EditProfileSPBE"));
 
@@ -16,24 +17,38 @@ export class EditProfileSPBEContainer extends PureComponent<any, any> {
     static propTypes = {
         history: PropTypes.any,
         evaluationDataResponse: PropTypes.any,
-        successMessageaResponse: PropTypes.string,
+        successMessageResponse: PropTypes.string,
     };
 
     constructor(props: any) {
         super(props);
         this.state = {
             list_items: [],
-            saved_items: [],
+            showModal: false,
         };
         this.addField = this.addField.bind(this);
         this.deleteField = this.deleteField.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleUpdateEvaluationData = this.handleUpdateEvaluationData.bind(this);
+        this.validateEdit = this.validateEdit.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
     }
 
     componentDidMount() {
         this.props.getProfileEvaluationData();
         this.addField();
+    }
+
+    componentDidUpdate(prevProps: any) {
+        if (prevProps.evaluationDataResponse !== this.props.evaluationDataResponse) {
+            this.setState({
+                ...this.state,
+                list_items: JSON.parse(JSON.stringify(this.props.evaluationDataResponse)),
+            });
+        }
+        if (prevProps.successMessageResponse !== this.props.successMessageResponse) {
+            this.toggleModal();
+        }
     }
 
     private addField(): void {
@@ -65,7 +80,7 @@ export class EditProfileSPBEContainer extends PureComponent<any, any> {
 
         let val = value;
         let new_list = [...list_items];
-        if (name !== "role") {
+        if (name !== "role" && val !== "") {
             val = parseInt(val);
         }
         new_list[index][name] = val;
@@ -77,13 +92,40 @@ export class EditProfileSPBEContainer extends PureComponent<any, any> {
 
     private handleUpdateEvaluationData(e: any): void {
         e.preventDefault();
-        let item = this.state.list_items[0];
-        this.props.updateProfileEvaluationData(this.state.list_items);
+        const { list_items } = this.state;
+        if (this.validateEdit()) {
+            this.props.updateProfileEvaluationData(list_items);
+        }
+    }
+
+    private validateEdit(): boolean {
+        const { list_items } = this.state;
+        for (let item of list_items) {
+            if (!item.role) {
+                showToast("Peran harus diisi!");
+                return false;
+            }
+            else if (!item.institution_id) {
+                showToast("Nama institusi harus diisi!");
+                return false;
+            }
+            else if (!item.evaluation_year) {
+                showToast("Tahun evaluasi harus diisi!");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private toggleModal(): void {
+        this.setState({
+            ...this.state,
+            showModal: !this.state.showModal,
+        });
     }
 
     render() {
-        const { list_items } = this.state;
-        console.log(this.state);
+        const { list_items, showModal } = this.state;
         return (
             <EditProfileSPBEComponent
                 list_items={list_items}
@@ -91,6 +133,8 @@ export class EditProfileSPBEContainer extends PureComponent<any, any> {
                 deleteField={this.deleteField}
                 handleInputChange={this.handleInputChange}
                 handleUpdateEvaluationData={this.handleUpdateEvaluationData}
+                showModal={showModal}
+                toggleModal={this.toggleModal}
             />
         )
     }
@@ -99,7 +143,7 @@ export class EditProfileSPBEContainer extends PureComponent<any, any> {
 const mapStateToProps = (state: any) => {
     return {
         evaluationDataResponse: evaluationDataSelector(state),
-        successMessageaResponse: successMessageaSelector(state),
+        successMessageResponse: successMessageSelector(state),
     };
 };
   

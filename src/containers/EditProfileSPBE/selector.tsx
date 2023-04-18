@@ -4,7 +4,7 @@ const evaluationDataSelector = (state: any) => {
         : [];
 };
 
-const successMessageaSelector = (state: any) => {
+const successMessageSelector = (state: any) => {
     return state?.editEvaluationDataReducer?.successMessage
         ? state.editEvaluationDataReducer.successMessage
         : "";
@@ -12,5 +12,5 @@ const successMessageaSelector = (state: any) => {
 
 export {
     evaluationDataSelector,
-    successMessageaSelector
+    successMessageSelector
 };

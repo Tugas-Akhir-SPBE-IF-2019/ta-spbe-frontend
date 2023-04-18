@@ -36,7 +36,7 @@ export function* handleUpdateEvaluationData(action: any): any {
         true,
         true
     );
-    yield put(successUpdateEvaluationData(res));
+    yield put(successUpdateEvaluationData(res.message));
 }
 
 export function* watchEditEvaluationDataSaga() {

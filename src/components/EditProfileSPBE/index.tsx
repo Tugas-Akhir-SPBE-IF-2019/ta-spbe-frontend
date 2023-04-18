@@ -1,8 +1,9 @@
 import { lazy } from 'react';
-import { Row, Col, Image, Form } from 'react-bootstrap';
+import { Row, Col, Image, Form, Modal } from 'react-bootstrap';
 import progress_bar_3 from "../../assets/pb-edit-3.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { Link } from "react-router-dom";
 
 const NavBar = lazy(() => import("../../components/NavBar"));
 const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
@@ -11,6 +12,24 @@ const EditProfileSPBEComponent = (props: any) => {
     return (
         <>
             <NavBar/>
+            <Modal show={props?.showModal} onHide={props?.toggleModal}>
+                <Modal.Body>
+                    <Row className="text-center p-5">
+                        <Col>
+                            <p className="fw-bold">Data evaluasi berhasil diperbaharui!</p>
+                        </Col>
+                    </Row>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Row>
+                        <Col>
+                            <Link to="/profile">
+                                <PurpleButton text="Kembali"/>
+                            </Link>
+                        </Col>
+                    </Row>
+                </Modal.Footer>
+            </Modal>
             <Row className="p-3">
                 <Col>
                     <Row className="justify-content-end">
@@ -32,15 +51,15 @@ const EditProfileSPBEComponent = (props: any) => {
                                         <Form>
                                             <Form.Group className="my-4">
                                                 <Form.Label className="text-purple mb-2">Peran</Form.Label>
-                                                <Form.Control type="text" onChange={(e: any) => props?.handleInputChange(e, index)} name="role" placeholder="Tuliskan Peran" className="py-3 custom-border shadow-none" />
+                                                <Form.Control type="text" value={item.role} onChange={(e: any) => props?.handleInputChange(e, index)} name="role" placeholder="Tuliskan Peran" className="py-3 custom-border shadow-none" />
                                             </Form.Group>
                                             <Form.Group className="my-4">
                                                 <Form.Label className="text-purple mb-2">Instansi SPBE</Form.Label>
-                                                <Form.Control type="text" onChange={(e: any) => props?.handleInputChange(e, index)} name="institution_id" placeholder="Tuliskan Instansi SPBE" className="py-3 custom-border shadow-none" />
+                                                <Form.Control type="text" value={item.institution_id} onChange={(e: any) => props?.handleInputChange(e, index)} name="institution_id" placeholder="Tuliskan Instansi SPBE" className="py-3 custom-border shadow-none" />
                                             </Form.Group>
                                             <Form.Group className="my-4">
                                                 <Form.Label className="text-purple mb-2">Tahun Evaluasi</Form.Label>
-                                                <Form.Control type="text" onChange={(e: any) => props?.handleInputChange(e, index)} name="evaluation_year" placeholder="Tuliskan Tahun Evaluasi" className="py-3 custom-border shadow-none" />
+                                                <Form.Control type="text" value={item.evaluation_year} onChange={(e: any) => props?.handleInputChange(e, index)} name="evaluation_year" placeholder="Tuliskan Tahun Evaluasi" className="py-3 custom-border shadow-none" />
                                             </Form.Group>
                                         </Form>
                                         <hr className="profile-hr my-3"/>
