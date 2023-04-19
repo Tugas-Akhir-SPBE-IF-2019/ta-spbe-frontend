@@ -131,12 +131,8 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
     }
 
     private handleNext(): void {
-        const { page, limit, total_pages } = this.state;
+        const { page, total_pages } = this.state;
         if (page+1 <= total_pages) {
-            this.props.getIndexData({
-                page: page+1,
-                limit: limit,
-            });
             this.setState({
                 ...this.state,
                 page: page+1,
@@ -145,12 +141,8 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
     }
 
     private handlePrev(): void {
-        const { page, limit } = this.state;
+        const { page } = this.state;
         if (page-1 >= 1) {
-            this.props.getIndexData({
-                page: page-1,
-                limit: limit,
-            });
             this.setState({
                 ...this.state,
                 page: page-1,
@@ -161,7 +153,6 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
     render() {
         const { indexResponse } = this.props;
         const { page_component } = this.state;
-        console.log(this.state);
         return (
             <GuestDashboardComponent
                 indexResponse={indexResponse}

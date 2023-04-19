@@ -30,6 +30,8 @@ export class UserDashboardContainer extends PureComponent<any, any> {
         this.toggleModal = this.toggleModal.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.submitFilter = this.submitFilter.bind(this);
+        this.handleNext = this.handleNext.bind(this);
+        this.handlePrev = this.handlePrev.bind(this);
     }
 
     componentDidMount() {
@@ -38,7 +40,7 @@ export class UserDashboardContainer extends PureComponent<any, any> {
 
     componentDidUpdate(prevProps: any, prevState: any) {
         const { assessmentResponse } = this.props;
-        const { page, limit } = this.state;
+        const { page } = this.state;
 
         if (prevProps.assessmentResponse !== assessmentResponse) {
             let components: any[] = [];
@@ -128,6 +130,26 @@ export class UserDashboardContainer extends PureComponent<any, any> {
         this.props.getAssessmentData(formValues);
     }
 
+    private handleNext(): void {
+        const { page, total_pages } = this.state;
+        if (page+1 <= total_pages) {
+            this.setState({
+                ...this.state,
+                page: page+1,
+            });
+        }
+    }
+
+    private handlePrev(): void {
+        const { page } = this.state;
+        if (page-1 >= 1) {
+            this.setState({
+                ...this.state,
+                page: page-1,
+            });
+        }
+    }
+
     render() {
         const { assessmentResponse } = this.props;
         const { showModal, page_component } = this.state;
@@ -139,6 +161,8 @@ export class UserDashboardContainer extends PureComponent<any, any> {
                 handleInputChange={this.handleInputChange}
                 submitFilter={this.submitFilter}
                 page_component={page_component}
+                handleNext={this.handleNext}
+                handlePrev={this.handlePrev}
             />
         )
     }
