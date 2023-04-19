@@ -25,6 +25,8 @@ export class ProfileContainer extends PureComponent<any, any> {
     constructor(props: any) {
         super(props);
         this.state = ({
+            showAllEvaluation: false,
+            showAllJob: false,
             showAllInstitution: false,
         });
         this.handleShow = this.handleShow.bind(this);
@@ -46,13 +48,15 @@ export class ProfileContainer extends PureComponent<any, any> {
 
     render() {
         const { biodataResponse, evaluationDataResponse, jobDataResponse } = this.props;
-        const { showAllInstitution } = this.state;
+        const { showAllEvaluation, showAllJob, showAllInstitution } = this.state;
         return (
             <ProfileComponent
                 biodataResponse={biodataResponse}
                 evaluationDataResponse={evaluationDataResponse}
                 jobDataResponse={jobDataResponse}
                 handleShow={this.handleShow}
+                showAllEvaluation={showAllEvaluation}
+                showAllJob={showAllJob}
                 showAllInstitution={showAllInstitution}
             />
         )

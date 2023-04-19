@@ -82,37 +82,81 @@ const ProfileComponent = (props: any) => {
                                 <p className="text-center my-5">Belum ada data evaluasi SPBE</p>
                             :
                                 <>
-                                    {evaluationDataResponse.map((item: any, index: number) => {
-                                        return (
-                                            <>
-                                                {index > 0 && <hr className="mt-3" />}
-                                                <Row className="mt-3">
-                                                    <Col xs={4} className="p-0">
-                                                        <p className="fw-bold">Peran</p>
-                                                    </Col>
-                                                    <Col>
-                                                        <p>{item.role}</p>
-                                                    </Col>
-                                                </Row>
-                                                <Row className="mt-3">
-                                                    <Col xs={4} className="p-0">
-                                                        <p className="fw-bold">Instansi SPBE</p>
-                                                    </Col>
-                                                    <Col>
-                                                        <p>{item.institution_id}</p>
-                                                    </Col>
-                                                </Row>
-                                                <Row className="mt-3">
-                                                    <Col xs={4} className="p-0">
-                                                        <p className="fw-bold">Tahun Evaluasi</p>
-                                                    </Col>
-                                                    <Col>
-                                                        <p>{item.evaluation_year}</p>
-                                                    </Col>
-                                                </Row>
-                                            </>
-                                        )
-                                    })}
+                                    {props?.showAllEvaluation
+                                    ?
+                                        <>
+                                            {evaluationDataResponse.map((item: any, index: number) => {
+                                                return (
+                                                    <>
+                                                        {index > 0 && <hr className="mt-3" />}
+                                                        <Row className="mt-3">
+                                                            <Col xs={4} className="p-0">
+                                                                <p className="fw-bold">Peran</p>
+                                                            </Col>
+                                                            <Col>
+                                                                <p>{item.role}</p>
+                                                            </Col>
+                                                        </Row>
+                                                        <Row className="mt-3">
+                                                            <Col xs={4} className="p-0">
+                                                                <p className="fw-bold">Instansi SPBE</p>
+                                                            </Col>
+                                                            <Col>
+                                                                <p>{item.institution_id}</p>
+                                                            </Col>
+                                                        </Row>
+                                                        <Row className="mt-3">
+                                                            <Col xs={4} className="p-0">
+                                                                <p className="fw-bold">Tahun Evaluasi</p>
+                                                            </Col>
+                                                            <Col>
+                                                                <p>{item.evaluation_year}</p>
+                                                            </Col>
+                                                        </Row>
+                                                    </>
+                                                )
+                                            })}
+                                        </>
+                                    :
+                                        <>
+                                            <Row className="mt-3">
+                                                <Col xs={4} className="p-0">
+                                                    <p className="fw-bold">Peran</p>
+                                                </Col>
+                                                <Col>
+                                                    <p>{evaluationDataResponse[0].role}</p>
+                                                </Col>
+                                            </Row>
+                                            <Row className="mt-3">
+                                                <Col xs={4} className="p-0">
+                                                    <p className="fw-bold">Instansi SPBE</p>
+                                                </Col>
+                                                <Col>
+                                                    <p>{evaluationDataResponse[0].institution_id}</p>
+                                                </Col>
+                                            </Row>
+                                            <Row className="mt-3">
+                                                <Col xs={4} className="p-0">
+                                                    <p className="fw-bold">Tahun Evaluasi</p>
+                                                </Col>
+                                                <Col>
+                                                    <p>{evaluationDataResponse[0].evaluation_year}</p>
+                                                </Col>
+                                            </Row>
+                                            <Row className="mt-3">
+                                                <Col className="text-end p-0">
+                                                    <Button
+                                                        className="text-secondary bg-white border-0 p-0"
+                                                        size="sm"
+                                                        name="showAllEvaluation"
+                                                        onClick={(e: any) => props?.handleShow(e)}
+                                                    >
+                                                        Lihat Semua
+                                                    </Button>
+                                                </Col>
+                                            </Row>
+                                        </>
+                                    }
                                 </>
                             }
                         </Col>
@@ -125,37 +169,81 @@ const ProfileComponent = (props: any) => {
                                 <p className="text-center my-5">Belum ada data pekerjaan</p>
                             :
                                 <>
-                                    {jobDataResponse.map((item: any, index: number) => {
-                                        return (
-                                            <>
-                                                {index > 0 && <hr className="mt-3" />}
-                                                <Row className="mt-3">
-                                                    <Col xs={4} className="p-0">
-                                                        <p className="fw-bold">Pekerjaan/Jabatan</p>
-                                                    </Col>
-                                                    <Col>
-                                                        <p>{item.role}</p>
-                                                    </Col>
-                                                </Row>
-                                                <Row className="mt-3">
-                                                    <Col xs={4} className="p-0">
-                                                        <p className="fw-bold">Instansi</p>
-                                                    </Col>
-                                                    <Col>
-                                                        <p>{item.company}</p>
-                                                    </Col>
-                                                </Row>
-                                                <Row className="mt-3">
-                                                    <Col xs={4} className="p-0">
-                                                        <p className="fw-bold">Tahun Masuk</p>
-                                                    </Col>
-                                                    <Col>
-                                                        <p>{item.joined_year}</p>
-                                                    </Col>
-                                                </Row>
-                                            </>
-                                        )
-                                    })}
+                                    {props?.showAllJob
+                                    ?
+                                        <>
+                                            {jobDataResponse.map((item: any, index: number) => {
+                                                return (
+                                                    <>
+                                                        {index > 0 && <hr className="mt-3" />}
+                                                        <Row className="mt-3">
+                                                            <Col xs={4} className="p-0">
+                                                                <p className="fw-bold">Pekerjaan/Jabatan</p>
+                                                            </Col>
+                                                            <Col>
+                                                                <p>{item.role}</p>
+                                                            </Col>
+                                                        </Row>
+                                                        <Row className="mt-3">
+                                                            <Col xs={4} className="p-0">
+                                                                <p className="fw-bold">Instansi</p>
+                                                            </Col>
+                                                            <Col>
+                                                                <p>{item.company}</p>
+                                                            </Col>
+                                                        </Row>
+                                                        <Row className="mt-3">
+                                                            <Col xs={4} className="p-0">
+                                                                <p className="fw-bold">Tahun Masuk</p>
+                                                            </Col>
+                                                            <Col>
+                                                                <p>{item.joined_year}</p>
+                                                            </Col>
+                                                        </Row>
+                                                    </>
+                                                )
+                                            })}
+                                        </>
+                                    :
+                                        <>
+                                            <Row className="mt-3">
+                                                <Col xs={4} className="p-0">
+                                                    <p className="fw-bold">Pekerjaan/Jabatan</p>
+                                                </Col>
+                                                <Col>
+                                                    <p>{jobDataResponse[0].role}</p>
+                                                </Col>
+                                            </Row>
+                                            <Row className="mt-3">
+                                                <Col xs={4} className="p-0">
+                                                    <p className="fw-bold">Instansi</p>
+                                                </Col>
+                                                <Col>
+                                                    <p>{jobDataResponse[0].company}</p>
+                                                </Col>
+                                            </Row>
+                                            <Row className="mt-3">
+                                                <Col xs={4} className="p-0">
+                                                    <p className="fw-bold">Tahun Masuk</p>
+                                                </Col>
+                                                <Col>
+                                                    <p>{jobDataResponse[0].joined_year}</p>
+                                                </Col>
+                                            </Row>
+                                            <Row className="mt-3">
+                                                <Col className="text-end p-0">
+                                                    <Button
+                                                        className="text-secondary bg-white border-0 p-0"
+                                                        size="sm"
+                                                        name="showAllJob"
+                                                        onClick={(e: any) => props?.handleShow(e)}
+                                                    >
+                                                        Lihat Semua
+                                                    </Button>
+                                                </Col>
+                                            </Row>
+                                        </>
+                                    }
                                 </>
                             }
                         </Col>
