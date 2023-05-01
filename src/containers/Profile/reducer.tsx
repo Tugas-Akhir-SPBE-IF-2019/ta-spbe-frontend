@@ -1,13 +1,15 @@
 import { 
     SET_BIODATA,
     SET_EVALUATION_DATA,
-    SET_JOB_DATA    
+    SET_JOB_DATA,
+    SET_INSTITUTION_DATA
 } from "./constant";
 
 const initialState = {
     biodata: null,
     evaluationData: [],
     jobData: [],
+    institutionData: [],
 };
 
 const profileReducer = (state = initialState, action: any) => {
@@ -26,6 +28,11 @@ const profileReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 jobData: action.params,
+            };
+        case SET_INSTITUTION_DATA:
+            return {
+                ...state,
+                institutionData: action.params,
             };
         default:
             return state;

@@ -4,7 +4,9 @@ import {
     GET_EVALUATION_DATA,
     SET_EVALUATION_DATA,
     GET_JOB_DATA,
-    SET_JOB_DATA,    
+    SET_JOB_DATA,
+    GET_INSTITUTION_DATA,
+    SET_INSTITUTION_DATA,
 } from "./constant";
 
 export function getBiodata() {
@@ -42,6 +44,19 @@ export function getJobData() {
 export function setJobData(params: any) {
     return {
         type: SET_JOB_DATA,
+        params,
+    };
+}
+
+export function getInstitutionData() {
+    return {
+        type: GET_INSTITUTION_DATA,
+    };
+}
+
+export function setInstitutionData(params: any) {
+    return {
+        type: SET_INSTITUTION_DATA,
         params,
     };
 }

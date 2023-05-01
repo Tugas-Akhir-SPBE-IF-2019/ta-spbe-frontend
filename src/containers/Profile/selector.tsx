@@ -16,8 +16,15 @@ const jobDataSelector = (state: any) => {
         : [];
 };
 
+const institutionDataSelector = (state: any) => {
+    return state?.profileReducer?.institutionData
+        ? state.profileReducer.institutionData
+        : [];
+};
+
 export {
     biodataSelector,
     evaluationDataSelector,
-    jobDataSelector
+    jobDataSelector,
+    institutionDataSelector
 };

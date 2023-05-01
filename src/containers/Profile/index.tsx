@@ -4,12 +4,14 @@ import { connect } from "react-redux";
 import {
     biodataSelector,
     evaluationDataSelector,
-    jobDataSelector
+    jobDataSelector,
+    institutionDataSelector
 } from "./selector";
 import {
     getBiodata,
     getEvaluationData,
-    getJobData
+    getJobData,
+    getInstitutionData
 } from "./action";
 
 const ProfileComponent = lazy(() => import("../../components/Profile"));
@@ -20,6 +22,7 @@ export class ProfileContainer extends PureComponent<any, any> {
         biodataResponse: PropTypes.any,
         evaluationDataResponse: PropTypes.array,
         jobDataResponse: PropTypes.array,
+        institutionDataResponse: PropTypes.array,
     };
 
     constructor(props: any) {
@@ -36,6 +39,7 @@ export class ProfileContainer extends PureComponent<any, any> {
         this.props.getProfileBiodata();
         this.props.getProfileEvaluationData();
         this.props.getProfileJobData();
+        this.props.getProfileInstitutionData();
     }
 
     private handleShow(e: any): void {
@@ -47,13 +51,14 @@ export class ProfileContainer extends PureComponent<any, any> {
     }
 
     render() {
-        const { biodataResponse, evaluationDataResponse, jobDataResponse } = this.props;
+        const { biodataResponse, evaluationDataResponse, jobDataResponse, institutionDataResponse } = this.props;
         const { showAllEvaluation, showAllJob, showAllInstitution } = this.state;
         return (
             <ProfileComponent
                 biodataResponse={biodataResponse}
                 evaluationDataResponse={evaluationDataResponse}
                 jobDataResponse={jobDataResponse}
+                institutionDataResponse={institutionDataResponse}
                 handleShow={this.handleShow}
                 showAllEvaluation={showAllEvaluation}
                 showAllJob={showAllJob}
@@ -68,6 +73,7 @@ const mapStateToProps = (state: any) => {
         biodataResponse: biodataSelector(state),
         evaluationDataResponse: evaluationDataSelector(state),
         jobDataResponse: jobDataSelector(state),
+        institutionDataResponse: institutionDataSelector(state),
     };
 };
   
@@ -76,6 +82,7 @@ function mapDispatchToProps(dispatch: any) {
         getProfileBiodata: () => dispatch(getBiodata()),
         getProfileEvaluationData: () => dispatch(getEvaluationData()),
         getProfileJobData: () => dispatch(getJobData()),
+        getProfileInstitutionData: () => dispatch(getInstitutionData()),
     };
 }
   

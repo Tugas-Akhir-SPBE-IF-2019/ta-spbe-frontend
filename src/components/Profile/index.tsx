@@ -8,7 +8,7 @@ const NavBar = lazy(() => import("../../components/NavBar"));
 const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
 
 const ProfileComponent = (props: any) => {
-    const { evaluationDataResponse, jobDataResponse } = props;
+    const { evaluationDataResponse, jobDataResponse, institutionDataResponse } = props;
     return (
         <>
             <NavBar/>
@@ -249,104 +249,97 @@ const ProfileComponent = (props: any) => {
                         </Col>
                         <Col className="mx-5 custom-border custom-shadow px-5 py-3">
                             <h5 className="text-purple">Data Institusi</h5>
-                            <Row className="mt-3">
-                                <Col xs={4} className="p-0">
-                                    <p className="fw-bold">Peran</p>
-                                </Col>
-                                <Col>
-                                    <p>Asesor Internal</p>
-                                </Col>
-                            </Row>
-                            <Row className="mt-3">
-                                <Col xs={4} className="p-0">
-                                    <p className="fw-bold">Nama Institusi</p>
-                                </Col>
-                                <Col>
-                                    <p>Kabupaten Test 1</p>
-                                </Col>
-                            </Row>
-                            <Row className="mt-3">
-                                <Col xs={4} className="p-0">
-                                    <p className="fw-bold">Status</p>
-                                </Col>
-                                <Col>
-                                    <p className="text-orange bg-orange width-fit px-2">DIPROSES</p>
-                                </Col>
-                            </Row>
-                            {props?.showAllInstitution
+                            {institutionDataResponse.length === 0
                             ?
-                                <>
-                                    <hr className="mt-3" />
-                                    <Row className="mt-3">
-                                        <Col xs={4} className="p-0">
-                                            <p className="fw-bold">Peran</p>
-                                        </Col>
-                                        <Col>
-                                            <p>Asesor Eksternal</p>
-                                        </Col>
-                                    </Row>
-                                    <Row className="mt-3">
-                                        <Col xs={4} className="p-0">
-                                            <p className="fw-bold">Nama Institusi</p>
-                                        </Col>
-                                        <Col>
-                                            <p>Kabupaten Test 2</p>
-                                        </Col>
-                                    </Row>
-                                    <Row className="mt-3">
-                                        <Col xs={4} className="p-0">
-                                            <p className="fw-bold">Status</p>
-                                        </Col>
-                                        <Col>
-                                            <p className="text-green bg-green width-fit px-2">DITERIMA</p>
-                                        </Col>
-                                    </Row>
-                                    <hr className="mt-3" />
-                                    <Row className="mt-3">
-                                        <Col xs={4} className="p-0">
-                                            <p className="fw-bold">Peran</p>
-                                        </Col>
-                                        <Col>
-                                            <p>Asesor Eksternal</p>
-                                        </Col>
-                                    </Row>
-                                    <Row className="mt-3">
-                                        <Col xs={4} className="p-0">
-                                            <p className="fw-bold">Nama Institusi</p>
-                                        </Col>
-                                        <Col>
-                                            <p>Kabupaten Test 3</p>
-                                        </Col>
-                                    </Row>
-                                    <Row className="mt-3">
-                                        <Col xs={4} className="p-0">
-                                            <p className="fw-bold">Status</p>
-                                        </Col>
-                                        <Col>
-                                            <p className="text-orange bg-orange width-fit px-2">DIPROSES</p>
-                                        </Col>
-                                    </Row>
-                                    <Row className="mt-5 justify-content-center">
-                                        <Col xs={6}>
-                                            <Link to="/edit-profile/institution">
-                                                <PurpleButton text="Tambah Institusi" />
-                                            </Link>
-                                        </Col>
-                                    </Row>
-                                </>
+                                <p className="text-center my-5">Belum ada data institusi</p>
                             :
-                                <Row className="mt-3">
-                                    <Col className="text-end p-0">
-                                        <Button
-                                            className="text-secondary bg-white border-0 p-0"
-                                            size="sm"
-                                            name="showAllInstitution"
-                                            onClick={(e: any) => props?.handleShow(e)}
-                                        >
-                                            Lihat Semua
-                                        </Button>
-                                    </Col>
-                                </Row>
+                                <>
+                                    {props?.showAllInstitution
+                                    ?
+                                        <>
+                                            {institutionDataResponse.map((item: any, index: number) => {
+                                                return (
+                                                    <>
+                                                        {index > 0 && <hr className="mt-3" />}
+                                                        <Row className="mt-3">
+                                                            <Col xs={4} className="p-0">
+                                                                <p className="fw-bold">Peran</p>
+                                                            </Col>
+                                                            <Col>
+                                                                <p>{item.role}</p>
+                                                            </Col>
+                                                        </Row>
+                                                        <Row className="mt-3">
+                                                            <Col xs={4} className="p-0">
+                                                                <p className="fw-bold">Nama Institusi</p>
+                                                            </Col>
+                                                            <Col>
+                                                                <p>{item.institution_name}</p>
+                                                            </Col>
+                                                        </Row>
+                                                        <Row className="mt-3">
+                                                            <Col xs={4} className="p-0">
+                                                                <p className="fw-bold">Status</p>
+                                                            </Col>
+                                                            <Col>
+                                                                {item.status === "VALID"
+                                                                ?
+                                                                    <p className="text-green bg-green width-fit px-2">DITERIMA</p>
+                                                                :
+                                                                    <p className="text-orange bg-orange width-fit px-2">DIPROSES</p>
+                                                                }
+                                                            </Col>
+                                                        </Row>
+                                                    </>
+                                                )
+                                            })}
+                                        </>
+                                    :
+                                        <>
+                                            <Row className="mt-3">
+                                                <Col xs={4} className="p-0">
+                                                    <p className="fw-bold">Peran</p>
+                                                </Col>
+                                                <Col>
+                                                    <p>{institutionDataResponse[0].role}</p>
+                                                </Col>
+                                            </Row>
+                                            <Row className="mt-3">
+                                                <Col xs={4} className="p-0">
+                                                    <p className="fw-bold">Nama Institusi</p>
+                                                </Col>
+                                                <Col>
+                                                    <p>{institutionDataResponse[0].institution_name}</p>
+                                                </Col>
+                                            </Row>
+                                            <Row className="mt-3">
+                                                <Col xs={4} className="p-0">
+                                                    <p className="fw-bold">Status</p>
+                                                </Col>
+                                                <Col>
+                                                    {institutionDataResponse[0].status === "VALID"
+                                                    ?
+                                                        <p className="text-green bg-green width-fit px-2">DITERIMA</p>
+                                                    :
+                                                        <p className="text-orange bg-orange width-fit px-2">DIPROSES</p>
+                                                    }
+                                                </Col>
+                                            </Row>
+                                            <Row className="mt-3">
+                                                <Col className="text-end p-0">
+                                                    <Button
+                                                        className="text-secondary bg-white border-0 p-0"
+                                                        size="sm"
+                                                        name="showAllInstitution"
+                                                        onClick={(e: any) => props?.handleShow(e)}
+                                                    >
+                                                        Lihat Semua
+                                                    </Button>
+                                                </Col>
+                                            </Row>
+                                        </>
+                                    }
+                                </>
                             }
                         </Col>
                     </Row>
