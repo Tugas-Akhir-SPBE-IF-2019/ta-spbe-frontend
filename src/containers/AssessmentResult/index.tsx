@@ -16,6 +16,7 @@ export class AssessmentResultContainer extends PureComponent<any, any> {
         super(props);
         this.state = {
             link_list: [],
+            support_doc_name: [],
         };
         this.handleParseHTML = this.handleParseHTML.bind(this);
         this.copyText = this.copyText.bind(this);
@@ -45,28 +46,38 @@ export class AssessmentResultContainer extends PureComponent<any, any> {
     private createLink(): void {
         const { assessmentResultResponse } = this.props;
         let list: any[] = [];
+        let doc_name = [...Array(10)].map(e => Array());
         assessmentResultResponse.result.forEach(function (item) {
             if (!list.includes(item.indicator_number)) {
                 list.push(item.indicator_number);
             }
+            item.support_document_proof.forEach(function (doc) {
+                if (!doc_name[item.indicator_number - 1].includes(doc.name)) {
+                    doc_name[item.indicator_number - 1].push(doc.name);
+                }
+            });
         });
         this.setState({
             ...this.state,
             link_list: list,
+            support_doc_name: doc_name,
         });
     }
 
     render() {
         const { id } = this.props.match.params;
         const { assessmentResultResponse } = this.props;
-        const { link_list } = this.state;
+        const { link_list, support_doc_name } = this.state;
+        console.log(this.state);
         return (
+            // <p>State</p>
             <AssessmentResultComponent
                 assessmentId={id}
                 assessmentResultResponse={assessmentResultResponse}
                 handleParseHTML={this.handleParseHTML}
                 copyText={this.copyText}
                 link_list={link_list}
+                support_doc_name={support_doc_name}
             />
         )
     }

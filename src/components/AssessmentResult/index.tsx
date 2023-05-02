@@ -79,9 +79,10 @@ const AssessmentResultComponent = (props: any) => {
                         <h6 className="fw-bold">Hasil</h6>
                     </Row>
                     {props?.assessmentResultResponse !== null && (props.assessmentResultResponse.result?.map((item: any, index: number) => {
+                        let names = props?.support_doc_name[item.indicator_number - 1];
                         return (
                             <>
-                                <Row className="custom-shadow custom-border m-3 p-3" id={item.indicator_number}>
+                                <Row className="custom-shadow custom-border m-3 p-3" id={item.indicator_number} key={index}>
                                     <Col>
                                         <Row className="my-3">
                                             <Col xs={4}>
@@ -120,7 +121,19 @@ const AssessmentResultComponent = (props: any) => {
                                                 <h6>Data Dukung</h6>
                                             </Col>
                                             <Col>
-                                                <p>{item.support_document_name}</p>
+                                                {/* {item.support_document_proof.length !== 0 (item.support_document_proof.map((el: any, idx: number) => {
+                                                    return (
+
+                                                    )
+                                                }))} */}
+                                                {/* {props?.support_doc_name[item.indicator_number]} */}
+                                                {/* {typeof props.support_doc_name[item.indicator_number]}
+                                                {props.support_doc_name[item.indicator_number]} */}
+                                                {names?.length !== 0 && (names?.map((val: string, idx: number) => {
+                                                    return (
+                                                        <p key={idx}>{val}</p>
+                                                    )
+                                                }))}
                                             </Col>
                                         </Row>
                                         <Row className="my-3">
@@ -155,11 +168,12 @@ const AssessmentResultComponent = (props: any) => {
                                         <Row className="">
                                             <Col>
                                                 <Carousel variant="dark" slide={false}>
-                                                    {item.photo_proof?.length !== 0 && (item.photo_proof.map((photo: any, idx: number) => {
+                                                    {item.support_document_proof?.length !== 0 && (item.support_document_proof.map((photo: any, idx: number) => {
                                                         return (
-                                                            <Carousel.Item>
-                                                                <a href={photo.document_link} target='_blank'>
-                                                                    <Image src={photo.photo_link} className="border rounded" />
+                                                            <Carousel.Item className="border rounded text-center">
+                                                                <a href={photo.proof_page_document_url} target='_blank' className="text-decoration-none">
+                                                                    <p className="text-muted pt-5">{photo.name}</p>
+                                                                    <Image src={photo.proof_image_url} />
                                                                 </a>
                                                             </Carousel.Item>
                                                         )
