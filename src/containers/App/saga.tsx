@@ -10,6 +10,7 @@ import { watchProfileSaga } from "../Profile/saga";
 import { watchEditBiodataSaga } from "../EditProfileBio/saga";
 import { watchEditEvaluationDataSaga } from "../EditProfileSPBE/saga";
 import { watchEditJobDataSaga } from "../EditProfileWork/saga";
+import { watchEditInstitutionDataSaga } from "../EditProfileInstitution/saga";
 
 export default function* Saga() {
     yield all([
@@ -24,5 +25,6 @@ export default function* Saga() {
         watchEditBiodataSaga(),
         watchEditEvaluationDataSaga(),
         watchEditJobDataSaga(),
+        watchEditInstitutionDataSaga(),
     ]);
 }

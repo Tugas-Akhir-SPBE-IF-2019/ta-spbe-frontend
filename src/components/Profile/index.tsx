@@ -293,6 +293,13 @@ const ProfileComponent = (props: any) => {
                                                     </>
                                                 )
                                             })}
+                                            <Row className="mt-5 justify-content-center">
+                                                <Col xs={6}>
+                                                    <Link to="/edit-profile/institution">
+                                                        <PurpleButton text="Tambah Institusi" />
+                                                    </Link>
+                                                </Col>
+                                            </Row>
                                         </>
                                     :
                                         <>
