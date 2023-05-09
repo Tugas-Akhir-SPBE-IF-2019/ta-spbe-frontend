@@ -2,3 +2,7 @@ export const LOGIN_WITH_GOOGLE =
     "TugasAkhirSPBE/App/LOGIN_WITH_GOOGLE";
 export const SUCCESS_LOGIN_WITH_GOOGLE =
     "TugasAkhirSPBE/App/SUCCESS_LOGIN_WITH_GOOGLE";
+export const GET_INSTITUTION_DATA =
+    "TugasAkhirSPBE/App/GET_INSTITUTION_DATA";
+export const SET_INSTITUTION_DATA =
+    "TugasAkhirSPBE/App/SET_INSTITUTION_DATA";

@@ -10,7 +10,7 @@ const CustomTable = lazy(() => import("../../components/General/CustomTable"));
 const GuestDashboardComponent = (props: any) => {
     return (
         <>
-            <NavBar/>
+            <NavBar />
             <Row className="px-5 pt-5">
                 <Col>
                     <Row>

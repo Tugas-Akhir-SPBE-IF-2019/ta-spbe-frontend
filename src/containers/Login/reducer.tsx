@@ -1,7 +1,8 @@
-import { SUCCESS_LOGIN_WITH_GOOGLE } from "./constant";
+import { SUCCESS_LOGIN_WITH_GOOGLE, SET_INSTITUTION_DATA } from "./constant";
 
 const initialState = {
     loginMessage: null,
+    institutionData: [],
 };
 
 const loginReducer = (state = initialState, action: any) => {
@@ -10,6 +11,11 @@ const loginReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 loginMessage: action.params,
+            };
+        case SET_INSTITUTION_DATA:
+            return {
+                ...state,
+                institutionData: action.params,
             };
         default:
             return state;

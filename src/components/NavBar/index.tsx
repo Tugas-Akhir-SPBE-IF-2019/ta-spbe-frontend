@@ -1,8 +1,10 @@
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCertificate } from '@fortawesome/free-solid-svg-icons';
+import { getAuthToken } from '../../utils/general';
 
 const NavBar = (props: any) => {
+    const authToken = getAuthToken();
     return (
         <Navbar className="bg-purple" variant="dark">
             <Container className="text-white m-auto">
@@ -11,12 +13,23 @@ const NavBar = (props: any) => {
                     TA SPBE
                 </Navbar.Brand>
                 <Nav className="m-auto">
-                    <Nav.Link href="/dashboard">Dashboard</Nav.Link>
-                    <Nav.Link href="/about">Tentang</Nav.Link>
-                    <Nav.Link href="/tutorial">Petunjuk</Nav.Link>
+                    {authToken ? 
+                    <>
+                        <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+                        <Nav.Link href="/about">Tentang</Nav.Link>
+                        <Nav.Link href="/tutorial">Petunjuk</Nav.Link>
+                    </> : 
+                    <>
+                        <Nav.Link href="/about">Tentang</Nav.Link>
+                        <Nav.Link href="/tutorial">Petunjuk</Nav.Link>
+                    </>}
                 </Nav>
                 <Nav>
-                    <Nav.Link href="/upload">Evaluasi</Nav.Link>
+                    {authToken ?
+                        <Nav.Link href="/profile">Profile</Nav.Link>
+                    :
+                        <Nav.Link href="/login">Login</Nav.Link>
+                    }
                 </Nav>
             </Container>
         </Navbar>

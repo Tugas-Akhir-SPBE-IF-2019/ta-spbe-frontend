@@ -1,8 +1,8 @@
 import { put, takeLatest, call } from "redux-saga/effects";
-import { successLoginWithGoogle } from "./action";
-import { LOGIN_WITH_GOOGLE } from "./constant";
+import { successLoginWithGoogle, setInstitutionData } from "./action";
+import { LOGIN_WITH_GOOGLE, GET_INSTITUTION_DATA } from "./constant";
 import { callApi } from "../Layout/saga";
-import { LOGIN_URL } from "../../config/api";
+import { LOGIN_URL, INSTITUTION_DATA_URL } from "../../config/api";
 
 export function* handleLoginWithGoogle(action: any): any {
     const { params } = action;
@@ -21,6 +21,21 @@ export function* handleLoginWithGoogle(action: any): any {
     }
 }
 
+export function* handleGetInstitutionData(action: any): any {
+    let res = yield call(
+        callApi,
+        "GET",
+        INSTITUTION_DATA_URL,
+        null,
+        null,
+        true,
+        true,
+        true
+    );
+    yield put(setInstitutionData(res.items));
+}
+
 export function* watchLoginSaga() {
     yield takeLatest(LOGIN_WITH_GOOGLE, handleLoginWithGoogle);
+    yield takeLatest(GET_INSTITUTION_DATA, handleGetInstitutionData);
 }

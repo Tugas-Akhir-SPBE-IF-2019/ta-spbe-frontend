@@ -3,6 +3,7 @@ import { Modal, Row, Col } from 'react-bootstrap';
 import { formatTimestamp, checkHistoryTitle, checkHistoryCaption, checkDocumentType, checkDocumentStyle } from '../../utils/helper';
 import Timeline from 'react-bootstrap-timeline/lib/esm/Timeline';
 import Card from 'react-bootstrap-timeline/lib/esm/Card';
+import { Link } from "react-router-dom";
 
 const NavBar = lazy(() => import("../../components/NavBar"));
 const Search = lazy(() => import("../../components/General/Search"));
@@ -98,9 +99,14 @@ const UserDashboardComponent = (props: any) => {
                             </Row>
                         </Modal.Footer>
                     </Modal>
-                    <Row>
+                    <Row className="justify-content-between">
                         <Col>
                             <h1 className="mb-3">Dashboard</h1>
+                        </Col>
+                        <Col xs={2}>
+                            <Link to="/upload">
+                                <PurpleButton text="Upload Dokumen"/>
+                            </Link>
                         </Col>
                     </Row>
                     <Search

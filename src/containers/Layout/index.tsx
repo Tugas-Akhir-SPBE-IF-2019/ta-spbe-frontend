@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { loadingSelector } from "./selector";
 import { getLoaderState } from "./action";
 import LoadingIndicator from "../../components/Loading";
+import { getAuthToken } from "../../utils/general";
 
 const GuestDashboardContainer = lazy(() => import("../GuestDashboard"));
 const UploadDocumentsContainer = lazy(() => import("../UploadDocuments"));
@@ -32,91 +33,112 @@ export class LayoutContainer extends PureComponent<any, any> {
 
     render() {
         const { loadingResponse } = this.props;
+        const authToken = getAuthToken();
         return (
             <div className="bg-gray" style={{ height: "100vh", overflowX: "hidden" }}>
                 <Suspense fallback={<LoadingIndicator show={true}/>}>
                     {loadingResponse ? <LoadingIndicator show={true}/> : null}
-                    <Switch>
-                        <Route
-                            exact
-                            path={"/"}
-                            render={(props: any) => {
-                            return <GuestDashboardContainer {...this.props} {...props} />;
-                            }}
-                        />
-                        <Route
-                            path={"/upload"}
-                            render={(props: any) => {
-                            return <UploadDocumentsContainer {...this.props} {...props} />;
-                            }}
-                        />
-                        <Route
-                            path={"/result/:id"}
-                            render={(props: any) => {
-                            return <AssessmentResultContainer {...this.props} {...props} />;
-                            }}
-                        />
-                        <Route
-                            path={"/validate/:id"}
-                            render={(props: any) => {
-                            return <ValidateResultContainer {...this.props} {...props} />;
-                            }}
-                        />
-                        <Route
-                            path={"/dashboard"}
-                            render={(props: any) => {
-                            return <UserDashboardContainer {...this.props} {...props} />;
-                            }}
-                        />
-                        <Route
-                            path={"/login"}
-                            render={(props: any) => {
-                            return <LoginContainer {...this.props} {...props} />;
-                            }}
-                        />
-                        <Route
-                            path={"/about"}
-                            render={(props: any) => {
-                            return <AboutUsContainer {...this.props} {...props} />;
-                            }}
-                        />
-                        <Route
-                            path={"/profile"}
-                            render={(props: any) => {
-                            return <ProfileContainer {...this.props} {...props} />;
-                            }}
-                        />
-                        <Route
-                            path={"/tutorial"}
-                            render={(props: any) => {
-                            return <TutorialContainer {...this.props} {...props} />;
-                            }}
-                        />
-                        <Route
-                            path={"/edit-profile/biodata"}
-                            render={(props: any) => {
-                            return <EditProfileBioContainer {...this.props} {...props} />;
-                            }}
-                        />
-                        <Route
-                            path={"/edit-profile/occupation"}
-                            render={(props: any) => {
-                            return <EditProfileWorkContainer {...this.props} {...props} />;
-                            }}
-                        />
-                        <Route
-                            path={"/edit-profile/evaluation"}
-                            render={(props: any) => {
-                            return <EditProfileSPBEContainer {...this.props} {...props} />;
-                            }}
-                        />
-                        <Route
-                            path={"/edit-profile/institution"}
-                            render={(props: any) => {
-                            return <EditProfileInstitutionContainer {...this.props} {...props} />;
-                            }}
-                        />
-                    </Switch>
+                    {authToken ? (
+                        <Switch>
+                            <Route
+                                exact
+                                path={"/"}
+                                render={(props: any) => {
+                                return <GuestDashboardContainer {...this.props} {...props} />;
+                                }}
+                            />
+                            <Route
+                                path={"/upload"}
+                                render={(props: any) => {
+                                return <UploadDocumentsContainer {...this.props} {...props} />;
+                                }}
+                            />
+                            <Route
+                                path={"/result/:id"}
+                                render={(props: any) => {
+                                return <AssessmentResultContainer {...this.props} {...props} />;
+                                }}
+                            />
+                            <Route
+                                path={"/validate/:id"}
+                                render={(props: any) => {
+                                return <ValidateResultContainer {...this.props} {...props} />;
+                                }}
+                            />
+                            <Route
+                                path={"/dashboard"}
+                                render={(props: any) => {
+                                return <UserDashboardContainer {...this.props} {...props} />;
+                                }}
+                            />
+                            
+                            <Route
+                                path={"/about"}
+                                render={(props: any) => {
+                                return <AboutUsContainer {...this.props} {...props} />;
+                                }}
+                            />
+                            <Route
+                                path={"/profile"}
+                                render={(props: any) => {
+                                return <ProfileContainer {...this.props} {...props} />;
+                                }}
+                            />
+                            <Route
+                                path={"/tutorial"}
+                                render={(props: any) => {
+                                return <TutorialContainer {...this.props} {...props} />;
+                                }}
+                            />
+                            <Route
+                                path={"/edit-profile/biodata"}
+                                render={(props: any) => {
+                                return <EditProfileBioContainer {...this.props} {...props} />;
+                                }}
+                            />
+                            <Route
+                                path={"/edit-profile/occupation"}
+                                render={(props: any) => {
+                                return <EditProfileWorkContainer {...this.props} {...props} />;
+                                }}
+                            />
+                            <Route
+                                path={"/edit-profile/evaluation"}
+                                render={(props: any) => {
+                                return <EditProfileSPBEContainer {...this.props} {...props} />;
+                                }}
+                            />
+                            <Route
+                                path={"/edit-profile/institution"}
+                                render={(props: any) => {
+                                return <EditProfileInstitutionContainer {...this.props} {...props} />;
+                                }}
+                            />
+                            <Route
+                                path={"/login"}
+                                render={(props: any) => {
+                                return <LoginContainer {...this.props} {...props} authToken={authToken} />;
+                                }}
+                            />
+                        </Switch>
+                    ) : (
+                        <Switch>
+                            <Route
+                                exact
+                                path={"/"}
+                                render={(props: any) => {
+                                return <GuestDashboardContainer {...this.props} {...props} authToken={authToken} />;
+                                }}
+                            />
+                            <Route
+                                exact
+                                path={"/*"}
+                                render={(props: any) => {
+                                return <LoginContainer {...this.props} {...props} authToken={authToken} />;
+                                }}
+                            />
+                        </Switch>
+                    )}
                 </Suspense>
             </div>
         )

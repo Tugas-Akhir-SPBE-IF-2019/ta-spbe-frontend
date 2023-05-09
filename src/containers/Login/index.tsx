@@ -1,8 +1,8 @@
 import { lazy, PureComponent } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { loginMessageSelector } from "./selector";
-import { loginWithGoogle } from "./action";
+import { loginMessageSelector, institutionDataSelector } from "./selector";
+import { loginWithGoogle, getInstitutionData } from "./action";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const LoginComponent = lazy(() => import("../../components/Login"));
@@ -11,6 +11,7 @@ export class LoginContainer extends PureComponent<any, any> {
     static propTypes = {
         history: PropTypes.any,
         loginMessageResponse: PropTypes.object,
+        institutionDataResponse: PropTypes.array,
     };
 
     constructor(props: any) {
@@ -21,8 +22,15 @@ export class LoginContainer extends PureComponent<any, any> {
         this.handleLoginState = this.handleLoginState.bind(this);
     }
 
+    componentDidMount() {
+        const { authToken } = this.props;
+        if (authToken) {
+            this.props.history.replace("/dashboard");
+        }
+    }
+
     componentDidUpdate(prevProps: any, prevState: any) {
-        const { loginMessageResponse } = this.props;
+        const { loginMessageResponse, institutionDataResponse } = this.props;
         const { access_token } = this.state;
         if (prevState.access_token !== access_token) {
             this.props.initiateGoogleLogin(this.state);
@@ -31,8 +39,18 @@ export class LoginContainer extends PureComponent<any, any> {
             if (loginMessageResponse.access_token && loginMessageResponse.refresh_token) {
                 localStorage.setItem("AUTH_TOKEN", loginMessageResponse.access_token.token);
                 localStorage.setItem("REFRESH_TOKEN", loginMessageResponse.refresh_token.token);
+                this.props.getProfileInstitutionData();
             }
         }
+        if (prevProps.institutionDataResponse !== institutionDataResponse) {
+            if (institutionDataResponse.length !== 0) {
+                this.props.history.replace("/dashboard");
+            }
+            else {
+                this.props.history.replace("/edit-profile/institution");
+            }
+        }
+
     }
 
     private handleLoginState (token: string): void {
@@ -56,12 +74,14 @@ export class LoginContainer extends PureComponent<any, any> {
 const mapStateToProps = (state: any) => {
     return {
         loginMessageResponse: loginMessageSelector(state),
+        institutionDataResponse: institutionDataSelector(state),
     };
 };
   
 function mapDispatchToProps(dispatch: any) {
     return {
         initiateGoogleLogin: (params: any) => dispatch(loginWithGoogle(params)),
+        getProfileInstitutionData: () => dispatch(getInstitutionData()),
     };
 }
   
