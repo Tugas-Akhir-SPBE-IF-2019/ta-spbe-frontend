@@ -149,6 +149,39 @@ hr {
     border-bottom: none !important;
 }
 
+.container .bg-success {
+    background-color: var(--purple) !important;
+}
+
+.badge {
+    border-radius: 50% !important;
+}
+
+.border-right {
+    border-right: 1px solid var(--purple);
+}
+
+.container h5 {
+    margin: 0 !important;
+}
+
+.container span {
+    border: 1px solid var(--purple) !important;
+}
+
+.container .card {
+    border: none;
+    box-shadow: none !important;
+}
+
+.card .text-success {
+    color: black !important;
+}
+
+.card h4, .card p {
+    text-align: start;
+}
+
 .circle-fit {
     width: 40px;
 }

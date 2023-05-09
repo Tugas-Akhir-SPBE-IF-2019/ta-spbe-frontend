@@ -4,4 +4,10 @@ const assessmentListSelector = (state: any) => {
         : [];
 };
 
-export { assessmentListSelector };
+const assessmentHistorySelector = (state: any) => {
+    return state?.userDashboardReducer?.history
+        ? state.userDashboardReducer.history
+        : null;
+};
+
+export { assessmentListSelector, assessmentHistorySelector };

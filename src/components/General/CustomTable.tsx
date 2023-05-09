@@ -60,7 +60,7 @@ const CustomTable = (props: any) => {
                                 <tr key={index}>
                                     <td className="custom-td">{index + 1}</td>
                                     <td className="custom-td">{item.institution_name}</td>
-                                    <td className={checkTextColor(item.status) + " pointer custom-td"} onClick={() => props?.toggleModal()}>
+                                    <td className={checkTextColor(item.status) + " pointer custom-td"} onClick={() => props?.getHistory(index)}>
                                         {checkStatus(item.status)}
                                     </td>
                                     <td className="custom-td">{formatDate(item.submitted_date)}</td>

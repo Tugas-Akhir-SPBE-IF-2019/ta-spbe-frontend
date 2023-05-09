@@ -1,8 +1,8 @@
 import { lazy, PureComponent } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { assessmentListSelector } from "./selector";
-import { getAssessmentList } from "./action";
+import { assessmentListSelector, assessmentHistorySelector } from "./selector";
+import { getAssessmentList, getAssessmentHistory } from "./action";
 import { Pagination } from 'react-bootstrap';
 
 const UserDashboardComponent = lazy(() => import("../../components/UserDashboard"));
@@ -11,6 +11,7 @@ export class UserDashboardContainer extends PureComponent<any, any> {
     static propTypes = {
         history: PropTypes.any,
         assessmentResponse: PropTypes.any,
+        assessmentHistoryResponse: PropTypes.any,
     };
 
     constructor(props: any) {
@@ -26,12 +27,14 @@ export class UserDashboardContainer extends PureComponent<any, any> {
             status: "",
             total_pages: 0,
             page_component: [],
+            history: [],
         }
         this.toggleModal = this.toggleModal.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.submitFilter = this.submitFilter.bind(this);
         this.handleNext = this.handleNext.bind(this);
         this.handlePrev = this.handlePrev.bind(this);
+        this.getHistory = this.getHistory.bind(this);
     }
 
     componentDidMount() {
@@ -39,7 +42,7 @@ export class UserDashboardContainer extends PureComponent<any, any> {
     }
 
     componentDidUpdate(prevProps: any, prevState: any) {
-        const { assessmentResponse } = this.props;
+        const { assessmentResponse, assessmentHistoryResponse } = this.props;
         const { page } = this.state;
 
         if (prevProps.assessmentResponse !== assessmentResponse) {
@@ -86,6 +89,23 @@ export class UserDashboardContainer extends PureComponent<any, any> {
 
         if (prevState.page !== page) {
             this.submitFilter(true);
+        }
+
+        if (prevProps.assessmentHistoryResponse !== assessmentHistoryResponse) {
+            let newStatus: any[] = [];
+            for (let stat of assessmentHistoryResponse.status_histories) {
+                if (!newStatus.some(e => e.status === stat.status)) {
+                    newStatus.push(stat);
+                }
+            }
+            this.setState({
+                ...this.state,
+                history: newStatus,
+            })
+        }
+
+        if (prevState.history !== this.state.history) {
+            this.toggleModal();
         }
     }
 
@@ -150,9 +170,14 @@ export class UserDashboardContainer extends PureComponent<any, any> {
         }
     }
 
-    render() {
+    private getHistory(idx: number): void {
         const { assessmentResponse } = this.props;
-        const { showModal, page_component } = this.state;
+        this.props.getHistoryData(assessmentResponse.items[idx].id);
+    }
+
+    render() {
+        const { assessmentResponse, assessmentHistoryResponse } = this.props;
+        const { showModal, page_component, history } = this.state;
         return (
             <UserDashboardComponent
                 assessmentResponse={assessmentResponse}
@@ -163,6 +188,9 @@ export class UserDashboardContainer extends PureComponent<any, any> {
                 page_component={page_component}
                 handleNext={this.handleNext}
                 handlePrev={this.handlePrev}
+                assessmentHistoryResponse={assessmentHistoryResponse}
+                getHistory={this.getHistory}
+                history={history}
             />
         )
     }
@@ -171,12 +199,14 @@ export class UserDashboardContainer extends PureComponent<any, any> {
 const mapStateToProps = (state: any) => {
     return {
         assessmentResponse: assessmentListSelector(state),
+        assessmentHistoryResponse: assessmentHistorySelector(state),
     };
 };
   
 function mapDispatchToProps(dispatch: any) {
     return {
         getAssessmentData: (params: any) => dispatch(getAssessmentList(params)),
+        getHistoryData: (params: any) => dispatch(getAssessmentHistory(params)),
     };
 }
   

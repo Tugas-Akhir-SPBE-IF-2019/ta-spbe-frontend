@@ -1,6 +1,8 @@
 import { lazy } from 'react';
-import { Modal, Row, Col, Image } from 'react-bootstrap';
-import temp_img from "../../assets/temp.png";
+import { Modal, Row, Col } from 'react-bootstrap';
+import { formatTimestamp, checkHistoryTitle, checkHistoryCaption, checkDocumentType, checkDocumentStyle } from '../../utils/helper';
+import Timeline from 'react-bootstrap-timeline/lib/esm/Timeline';
+import Card from 'react-bootstrap-timeline/lib/esm/Card';
 
 const NavBar = lazy(() => import("../../components/NavBar"));
 const Search = lazy(() => import("../../components/General/Search"));
@@ -28,37 +30,63 @@ const UserDashboardComponent = (props: any) => {
                                         </Col>
                                     </Row>
                                     <hr/>
-                                    <Row className="text-start my-3">
-                                        <Col xs={8}>
-                                            <h6><u>Dokumen A</u></h6>
-                                        </Col>
-                                        <Col xs={4}>
-                                            <h6 className="text-green bg-green width-fit px-3 py-2 rounded">Dokumen Baru</h6>
-                                        </Col>
-                                    </Row>
-                                    <hr/>
-                                    <Row className="text-start my-3">
-                                        <Col xs={8}>
-                                            <h6><u>Dokumen A</u></h6>
-                                        </Col>
-                                        <Col xs={4}>
-                                            <h6 className="text-orange bg-orange width-fit px-3 py-2 rounded">Dokumen Lama</h6>
-                                        </Col>
-                                    </Row>
-                                    <hr/>
-                                    <Row className="text-start my-3">
-                                        <Col xs={8}>
-                                            <h6><u>Dokumen A</u></h6>
-                                        </Col>
-                                        <Col xs={4}>
-                                            <h6 className="text-blue bg-blue width-fit px-3 py-2 rounded">Dokumen Pendukung</h6>
-                                        </Col>
-                                    </Row>
-                                    <hr/>
+                                    {props?.assessmentHistoryResponse?.supporting_documents?.length !== 0 && (props?.assessmentHistoryResponse?.supporting_documents?.map((item: any, index: number) => {
+                                        return (
+                                            <>
+                                                <Row className="text-start my-3 align-items-center" key={index}>
+                                                    <Col xs={8}>
+                                                        <a href={item.url} target="_blank" className="text-black">
+                                                            {item.name}
+                                                        </a>
+                                                    </Col>
+                                                    <Col xs={4}>
+                                                        <h6 className={`${checkDocumentStyle(item.type)} width-fit px-3 py-2 rounded`}>{checkDocumentType(item.type)}</h6>
+                                                    </Col>
+                                                </Row>
+                                                <hr/>
+                                            </>
+                                        )
+                                    }))}
                                 </Col>
                                 <Col xs={4} className="custom-shadow">
                                     <h3>Status Penilaian</h3>
-                                    <Image src={temp_img} fluid className="p-3" />
+                                    <Timeline>
+                                        {props?.history?.length !== 0 && (props?.history?.map((item: any, index: number) => {
+                                            return (
+                                                <Card
+                                                    key={index}
+                                                    content={`${checkHistoryCaption(item.status)} ${formatTimestamp(item.finished_date)}`}
+                                                    title={checkHistoryTitle(item.status)}
+                                                    isActive={true}
+                                                    datetime={""}
+                                                />
+                                            )
+                                        }))}
+                                        {props?.history?.length === 1 &&
+                                            <Card
+                                                content={'Dokumen belum selesai dinilai'}
+                                                title={'Penilaian Dokumen'}
+                                                isActive={false}
+                                                datetime={""}
+                                            />
+                                        }
+                                        {props?.history?.length === 1 &&
+                                            <Card
+                                                content={'Dokumen belum diberi validasi'}
+                                                title={'Validasi Dokumen'}
+                                                isActive={false}
+                                                datetime={""}
+                                            />
+                                        }
+                                        {props?.history?.length === 2 &&
+                                            <Card
+                                                content={'Dokumen belum diberi validasi'}
+                                                title={'Validasi Dokumen'}
+                                                isActive={false}
+                                                datetime={""}
+                                            />
+                                        }
+                                    </Timeline>
                                 </Col>
                             </Row>
                         </Modal.Body>
@@ -113,7 +141,7 @@ const UserDashboardComponent = (props: any) => {
                             />
                         </Col>
                     </Row>
-                    <CustomTable isUserTable {...props} toggleModal={props?.toggleModal} />
+                    <CustomTable isUserTable {...props} />
                 </Col>
             </Row>
         </>

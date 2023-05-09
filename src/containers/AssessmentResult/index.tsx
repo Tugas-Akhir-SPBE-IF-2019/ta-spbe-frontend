@@ -68,9 +68,7 @@ export class AssessmentResultContainer extends PureComponent<any, any> {
         const { id } = this.props.match.params;
         const { assessmentResultResponse } = this.props;
         const { link_list, support_doc_name } = this.state;
-        console.log(this.state);
         return (
-            // <p>State</p>
             <AssessmentResultComponent
                 assessmentId={id}
                 assessmentResultResponse={assessmentResultResponse}
