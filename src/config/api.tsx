@@ -14,7 +14,7 @@ const getApiUrl = () => {
 };
 
 export const hitApi = (parameters: any) => {
-    const { method, url, headers, params, data } = parameters;
+    const { method, url, headers, params, data, responseType } = parameters;
     const timeout = setTimeout(() => {
         cancelAxiosRequest();
     }, 30000);
@@ -24,6 +24,7 @@ export const hitApi = (parameters: any) => {
         headers,
         params: params,
         data: data,
+        responseType: responseType,
         cancelToken: CANCEL_TOKEN_SOURCE.token,
     }).then((res) => {
         clearTimeout(timeout);
@@ -69,15 +70,31 @@ export const payloadGenerator = (
             Authorization: `Bearer ${getAuthToken()}`,
         };
     }
-    const payload = {
-        method: method ? method : undefined,
-        url: url ? url : undefined,
-        headers: {
-            ...header,
-        },
-        params,
-        data,
-    };
+    let payload = {};
+    if (url.includes("download")) {
+        payload = {
+            method: method ? method : undefined,
+            url: url ? url : undefined,
+            headers: {
+                ...header,
+            },
+            params,
+            data,
+            responseType: "blob",
+        };
+    }
+    else {
+        payload = {
+            method: method ? method : undefined,
+            url: url ? url : undefined,
+            headers: {
+                ...header,
+            },
+            params,
+            data,
+        };
+    }
+    console.log(payload);
     return payload;
 };
 

@@ -4,6 +4,13 @@ const assessmentResultSelector = (state: any) => {
         : null;
 };
 
+const downloadMessageSelector = (state: any) => {
+    return state?.assessmentResultReducer?.downloadMessage
+        ? state.assessmentResultReducer.downloadMessage
+        : null;
+};
+
 export {
     assessmentResultSelector,
+    downloadMessageSelector,
 };

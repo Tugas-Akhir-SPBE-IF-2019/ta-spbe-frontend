@@ -46,7 +46,7 @@ const AssessmentResultComponent = (props: any) => {
                         <Col className="d-flex align-items-center justify-content-center">
                             <Row>
                                 <Col>
-                                    <PurpleButton text="Unduh Hasil Penilaian" />
+                                    <PurpleButton text="Unduh Hasil Penilaian" onClick={() => props?.handleDownloadFile()} />
                                 </Col>
                             </Row>
                         </Col>
@@ -121,14 +121,6 @@ const AssessmentResultComponent = (props: any) => {
                                                 <h6>Data Dukung</h6>
                                             </Col>
                                             <Col>
-                                                {/* {item.support_document_proof.length !== 0 (item.support_document_proof.map((el: any, idx: number) => {
-                                                    return (
-
-                                                    )
-                                                }))} */}
-                                                {/* {props?.support_doc_name[item.indicator_number]} */}
-                                                {/* {typeof props.support_doc_name[item.indicator_number]}
-                                                {props.support_doc_name[item.indicator_number]} */}
                                                 {names?.length !== 0 && (names?.map((val: string, idx: number) => {
                                                     return (
                                                         <p key={idx}>{val}</p>

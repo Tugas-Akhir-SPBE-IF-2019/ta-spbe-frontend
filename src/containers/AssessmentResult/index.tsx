@@ -1,8 +1,8 @@
 import { lazy, PureComponent } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { assessmentResultSelector } from "./selector";
-import { getAssessmentResult } from "./action";
+import { assessmentResultSelector, downloadMessageSelector } from "./selector";
+import { getAssessmentResult, downloadFile } from "./action";
 
 const AssessmentResultComponent = lazy(() => import("../../components/AssessmentResult"));
 
@@ -21,6 +21,7 @@ export class AssessmentResultContainer extends PureComponent<any, any> {
         this.handleParseHTML = this.handleParseHTML.bind(this);
         this.copyText = this.copyText.bind(this);
         this.createLink = this.createLink.bind(this);
+        this.handleDownloadFile = this.handleDownloadFile.bind(this);
     }
 
     componentDidMount() {
@@ -64,6 +65,11 @@ export class AssessmentResultContainer extends PureComponent<any, any> {
         });
     }
 
+    private handleDownloadFile(): void {
+        const { id } = this.props.match.params;
+        this.props.callDownloadFile(id);
+    }
+
     render() {
         const { id } = this.props.match.params;
         const { assessmentResultResponse } = this.props;
@@ -76,6 +82,7 @@ export class AssessmentResultContainer extends PureComponent<any, any> {
                 copyText={this.copyText}
                 link_list={link_list}
                 support_doc_name={support_doc_name}
+                handleDownloadFile={this.handleDownloadFile}
             />
         )
     }
@@ -84,12 +91,14 @@ export class AssessmentResultContainer extends PureComponent<any, any> {
 const mapStateToProps = (state: any) => {
     return {
         assessmentResultResponse: assessmentResultSelector(state),
+        downloadMessageResponse: downloadMessageSelector(state),
     };
 };
   
 function mapDispatchToProps(dispatch: any) {
     return {
         getAssessmentResultData: (params: any) => dispatch(getAssessmentResult(params)),
+        callDownloadFile: (params: any) => dispatch(downloadFile(params)),
     };
 }
   
