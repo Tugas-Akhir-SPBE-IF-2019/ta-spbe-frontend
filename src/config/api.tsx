@@ -94,7 +94,6 @@ export const payloadGenerator = (
             data,
         };
     }
-    console.log(payload);
     return payload;
 };
 
