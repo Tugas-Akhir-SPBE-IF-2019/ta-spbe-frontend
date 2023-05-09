@@ -22,8 +22,8 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
             dates: "",
             start_date: "",
             end_date: "",
-            index_min: "",
-            index_max: "",
+            index_min: 1,
+            index_max: 4,
             total_pages: 0,
             page_component: [],
         };
@@ -89,15 +89,7 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
     }
 
     private handleInputChange(e: any, type: string): void {
-        if (type === "INDEX") {
-            const { value } = e.target;
-            this.setState({
-                ...this.state,
-                index_min: +value,
-                index_max: +value+1,
-            });
-        }
-        else if (type === "DATE") {
+        if (type === "DATE") {
             const { value } = e.target;
             let dates = value.split(" - ");
             this.setState({
@@ -152,7 +144,7 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
 
     render() {
         const { indexResponse } = this.props;
-        const { page_component } = this.state;
+        const { page_component, index_min, index_max } = this.state;
         return (
             <GuestDashboardComponent
                 indexResponse={indexResponse}
@@ -161,6 +153,8 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
                 page_component={page_component}
                 handleNext={this.handleNext}
                 handlePrev={this.handlePrev}
+                index_min={index_min}
+                index_max={index_max}
             />
         )
     }

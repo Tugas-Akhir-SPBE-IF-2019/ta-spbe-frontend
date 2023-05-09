@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Row, Col, Button } from 'react-bootstrap';
+import { Row, Col, Button, Form } from 'react-bootstrap';
 
 const NavBar = lazy(() => import("../../components/NavBar"));
 const Search = lazy(() => import("../../components/General/Search"));
@@ -22,7 +22,7 @@ const GuestDashboardComponent = (props: any) => {
                         name="institution"
                         onChange={(e) => props?.handleInputChange(e, "INSTITUTION")}
                     />
-                    <Row className="my-5">
+                    <Row className="my-5 align-items-center">
                         <TextDropdown
                             placeholder="Pilih Jumlah Instansi"
                             xs={4}
@@ -30,18 +30,35 @@ const GuestDashboardComponent = (props: any) => {
                             name="limit"
                             onChange={(e) => props?.handleInputChange(e, "LIMIT")}
                         />
-                        <TextDropdown
-                            placeholder="Pilih Indeks"
-                            xs={4}
-                            dict={[
-                                {text: "1-2", value: 1},
-                                {text: "2-3", value: 2},
-                                {text: "3-4", value: 3},
-                                {text: "4-5", value: 4},
-                            ]}
-                            name="index"
-                            onChange={(e) => props?.handleInputChange(e, "INDEX")}
-                        />
+                        <Col className="d-flex flex-column">
+                            <Row className="justify-content-between">
+                                <Col>
+                                    <span>{props?.index_min}</span>
+                                </Col>
+                                <Col className="text-center">
+                                    <span>Pilih Indeks</span>
+                                </Col>
+                                <Col className="text-end">
+                                    <span>{props?.index_max}</span>
+                                </Col>
+                            </Row>
+                            <Form.Range
+                                min="1"
+                                max="4"
+                                step="0.1"
+                                name="index_min"
+                                value={props?.index_min}
+                                onChange={(e: any) => props?.handleInputChange(e, "INDEX")}
+                            />
+                            <Form.Range
+                                min="1"
+                                max="4"
+                                step="0.1"
+                                name="index_max"
+                                value={props?.index_max}
+                                onChange={(e: any) => props?.handleInputChange(e, "INDEX")}
+                            />
+                        </Col>
                         <TextDropdown
                             placeholder="Pilih Tanggal"
                             xs={4}

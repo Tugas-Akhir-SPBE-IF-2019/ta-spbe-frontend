@@ -182,6 +182,23 @@ hr {
     text-align: start;
 }
 
+input[type="range"]::-webkit-slider-thumb {
+    background: var(--purple) !important;
+    box-shadow: none !important;
+}
+
+/* All the same stuff for Firefox */
+input[type="range"]::-moz-range-thumb {
+    background: var(--purple) !important;
+    box-shadow: none !important;
+}
+
+/* All the same stuff for IE */
+input[type="range"]::-ms-thumb {
+    background: var(--purple) !important;
+    box-shadow: none !important;
+}
+
 .circle-fit {
     width: 40px;
 }
