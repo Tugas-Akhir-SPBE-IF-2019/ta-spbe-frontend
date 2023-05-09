@@ -36,15 +36,21 @@ export class EditProfileSPBEContainer extends PureComponent<any, any> {
 
     componentDidMount() {
         this.props.getProfileEvaluationData();
-        this.addField();
     }
 
     componentDidUpdate(prevProps: any) {
-        if (prevProps.evaluationDataResponse !== this.props.evaluationDataResponse) {
-            this.setState({
-                ...this.state,
-                list_items: JSON.parse(JSON.stringify(this.props.evaluationDataResponse)),
-            });
+        const { list_items } = this.state;
+        const { evaluationDataResponse } = this.props;
+        if (prevProps.evaluationDataResponse !== evaluationDataResponse) {
+            if (evaluationDataResponse.length !== 0) {
+                this.setState({
+                    ...this.state,
+                    list_items: JSON.parse(JSON.stringify(evaluationDataResponse)),
+                });
+            }
+            else if (list_items.length === 0) {
+                this.addField();
+            }
         }
         if (prevProps.successMessageResponse !== this.props.successMessageResponse) {
             this.toggleModal();
@@ -126,6 +132,7 @@ export class EditProfileSPBEContainer extends PureComponent<any, any> {
 
     render() {
         const { list_items, showModal } = this.state;
+        console.log(list_items);
         return (
             <EditProfileSPBEComponent
                 list_items={list_items}

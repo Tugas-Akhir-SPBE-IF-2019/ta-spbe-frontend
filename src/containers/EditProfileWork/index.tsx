@@ -35,15 +35,21 @@ export class EditProfileWorkContainer extends PureComponent<any, any> {
 
     componentDidMount() {
         this.props.getProfileJobData();
-        this.addField();
     }
 
     componentDidUpdate(prevProps: any) {
-        if (prevProps.jobDataResponse !== this.props.jobDataResponse) {
-            this.setState({
-                ...this.state,
-                list_items: JSON.parse(JSON.stringify(this.props.jobDataResponse)),
-            });
+        const { list_items } = this.state;
+        const { jobDataResponse } = this.props;
+        if (prevProps.jobDataResponse !== jobDataResponse) {
+            if (jobDataResponse.length !== 0) {
+                this.setState({
+                    ...this.state,
+                    list_items: JSON.parse(JSON.stringify(jobDataResponse)),
+                });
+            }
+            else if (list_items.length === 0) {
+                this.addField();
+            }
         }
         if (prevProps.successMessageResponse !== this.props.successMessageResponse) {
             this.toggleModal();
