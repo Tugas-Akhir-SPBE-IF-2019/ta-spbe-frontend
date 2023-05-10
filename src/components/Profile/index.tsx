@@ -86,7 +86,7 @@ const ProfileComponent = (props: any) => {
                                     <p className="fw-bold">Alamat Rumah</p>
                                 </Col>
                                 <Col>
-                                    <p>{props?.biodataResponse?.house_address}</p>
+                                    <p>{props?.biodataResponse?.address}</p>
                                 </Col>
                             </Row>
                         </Col>

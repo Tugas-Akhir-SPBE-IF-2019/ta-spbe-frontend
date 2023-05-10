@@ -1,7 +1,8 @@
 import { lazy } from 'react';
-import { Row, Col, Image, Form } from 'react-bootstrap';
+import { Row, Col, Image, Form, Modal } from 'react-bootstrap';
 import progress_bar_1 from "../../assets/pb-edit-1.png";
 import edit_img from "../../assets/edit-profpic.png";
+import { Link } from "react-router-dom";
 
 const NavBar = lazy(() => import("../../components/NavBar"));
 const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
@@ -10,6 +11,24 @@ const EditProfileBioComponent = (props: any) => {
     return (
         <>
             <NavBar/>
+            <Modal show={props?.showModal} onHide={props?.toggleModal} centered>
+                <Modal.Body>
+                    <Row className="text-center p-5">
+                        <Col>
+                            <p className="fw-bold">Data diri berhasil diperbaharui!</p>
+                        </Col>
+                    </Row>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Row>
+                        <Col>
+                            <Link to="/profile">
+                                <PurpleButton text="Kembali"/>
+                            </Link>
+                        </Col>
+                    </Row>
+                </Modal.Footer>
+            </Modal>
             <Row className="p-3">
                 <Col>
                     <Row className="justify-content-end">

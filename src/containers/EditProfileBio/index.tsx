@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
     biodataSelector,
-    successMessageaSelector
+    successMessagesSelector
 } from "./selector";
 import {
     getBiodata,
@@ -16,7 +16,7 @@ export class EditProfileBioContainer extends PureComponent<any, any> {
     static propTypes = {
         history: PropTypes.any,
         biodataResponse: PropTypes.any,
-        successMessageaResponse: PropTypes.string,
+        successMessagesResponse: PropTypes.string,
     };
 
     constructor(props: any) {
@@ -28,9 +28,11 @@ export class EditProfileBioContainer extends PureComponent<any, any> {
             linkedin_profile: "",
             address: "",
             profile_picture: "",
+            showModal: false,
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleUpdateBiodata = this.handleUpdateBiodata.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
     }
 
     componentDidMount() {
@@ -39,23 +41,21 @@ export class EditProfileBioContainer extends PureComponent<any, any> {
 
     componentDidUpdate(prevProps: any) {
         if (prevProps.biodataResponse !== this.props.biodataResponse) {
-            console.log("Updated");
             let newBio = {...this.props.biodataResponse};
-            // Temp
             delete newBio.house_address;
-            // Remove unnecessary field
             delete newBio.profile_picture_link;
             this.setState({
                 ...this.state,
                 ...newBio,
             });
         }
+        if (prevProps.successMessagesResponse !== this.props.successMessagesResponse) {
+            this.toggleModal();
+        }
     }
 
     private handleInputChange(e: any): void {
         const { name, value, files } = e.target;
-        console.log(files);
-        console.log(value);
         if (files !== null) {
             this.setState({
                 ...this.state,
@@ -74,11 +74,17 @@ export class EditProfileBioContainer extends PureComponent<any, any> {
         e.preventDefault();
         this.props.updateProfileBiodata(this.state);
     }
+    
+    private toggleModal(): void {
+        this.setState({
+            ...this.state,
+            showModal: !this.state.showModal,
+        });
+    }
 
     render() {
         const { biodataResponse } = this.props;
-        const { email, name, contact_number, linkedin_profile, address, profile_picture } = this.state;
-        console.log(this.state);
+        const { email, name, contact_number, linkedin_profile, address, profile_picture, showModal } = this.state;
         return (
             <EditProfileBioComponent
                 biodataResponse={biodataResponse}
@@ -90,6 +96,8 @@ export class EditProfileBioContainer extends PureComponent<any, any> {
                 profile_picture={profile_picture}
                 handleInputChange={this.handleInputChange}
                 handleUpdateBiodata={this.handleUpdateBiodata}
+                showModal={showModal}
+                toggleModal={this.toggleModal}
             />
         )
     }
@@ -98,7 +106,7 @@ export class EditProfileBioContainer extends PureComponent<any, any> {
 const mapStateToProps = (state: any) => {
     return {
         biodataResponse: biodataSelector(state),
-        successMessageaResponse: successMessageaSelector(state),
+        successMessagesResponse: successMessagesSelector(state),
     };
 };
   

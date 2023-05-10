@@ -4,7 +4,7 @@ const biodataSelector = (state: any) => {
         : null;
 };
 
-const successMessageaSelector = (state: any) => {
+const successMessagesSelector = (state: any) => {
     return state?.editBiodataReducer?.successMessage
         ? state.editBiodataReducer.successMessage
         : "";
@@ -12,5 +12,5 @@ const successMessageaSelector = (state: any) => {
 
 export {
     biodataSelector,
-    successMessageaSelector
+    successMessagesSelector
 };
