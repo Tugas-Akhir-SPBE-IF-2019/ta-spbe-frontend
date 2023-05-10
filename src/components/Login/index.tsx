@@ -16,9 +16,9 @@ const LoginComponent = (props: any) => {
     });
 
     return (
-        <>
+        <div className="h-100 d-flex flex-column">
             <NavBar/>
-            <Row>
+            <Row className="align-items-center flex-grow-1">
                 <Col className="d-flex flex-column text-center justify-content-center align-items-center p-5">
                     <Image src={welcome_img} fluid className="w-50"/>
                     <p className="text-purple">Sistem berbasis kecerdasan buatan kami siap membantu Anda!</p>
@@ -26,14 +26,13 @@ const LoginComponent = (props: any) => {
                 <Col className="d-flex flex-column text-center justify-content-center px-5">
                     <h1 className="text-purple mb-5 fw-bold">Selamat Datang!</h1>
                     <p className="text-purple mb-3">Untuk mulai mengotomatisasi penilaian dokumen Sistem Pemerintahan Berbasis Online, </p>
-                    {/* <PurpleButton text="LOGIN" onClick={() => handleLogin()} /> */}
                     <Button onClick={() => handleLogin()} className="google-sign-in bg-white border-0 shadow-sm text-black p-0 align-items-center d-flex justify-content-center py-2 mx-auto">
                         <Image src={google} className="google-width me-3" />
                         <span className="my-auto">Masuk dengan Google</span>
                     </Button>
                 </Col>
             </Row>
-        </>
+        </div>
     )
 
 }
