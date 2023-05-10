@@ -3,6 +3,8 @@ import { Row, Col, Image, Button } from 'react-bootstrap';
 import default_img from "../../assets/default-profpic.png";
 import progress_bar from "../../assets/progress-bar.png";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen } from '@fortawesome/free-solid-svg-icons';
 
 const NavBar = lazy(() => import("../../components/NavBar"));
 const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
@@ -14,13 +16,6 @@ const ProfileComponent = (props: any) => {
             <NavBar/>
             <Row className="p-5">
                 <Col>
-                    <Row className="justify-content-end">
-                        <Col xs={2}>
-                            <Link to="/edit-profile/biodata">
-                                <PurpleButton text="Edit Profil" />
-                            </Link>
-                        </Col>
-                    </Row>
                     <Row className="text-center my-5">
                         <Col>
                             {props?.biodataResponse?.profile_picture_link
@@ -30,7 +25,6 @@ const ProfileComponent = (props: any) => {
                                 <Image src={default_img} />
                             }
                             <h1 className="text-purple fw-bold my-2">{props?.biodataResponse?.name}</h1>
-                            {/* <p className="text-purple">Tim Eksternal Evaluasi SPBE dan Tenaga Pengajar di ITB</p> */}
                         </Col>
                     </Row>
                     <Row className="text-center">
@@ -41,7 +35,12 @@ const ProfileComponent = (props: any) => {
                     </Row>
                     <Row className="my-5">
                         <Col className="mx-5 custom-border custom-shadow px-5 py-3">
-                            <h5 className="text-purple">Data Diri</h5>
+                            <Link to="/edit-profile/biodata" className="text-decoration-none">
+                                <h5 className="text-purple">
+                                    Data Diri
+                                    <FontAwesomeIcon icon={faPen} size="sm" className="text-purple ms-2" />
+                                </h5>
+                            </Link>
                             <Row className="mt-3">
                                 <Col xs={4} className="p-0">
                                     <p className="fw-bold">Nomor Kontak</p>
@@ -75,11 +74,20 @@ const ProfileComponent = (props: any) => {
                                 </Col>
                             </Row>
                         </Col>
-                        <Col className="mx-5 custom-border custom-shadow px-5 py-3 height-fit">
-                            <h5 className="text-purple">Data Evaluasi SPBE</h5>
+                        <Col className="mx-5 custom-border custom-shadow px-5 py-3">
+                            <Link to="/edit-profile/evaluation" className="text-decoration-none">
+                                <h5 className="text-purple">
+                                    Data Evaluasi SPBE
+                                    <FontAwesomeIcon icon={faPen} size="sm" className="text-purple ms-2" />
+                                </h5>
+                            </Link>
                             {evaluationDataResponse.length === 0
                             ?
-                                <p className="text-center my-5">Belum ada data evaluasi SPBE</p>
+                                <Row className="align-items-center h-100">
+                                    <Col>
+                                        <p className="text-center my-5">Belum ada data evaluasi SPBE</p>
+                                    </Col>
+                                </Row>
                             :
                                 <>
                                     {props?.showAllEvaluation
@@ -163,10 +171,19 @@ const ProfileComponent = (props: any) => {
                     </Row>
                     <Row>
                         <Col className="mx-5 custom-border custom-shadow px-5 py-3">
-                            <h5 className="text-purple">Data Kerja</h5>
+                            <Link to="/edit-profile/occupation" className="text-decoration-none">
+                                <h5 className="text-purple">
+                                    Data Kerja
+                                    <FontAwesomeIcon icon={faPen} size="sm" className="text-purple ms-2" />
+                                </h5>
+                            </Link>
                             {jobDataResponse.length === 0
                             ?
-                                <p className="text-center my-5">Belum ada data pekerjaan</p>
+                                <Row className="align-items-center h-100">
+                                    <Col>
+                                        <p className="text-center my-5">Belum ada data pekerjaan</p>
+                                    </Col>
+                                </Row>
                             :
                                 <>
                                     {props?.showAllJob
@@ -251,7 +268,11 @@ const ProfileComponent = (props: any) => {
                             <h5 className="text-purple">Data Institusi</h5>
                             {institutionDataResponse.length === 0
                             ?
-                                <p className="text-center my-5">Belum ada data institusi</p>
+                                <Row className="align-items-center h-100">
+                                    <Col>
+                                        <p className="text-center my-5">Belum ada data institusi</p>
+                                    </Col>
+                                </Row>
                             :
                                 <>
                                     {props?.showAllInstitution
