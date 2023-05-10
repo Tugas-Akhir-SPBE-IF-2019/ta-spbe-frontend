@@ -33,6 +33,19 @@ const TextDropdown = (props: any) => {
                         }))}
                     </Form.Select>
                 }
+                {props?.items &&
+                    <Form.Select className="custom-border shadow-none text-purple py-3 px-2"
+                        name={props?.name}
+                        onChange={props?.onChange}
+                    >
+                        <option value="" className="text-muted">{props?.placeholder}</option>
+                        {props?.items?.length !== 0 && (props.items.map((item: any, index: number) => {
+                            return (
+                                <option value={item.id} key={index}>{item.institution_name}</option>
+                            )
+                        }))}
+                    </Form.Select>
+                }
                 {props?.text &&
                     <InputGroup className="custom-border">
                         <Form.Control

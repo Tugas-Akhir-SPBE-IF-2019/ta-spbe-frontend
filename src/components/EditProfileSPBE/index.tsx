@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const NavBar = lazy(() => import("../../components/NavBar"));
 const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
+const TextDropdown = lazy(() => import("../../components/General/TextDropdown"));
 
 const EditProfileSPBEComponent = (props: any) => {
     return (
@@ -55,7 +56,13 @@ const EditProfileSPBEComponent = (props: any) => {
                                             </Form.Group>
                                             <Form.Group className="my-4">
                                                 <Form.Label className="text-purple mb-2">Instansi SPBE</Form.Label>
-                                                <Form.Control type="text" value={item.institution_id} onChange={(e: any) => props?.handleInputChange(e, index)} name="institution_id" placeholder="Tuliskan Instansi SPBE" className="py-3 custom-border shadow-none" />
+                                                <TextDropdown
+                                                    placeholder="Pilih Instansi SPBE"
+                                                    xs={12}
+                                                    items={props?.institutionListResponse}
+                                                    name="institution_id"
+                                                    onChange={(e) => props?.handleInputChange(e, index)}
+                                                />
                                             </Form.Group>
                                             <Form.Group className="my-4">
                                                 <Form.Label className="text-purple mb-2">Tahun Evaluasi</Form.Label>

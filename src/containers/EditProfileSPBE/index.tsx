@@ -2,10 +2,12 @@ import { lazy, PureComponent } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
+    institutionListSelector,
     evaluationDataSelector,
     successMessageSelector
 } from "./selector";
 import {
+    getInstitutionList,
     getEvaluationData,
     updateEvaluationData
 } from "./action";
@@ -16,6 +18,7 @@ const EditProfileSPBEComponent = lazy(() => import("../../components/EditProfile
 export class EditProfileSPBEContainer extends PureComponent<any, any> {
     static propTypes = {
         history: PropTypes.any,
+        institutionListResponse: PropTypes.any,
         evaluationDataResponse: PropTypes.any,
         successMessageResponse: PropTypes.string,
     };
@@ -36,6 +39,7 @@ export class EditProfileSPBEContainer extends PureComponent<any, any> {
 
     componentDidMount() {
         this.props.getProfileEvaluationData();
+        this.props.getInstitutionListData({limit: 1000});
     }
 
     componentDidUpdate(prevProps: any) {
@@ -132,7 +136,7 @@ export class EditProfileSPBEContainer extends PureComponent<any, any> {
 
     render() {
         const { list_items, showModal } = this.state;
-        console.log(list_items);
+        const { institutionListResponse } = this.props;
         return (
             <EditProfileSPBEComponent
                 list_items={list_items}
@@ -142,6 +146,7 @@ export class EditProfileSPBEContainer extends PureComponent<any, any> {
                 handleUpdateEvaluationData={this.handleUpdateEvaluationData}
                 showModal={showModal}
                 toggleModal={this.toggleModal}
+                institutionListResponse={institutionListResponse}
             />
         )
     }
@@ -149,6 +154,7 @@ export class EditProfileSPBEContainer extends PureComponent<any, any> {
 
 const mapStateToProps = (state: any) => {
     return {
+        institutionListResponse: institutionListSelector(state),
         evaluationDataResponse: evaluationDataSelector(state),
         successMessageResponse: successMessageSelector(state),
     };
@@ -156,6 +162,7 @@ const mapStateToProps = (state: any) => {
   
 function mapDispatchToProps(dispatch: any) {
     return {
+        getInstitutionListData: (params: any) => dispatch(getInstitutionList(params)),
         getProfileEvaluationData: () => dispatch(getEvaluationData()),
         updateProfileEvaluationData: (params: any) => dispatch(updateEvaluationData(params)),
     };

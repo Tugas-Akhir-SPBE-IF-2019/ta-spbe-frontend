@@ -1,3 +1,7 @@
+export const GET_INSTITUTION_LIST =
+    "TugasAkhirSPBE/App/GET_INSTITUTION_LIST";
+export const SET_INSTITUTION_LIST =
+    "TugasAkhirSPBE/App/SET_INSTITUTION_LIST";
 export const GET_EVALUATION_DATA =
     "TugasAkhirSPBE/App/GET_EVALUATION_DATA";
 export const SET_EVALUATION_DATA =

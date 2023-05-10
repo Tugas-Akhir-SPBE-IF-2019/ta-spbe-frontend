@@ -106,3 +106,4 @@ export const BIODATA_URL = `${PROFILE_URL}/profile`;
 export const EVALUATION_DATA_URL = `${PROFILE_URL}/evaluation`;
 export const JOB_DATA_URL = `${PROFILE_URL}/job`;
 export const INSTITUTION_DATA_URL = `${PROFILE_URL}/institution`;
+export const INSTITUTION_LIST_URL = `${getApiUrl()}/institutions`;

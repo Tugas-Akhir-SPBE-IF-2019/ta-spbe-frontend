@@ -10,7 +10,14 @@ const successMessageSelector = (state: any) => {
         : "";
 };
 
+const institutionListSelector = (state: any) => {
+    return state?.editEvaluationDataReducer?.institutionList
+        ? state.editEvaluationDataReducer.institutionList
+        : [];
+};
+
 export {
     evaluationDataSelector,
-    successMessageSelector
+    successMessageSelector,
+    institutionListSelector
 };

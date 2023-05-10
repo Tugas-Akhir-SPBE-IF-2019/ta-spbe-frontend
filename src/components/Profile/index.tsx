@@ -102,7 +102,7 @@ const ProfileComponent = (props: any) => {
                                                                 <p className="fw-bold">Instansi SPBE</p>
                                                             </Col>
                                                             <Col>
-                                                                <p>{item.institution_id}</p>
+                                                                <p>{item.institution_name}</p>
                                                             </Col>
                                                         </Row>
                                                         <Row className="mt-3">
@@ -132,7 +132,7 @@ const ProfileComponent = (props: any) => {
                                                     <p className="fw-bold">Instansi SPBE</p>
                                                 </Col>
                                                 <Col>
-                                                    <p>{evaluationDataResponse[0].institution_id}</p>
+                                                    <p>{evaluationDataResponse[0].institution_name}</p>
                                                 </Col>
                                             </Row>
                                             <Row className="mt-3">
