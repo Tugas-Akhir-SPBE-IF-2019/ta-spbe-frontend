@@ -2,7 +2,8 @@ import {
     SET_BIODATA,
     SET_EVALUATION_DATA,
     SET_JOB_DATA,
-    SET_INSTITUTION_DATA
+    SET_INSTITUTION_DATA,
+    SUCCESS_DELETE_INSTITUTION_ENTRY
 } from "./constant";
 
 const initialState = {
@@ -10,6 +11,7 @@ const initialState = {
     evaluationData: [],
     jobData: [],
     institutionData: [],
+    deleteMessage: "",
 };
 
 const profileReducer = (state = initialState, action: any) => {
@@ -33,6 +35,12 @@ const profileReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 institutionData: action.params,
+                deleteMessage: "",
+            };
+        case SUCCESS_DELETE_INSTITUTION_ENTRY:
+            return {
+                ...state,
+                deleteMessage: action.params,
             };
         default:
             return state;

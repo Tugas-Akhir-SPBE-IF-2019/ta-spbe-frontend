@@ -5,13 +5,15 @@ import {
     biodataSelector,
     evaluationDataSelector,
     jobDataSelector,
-    institutionDataSelector
+    institutionDataSelector,
+    deleteMessageSelector
 } from "./selector";
 import {
     getBiodata,
     getEvaluationData,
     getJobData,
-    getInstitutionData
+    getInstitutionData,
+    deleteInstitutionEntry
 } from "./action";
 
 const ProfileComponent = lazy(() => import("../../components/Profile"));
@@ -23,6 +25,7 @@ export class ProfileContainer extends PureComponent<any, any> {
         evaluationDataResponse: PropTypes.array,
         jobDataResponse: PropTypes.array,
         institutionDataResponse: PropTypes.array,
+        deleteMessageResponse: PropTypes.string,
     };
 
     constructor(props: any) {
@@ -31,15 +34,38 @@ export class ProfileContainer extends PureComponent<any, any> {
             showAllEvaluation: false,
             showAllJob: false,
             showAllInstitution: false,
+            showModal: false,
         });
         this.handleShow = this.handleShow.bind(this);
+        this.handleDeleteInstitution = this.handleDeleteInstitution.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
     }
 
     componentDidMount() {
-        this.props.getProfileBiodata();
-        this.props.getProfileEvaluationData();
-        this.props.getProfileJobData();
-        this.props.getProfileInstitutionData();
+        const { biodataResponse, evaluationDataResponse, jobDataResponse, institutionDataResponse } = this.props;
+        if (!biodataResponse) {
+            this.props.getProfileBiodata();
+        }
+        if (evaluationDataResponse.length === 0) {
+            this.props.getProfileEvaluationData();
+        }
+        if (jobDataResponse.length === 0) {
+            this.props.getProfileJobData();
+        }
+        if (institutionDataResponse.length === 0) {
+            this.props.getProfileInstitutionData();
+        }
+    }
+
+    componentDidUpdate(prevProps: any, prevState: any) {
+        const { deleteMessageResponse, institutionDataResponse } = this.props;
+        const { showModal } = this.state;
+        if (prevProps.deleteMessageResponse !== deleteMessageResponse && deleteMessageResponse) {
+            this.toggleModal();
+        }
+        if (prevState.showModal !== showModal && prevState.showModal) {
+            this.props.getProfileInstitutionData();
+        }
     }
 
     private handleShow(e: any): void {
@@ -50,9 +76,20 @@ export class ProfileContainer extends PureComponent<any, any> {
         });
     }
 
+    private handleDeleteInstitution(id: string): void {
+        this.props.deleteInstitutionEntryData(id);
+    }
+
+    private toggleModal(): void {
+        this.setState({
+            ...this.state,
+            showModal: !this.state.showModal,
+        });
+    }
+
     render() {
         const { biodataResponse, evaluationDataResponse, jobDataResponse, institutionDataResponse } = this.props;
-        const { showAllEvaluation, showAllJob, showAllInstitution } = this.state;
+        const { showAllEvaluation, showAllJob, showAllInstitution, showModal } = this.state;
         return (
             <ProfileComponent
                 biodataResponse={biodataResponse}
@@ -63,6 +100,9 @@ export class ProfileContainer extends PureComponent<any, any> {
                 showAllEvaluation={showAllEvaluation}
                 showAllJob={showAllJob}
                 showAllInstitution={showAllInstitution}
+                handleDeleteInstitution={this.handleDeleteInstitution}
+                showModal={showModal}
+                toggleModal={this.toggleModal}
             />
         )
     }
@@ -74,6 +114,7 @@ const mapStateToProps = (state: any) => {
         evaluationDataResponse: evaluationDataSelector(state),
         jobDataResponse: jobDataSelector(state),
         institutionDataResponse: institutionDataSelector(state),
+        deleteMessageResponse: deleteMessageSelector(state),
     };
 };
   
@@ -83,6 +124,7 @@ function mapDispatchToProps(dispatch: any) {
         getProfileEvaluationData: () => dispatch(getEvaluationData()),
         getProfileJobData: () => dispatch(getJobData()),
         getProfileInstitutionData: () => dispatch(getInstitutionData()),
+        deleteInstitutionEntryData: (params: any) => dispatch(deleteInstitutionEntry(params)),
     };
 }
   

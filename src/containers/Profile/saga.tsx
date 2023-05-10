@@ -3,13 +3,15 @@ import {
     setBiodata,
     setEvaluationData,
     setJobData,
-    setInstitutionData
+    setInstitutionData,
+    successDeleteInstitutionEntry
 } from "./action";
 import {
     GET_BIODATA,
     GET_EVALUATION_DATA,
     GET_JOB_DATA,
-    GET_INSTITUTION_DATA
+    GET_INSTITUTION_DATA,
+    DELETE_INSTITUTION_ENTRY
 } from "./constant";
 import { callApi } from "../Layout/saga";
 import {
@@ -75,9 +77,25 @@ export function* handleGetInstitutionData(action: any): any {
     yield put(setInstitutionData(res.items));
 }
 
+export function* handleDeleteInstitutionEntry(action: any): any {
+    const { params } = action;
+    let res = yield call(
+        callApi,
+        "DELETE",
+        `${INSTITUTION_DATA_URL}/${params}`,
+        null,
+        null,
+        true,
+        true,
+        true
+    );
+    yield put(successDeleteInstitutionEntry(res.message));
+}
+
 export function* watchProfileSaga() {
     yield takeLatest(GET_BIODATA, handleGetBiodata);
     yield takeLatest(GET_EVALUATION_DATA, handleGetEvaluationData);
     yield takeLatest(GET_JOB_DATA, handleGetJobData);
     yield takeLatest(GET_INSTITUTION_DATA, handleGetInstitutionData);
+    yield takeLatest(DELETE_INSTITUTION_ENTRY, handleDeleteInstitutionEntry);
 }

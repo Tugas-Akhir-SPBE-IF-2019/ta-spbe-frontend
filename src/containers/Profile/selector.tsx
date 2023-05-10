@@ -22,9 +22,16 @@ const institutionDataSelector = (state: any) => {
         : [];
 };
 
+const deleteMessageSelector = (state: any) => {
+    return state?.profileReducer?.deleteMessage
+        ? state.profileReducer.deleteMessage
+        : "";
+};
+
 export {
     biodataSelector,
     evaluationDataSelector,
     jobDataSelector,
-    institutionDataSelector
+    institutionDataSelector,
+    deleteMessageSelector
 };

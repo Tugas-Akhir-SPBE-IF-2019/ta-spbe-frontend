@@ -7,6 +7,8 @@ import {
     SET_JOB_DATA,
     GET_INSTITUTION_DATA,
     SET_INSTITUTION_DATA,
+    DELETE_INSTITUTION_ENTRY,
+    SUCCESS_DELETE_INSTITUTION_ENTRY,
 } from "./constant";
 
 export function getBiodata() {
@@ -57,6 +59,20 @@ export function getInstitutionData() {
 export function setInstitutionData(params: any) {
     return {
         type: SET_INSTITUTION_DATA,
+        params,
+    };
+}
+
+export function deleteInstitutionEntry(params: any) {
+    return {
+        type: DELETE_INSTITUTION_ENTRY,
+        params,
+    };
+}
+
+export function successDeleteInstitutionEntry(params: any) {
+    return {
+        type: SUCCESS_DELETE_INSTITUTION_ENTRY,
         params,
     };
 }

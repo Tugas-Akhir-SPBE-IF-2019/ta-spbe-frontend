@@ -1,10 +1,10 @@
 import { lazy } from 'react';
-import { Row, Col, Image, Button } from 'react-bootstrap';
+import { Row, Col, Image, Button, Modal } from 'react-bootstrap';
 import default_img from "../../assets/default-profpic.png";
 import progress_bar from "../../assets/progress-bar.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const NavBar = lazy(() => import("../../components/NavBar"));
 const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
@@ -14,6 +14,22 @@ const ProfileComponent = (props: any) => {
     return (
         <>
             <NavBar/>
+            <Modal show={props?.showModal} onHide={props?.toggleModal} centered>
+                <Modal.Body>
+                    <Row className="text-center p-5">
+                        <Col>
+                            <p className="fw-bold">Data institusi berhasil dihapus!</p>
+                        </Col>
+                    </Row>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Row>
+                        <Col>
+                            <PurpleButton text="Kembali" onClick={() => props?.toggleModal()} />
+                        </Col>
+                    </Row>
+                </Modal.Footer>
+            </Modal>
             <Row className="p-5">
                 <Col>
                     <Row className="text-center my-5">
@@ -290,12 +306,15 @@ const ProfileComponent = (props: any) => {
                                                                 <p>{item.role}</p>
                                                             </Col>
                                                         </Row>
-                                                        <Row className="mt-3">
+                                                        <Row className="mt-3 align-items-center">
                                                             <Col xs={4} className="p-0">
                                                                 <p className="fw-bold">Nama Institusi</p>
                                                             </Col>
                                                             <Col>
                                                                 <p>{item.institution_name}</p>
+                                                            </Col>
+                                                            <Col className="text-end">
+                                                                <FontAwesomeIcon icon={faTrash} size="2x" className="text-purple pointer" onClick={() => props?.handleDeleteInstitution(item.id)} />
                                                             </Col>
                                                         </Row>
                                                         <Row className="mt-3">
@@ -332,12 +351,15 @@ const ProfileComponent = (props: any) => {
                                                     <p>{institutionDataResponse[0].role}</p>
                                                 </Col>
                                             </Row>
-                                            <Row className="mt-3">
+                                            <Row className="mt-3 align-items-center">
                                                 <Col xs={4} className="p-0">
                                                     <p className="fw-bold">Nama Institusi</p>
                                                 </Col>
                                                 <Col>
                                                     <p>{institutionDataResponse[0].institution_name}</p>
+                                                </Col>
+                                                <Col className="text-end">
+                                                    <FontAwesomeIcon icon={faTrash} size="2x" className="text-purple pointer" onClick={() => props?.handleDeleteInstitution(institutionDataResponse[0].id)} />
                                                 </Col>
                                             </Row>
                                             <Row className="mt-3">
