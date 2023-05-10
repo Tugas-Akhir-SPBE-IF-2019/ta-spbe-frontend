@@ -4,6 +4,13 @@ const uploadMessageSelector = (state: any) => {
         : "";
 };
 
+const institutionDataSelector = (state: any) => {
+    return state?.uploadDocumentsReducer?.institutionData
+        ? state.uploadDocumentsReducer.institutionData
+        : [];
+};
+
 export {
     uploadMessageSelector,
+    institutionDataSelector,
 };

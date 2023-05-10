@@ -1,9 +1,8 @@
 import { lazy, PureComponent } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { uploadMessageSelector } from "./selector";
-import { uploadDocuments } from "./action";
-import { INSTITUTION_LIST } from "../../config/constant";
+import { uploadMessageSelector, institutionDataSelector } from "./selector";
+import { uploadDocuments, getInstitutionData } from "./action";
 import { showToast } from "../../utils/general";
 
 const UploadDocumentsComponent = lazy(() => import("../../components/UploadDocuments"));
@@ -12,6 +11,7 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
     static propTypes = {
         history: PropTypes.any,
         uploadMessageResponse: PropTypes.string,
+        institutionDataResponse: PropTypes.array,
     };
 
     constructor(props: any) {
@@ -27,7 +27,6 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleUploadDocuments = this.handleUploadDocuments.bind(this);
-        this.setInsitutionList = this.setInsitutionList.bind(this);
         this.isChecked = this.isChecked.bind(this);
         this.deleteFile = this.deleteFile.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
@@ -35,27 +34,21 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
     }
 
     componentDidMount() {
-        this.setInsitutionList();
+        this.props.getProfileInstitutionData();
     }
 
     componentDidUpdate(prevProps: any) {
-        if (prevProps.uploadMessageResponse !== this.props.uploadMessageResponse) {
+        const { uploadMessageResponse, institutionDataResponse } = this.props;
+        if (prevProps.uploadMessageResponse !== uploadMessageResponse) {
             this.toggleModal();
         }
-    }
-
-    private setInsitutionList(): void {
-        let cluster = Object.keys(INSTITUTION_LIST);
-        let valueList = [];
-
-        for (let idx in cluster) {
-            valueList = valueList.concat(INSTITUTION_LIST[cluster[idx]]);
+        if (prevProps.institutionDataResponse !== institutionDataResponse) {
+            let newOptions = institutionDataResponse.filter(item => item.status === "VALID");
+            this.setState({
+                ...this.state,
+                institution_options: newOptions,
+            });
         }
-
-        this.setState({
-            ...this.state,
-            institution_options: valueList,
-        })
     }
 
     private handleInputChange(e: any, type: string): void {
@@ -169,11 +162,12 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
     }
 
     render() {
-        const { uploadMessageResponse } = this.props;
+        const { uploadMessageResponse, institutionDataResponse } = this.props;
         const { institution_options, old_document, supporting_document, meeting_minutes, showModal } = this.state;
         return (
             <UploadDocumentsComponent
                 uploadMessageResponse={uploadMessageResponse}
+                institutionDataResponse={institutionDataResponse}
                 handleInputChange={this.handleInputChange}
                 handleUploadDocuments={this.handleUploadDocuments}
                 institution_options={institution_options}
@@ -192,12 +186,14 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
 const mapStateToProps = (state: any) => {
     return {
         uploadMessageResponse: uploadMessageSelector(state),
+        institutionDataResponse: institutionDataSelector(state),
     };
 };
   
 function mapDispatchToProps(dispatch: any) {
     return {
         uploadDocumentsData: (params: any) => dispatch(uploadDocuments(params)),
+        getProfileInstitutionData: () => dispatch(getInstitutionData()),
     };
 }
   

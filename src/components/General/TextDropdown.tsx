@@ -13,9 +13,9 @@ const TextDropdown = (props: any) => {
                         onChange={props?.onChange}
                     >
                         <option value="">Silakan pilih nama institusi</option>
-                        {props?.options?.length !== 0 && (props.options.map((item: string, index: number) => {
+                        {props?.options?.length !== 0 && (props.options.map((item: any, index: number) => {
                             return (
-                                <option value={item} key={index}>{item}</option>
+                                <option value={item.institution_name} key={index}>{item.institution_name}</option>
                             )
                         }))}
                     </Form.Select>

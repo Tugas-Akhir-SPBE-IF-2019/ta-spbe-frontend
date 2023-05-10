@@ -1,7 +1,8 @@
-import { SUCCESS_UPLOAD_DOCUMENTS } from "./constant";
+import { SUCCESS_UPLOAD_DOCUMENTS, SET_INSTITUTION_DATA } from "./constant";
 
 const initialState = {
     uploadMessage: "",
+    institutionData: [],
 };
 
 const uploadDocumentsReducer = (state = initialState, action: any) => {
@@ -10,6 +11,11 @@ const uploadDocumentsReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 uploadMessage: action.params,
+            };
+        case SET_INSTITUTION_DATA:
+            return {
+                ...state,
+                institutionData: action.params,
             };
         default:
             return state;

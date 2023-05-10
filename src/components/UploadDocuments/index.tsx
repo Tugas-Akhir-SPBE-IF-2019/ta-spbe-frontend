@@ -41,7 +41,7 @@ const UploadDocumentsComponent = (props: any) => {
                         <TextDropdown
                             placeholder="Pilih Nama Institusi"
                             xs={12}
-                            options={props?.institution_options}
+                            options={props?.institutionDataResponse}
                             name="institution_name"
                             onChange={(e) => props?.handleInputChange(e, "SELECT")}
                         />
