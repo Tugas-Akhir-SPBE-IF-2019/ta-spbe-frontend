@@ -12,7 +12,7 @@ const EditProfileWorkComponent = (props: any) => {
     return (
         <>
             <NavBar/>
-            <Modal show={props?.showModal} onHide={props?.toggleModal}>
+            <Modal show={props?.showModal} onHide={props?.toggleModal} centered>
                 <Modal.Body>
                     <Row className="text-center p-5">
                         <Col>
