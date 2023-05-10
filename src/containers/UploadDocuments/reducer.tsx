@@ -16,6 +16,7 @@ const uploadDocumentsReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 institutionData: action.params,
+                uploadMessage: "",
             };
         default:
             return state;

@@ -39,7 +39,7 @@ export class UploadDocumentsContainer extends PureComponent<any, any> {
 
     componentDidUpdate(prevProps: any) {
         const { uploadMessageResponse, institutionDataResponse } = this.props;
-        if (prevProps.uploadMessageResponse !== uploadMessageResponse) {
+        if (prevProps.uploadMessageResponse !== uploadMessageResponse && uploadMessageResponse) {
             this.toggleModal();
         }
         if (prevProps.institutionDataResponse !== institutionDataResponse) {
