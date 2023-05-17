@@ -24,7 +24,7 @@ export const hitApi = (parameters: any) => {
         headers,
         params: params,
         data: data,
-        responseType: responseType,
+        responseType: responseType ?? null,
         cancelToken: CANCEL_TOKEN_SOURCE.token,
     }).then((res) => {
         clearTimeout(timeout);
