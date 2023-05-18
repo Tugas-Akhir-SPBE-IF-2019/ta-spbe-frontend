@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktugas_akhir_spbe=self.webpackChunktugas_akhir_spbe||[]).push([[748],{748:function(e,t,s){s.r(t);var l=s(184);t.default=function(e){return(0,l.jsx)("div",{className:"bg-light-purple width-label text-center me-3",children:(0,l.jsx)("h6",{className:"text-purple p-2",children:null===e||void 0===e?void 0:e.text})})}}}]);
+//# sourceMappingURL=748.e6b14c53.chunk.js.map

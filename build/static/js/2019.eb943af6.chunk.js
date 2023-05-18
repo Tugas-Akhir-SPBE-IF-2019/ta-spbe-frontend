@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktugas_akhir_spbe=self.webpackChunktugas_akhir_spbe||[]).push([[2019],{2019:function(e,i,l){l.r(i);var u=l(3360),n=l(184);i.default=function(e){return(0,n.jsx)(u.Z,{className:"bg-purple text-white rounded-pill p-3 border-0 w-100",onClick:null===e||void 0===e?void 0:e.onClick,children:null===e||void 0===e?void 0:e.text})}}}]);
+//# sourceMappingURL=2019.eb943af6.chunk.js.map
