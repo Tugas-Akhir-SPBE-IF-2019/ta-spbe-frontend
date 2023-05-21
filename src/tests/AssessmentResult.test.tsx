@@ -103,4 +103,19 @@ describe("Assessment Result", () => {
         }));
         expect(handleDownloadFile).toHaveBeenCalledTimes(1);
     });
+
+    it("redirect to validate page on button click", () => {
+        const assessmentId = "someId"
+        render(
+            <BrowserRouter>
+                <Switch>
+                    <AssessmentResultComponent assessmentId={assessmentId} assessmentResultResponse={assessmentResultResponse} support_doc_name={support_doc_name} />
+                </Switch>
+            </BrowserRouter>
+        );
+        const redirect = screen.getByRole("link", {
+            name: /validasi hasil/i
+        });
+        expect(redirect.getAttribute("href")).toBe(`/validate/${assessmentId}`);
+    });
 });

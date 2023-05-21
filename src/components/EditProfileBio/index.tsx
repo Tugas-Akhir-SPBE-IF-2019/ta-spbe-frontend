@@ -4,8 +4,11 @@ import progress_bar_1 from "../../assets/pb-edit-1.png";
 import edit_img from "../../assets/edit-profpic.png";
 import { Link } from "react-router-dom";
 
-const NavBar = lazy(() => import("../../components/NavBar"));
-const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
+// const NavBar = lazy(() => import("../../components/NavBar"));
+// const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
+
+import NavBar from '../NavBar';
+import PurpleButton from '../General/PurpleButton';
 
 const EditProfileBioComponent = (props: any) => {
     return (
