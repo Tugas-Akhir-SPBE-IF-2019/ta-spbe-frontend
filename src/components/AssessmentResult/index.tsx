@@ -6,12 +6,19 @@ import { faCircleInfo, faClone } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
 import { formatDate } from '../../utils/helper';
 
-const NavBar = lazy(() => import("../../components/NavBar"));
-const BlockLabel = lazy(() => import("../../components/General/BlockLabel"));
-const StatusLabel = lazy(() => import("../../components/General/StatusLabel"));
-const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
-const CustomLink = lazy(() => import("../../components/General/CustomLink"));
-const CircledNumber = lazy(() => import("../../components/General/CircledNumber"));
+// const NavBar = lazy(() => import("../../components/NavBar"));
+// const BlockLabel = lazy(() => import("../../components/General/BlockLabel"));
+// const StatusLabel = lazy(() => import("../../components/General/StatusLabel"));
+// const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
+// const CustomLink = lazy(() => import("../../components/General/CustomLink"));
+// const CircledNumber = lazy(() => import("../../components/General/CircledNumber"));
+
+import NavBar from '../NavBar';
+import BlockLabel from '../General/BlockLabel';
+import StatusLabel from '../General/StatusLabel';
+import PurpleButton from '../General/PurpleButton';
+import CustomLink from '../General/CustomLink';
+import CircledNumber from '../General/CircledNumber';
 
 const AssessmentResultComponent = (props: any) => {
     return (
@@ -162,7 +169,7 @@ const AssessmentResultComponent = (props: any) => {
                                                 <Carousel variant="dark" slide={false}>
                                                     {item.support_document_proof?.length !== 0 && (item.support_document_proof.map((photo: any, idx: number) => {
                                                         return (
-                                                            <Carousel.Item className="border rounded text-center">
+                                                            <Carousel.Item className="border rounded text-center" key={idx}>
                                                                 <a href={photo.proof_page_document_url} target='_blank' className="text-decoration-none">
                                                                     <p className="text-muted pt-5">{photo.name}</p>
                                                                     <Image src={photo.proof_image_url} />

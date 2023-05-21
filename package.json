@@ -39,7 +39,7 @@
     "build": "env-cmd -f .env.production react-scripts build",
     "start:dev": "env-cmd -f .env.development react-scripts start",
     "build:dev": "env-cmd -f .env.development react-scripts build",
-    "test": "jest",
+    "test": "jest --silent --verbose",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
