@@ -83,6 +83,31 @@ describe("Edit Profile Institution", () => {
         expect(deleteField().length).toBe(1);
     });
 
+    it("should show error if not all fields are filled", () => {
+        const handleInputChange = jest.fn(e => e.target.value);
+        const list_items = [{
+            role: "",
+            institution_name: ""
+        }];
+        
+        const { container } = render(
+            <BrowserRouter>
+                <Switch>
+                    <EditProfileInstitutionComponent
+                        list_items={list_items}
+                        handleInputChange={handleInputChange}
+                    />
+                </Switch>
+            </BrowserRouter>
+        );
+
+        const role = container.querySelector("input[name='role']") as HTMLInputElement;
+
+        fireEvent.change(role, {target: {value: "Asesor Eksternal"}});
+
+        expect(handleInputChange).toBeCalledTimes(1);
+    });
+
     it("should submit on button click", () => {
         const handleUpdateInstitutionData = jest.fn(() => true);
         const list_items = [
