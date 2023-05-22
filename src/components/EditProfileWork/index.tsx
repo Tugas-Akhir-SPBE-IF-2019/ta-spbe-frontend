@@ -5,8 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
 
-const NavBar = lazy(() => import("../../components/NavBar"));
-const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
+// const NavBar = lazy(() => import("../../components/NavBar"));
+// const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
+
+import NavBar from '../NavBar';
+import PurpleButton from '../General/PurpleButton';
 
 const EditProfileWorkComponent = (props: any) => {
     return (
