@@ -41,7 +41,7 @@ const TextDropdown = (props: any) => {
                         <option value="" className="text-muted">{props?.placeholder}</option>
                         {props?.items?.length !== 0 && (props.items.map((item: any, index: number) => {
                             return (
-                                <option value={item.id} key={index}>{item.institution_name}</option>
+                                <option value={item.id} key={index} selected={item.id === props?.value}>{item.institution_name}</option>
                             )
                         }))}
                     </Form.Select>

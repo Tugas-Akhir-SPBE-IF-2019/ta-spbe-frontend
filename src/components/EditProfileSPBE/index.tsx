@@ -5,9 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
 
-const NavBar = lazy(() => import("../../components/NavBar"));
-const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
-const TextDropdown = lazy(() => import("../../components/General/TextDropdown"));
+// const NavBar = lazy(() => import("../../components/NavBar"));
+// const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
+// const TextDropdown = lazy(() => import("../../components/General/TextDropdown"));
+
+import NavBar from '../NavBar';
+import PurpleButton from '../General/PurpleButton';
+import TextDropdown from '../General/TextDropdown';
 
 const EditProfileSPBEComponent = (props: any) => {
     return (
@@ -62,6 +66,7 @@ const EditProfileSPBEComponent = (props: any) => {
                                                     items={props?.institutionListResponse}
                                                     name="institution_id"
                                                     onChange={(e) => props?.handleInputChange(e, index)}
+                                                    value={item.institution_id}
                                                 />
                                             </Form.Group>
                                             <Form.Group className="my-4">
