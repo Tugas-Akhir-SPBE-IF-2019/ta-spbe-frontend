@@ -1,11 +1,17 @@
 import { lazy } from 'react';
 import { Row, Col, Button, Form } from 'react-bootstrap';
 
-const NavBar = lazy(() => import("../../components/NavBar"));
-const Search = lazy(() => import("../../components/General/Search"));
-const TextDropdown = lazy(() => import("../../components/General/TextDropdown"));
-const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
-const CustomTable = lazy(() => import("../../components/General/CustomTable"));
+// const NavBar = lazy(() => import("../../components/NavBar"));
+// const Search = lazy(() => import("../../components/General/Search"));
+// const TextDropdown = lazy(() => import("../../components/General/TextDropdown"));
+// const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
+// const CustomTable = lazy(() => import("../../components/General/CustomTable"));
+
+import NavBar from '../NavBar';
+import Search from '../General/Search';
+import TextDropdown from '../General/TextDropdown';
+import PurpleButton from '../General/PurpleButton';
+import CustomTable from '../General/CustomTable';
 
 const GuestDashboardComponent = (props: any) => {
     return (
