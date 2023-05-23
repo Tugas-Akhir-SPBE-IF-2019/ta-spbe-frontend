@@ -4,8 +4,11 @@ import { Row, Col, Image, Button } from 'react-bootstrap';
 import welcome_img from "../../assets/hi.jpg";
 import google from "../../assets/google_logo.png";
 
-const NavBar = lazy(() => import("../../components/NavBar"));
-const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
+// const NavBar = lazy(() => import("../../components/NavBar"));
+// const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
+
+import NavBar from '../NavBar';
+import PurpleButton from '../General/PurpleButton';
 
 const LoginComponent = (props: any) => {
     const handleLogin = useGoogleLogin({
