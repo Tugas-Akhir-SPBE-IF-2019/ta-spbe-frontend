@@ -4,13 +4,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
 
-const NavBar = lazy(() => import("../../components/NavBar"));
-const TextDropdown = lazy(() => import("../../components/General/TextDropdown"));
-const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
-const CircledNumber = lazy(() => import("../../components/General/CircledNumber"));
-const CustomCheckbox = lazy(() => import("../../components/General/CustomCheckbox"));
-const CustomUpload = lazy(() => import("../../components/General/CustomUpload"));
-const FileItems = lazy(() => import("../../components/General/FileItems"));
+// const NavBar = lazy(() => import("../../components/NavBar"));
+// const TextDropdown = lazy(() => import("../../components/General/TextDropdown"));
+// const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
+// const CircledNumber = lazy(() => import("../../components/General/CircledNumber"));
+// const CustomCheckbox = lazy(() => import("../../components/General/CustomCheckbox"));
+// const CustomUpload = lazy(() => import("../../components/General/CustomUpload"));
+// const FileItems = lazy(() => import("../../components/General/FileItems"));
+
+import NavBar from '../NavBar';
+import TextDropdown from '../General/TextDropdown';
+import PurpleButton from '../General/PurpleButton';
+import CircledNumber from '../General/CircledNumber';
+import CustomCheckbox from '../General/CustomCheckbox';
+import CustomUpload from '../General/CustomUpload';
+import FileItems from '../General/FileItems';
 
 const UploadDocumentsComponent = (props: any) => {
     return (
