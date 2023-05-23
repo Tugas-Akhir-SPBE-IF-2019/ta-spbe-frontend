@@ -6,8 +6,11 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-const NavBar = lazy(() => import("../../components/NavBar"));
-const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
+// const NavBar = lazy(() => import("../../components/NavBar"));
+// const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
+
+import NavBar from '../NavBar';
+import PurpleButton from '../General/PurpleButton';
 
 const ProfileComponent = (props: any) => {
     const { evaluationDataResponse, jobDataResponse, institutionDataResponse } = props;
