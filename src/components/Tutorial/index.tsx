@@ -3,8 +3,11 @@ import { Row, Col, Nav, Tab } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faRightToBracket, faUsers, faInfo, faFileArrowUp, faHighlighter, faUserCheck, faUser } from '@fortawesome/free-solid-svg-icons';
 
-const NavBar = lazy(() => import("../../components/NavBar"));
-const CircledNumber = lazy(() => import("../../components/General/CircledNumber"));
+// const NavBar = lazy(() => import("../../components/NavBar"));
+// const CircledNumber = lazy(() => import("../../components/General/CircledNumber"));
+
+import NavBar from '../NavBar';
+import CircledNumber from '../General/CircledNumber';
 
 const TutorialComponent = (props: any) => {
     return (
