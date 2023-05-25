@@ -4,12 +4,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
 
-const NavBar = lazy(() => import("../../components/NavBar"));
-const CircledNumber = lazy(() => import("../../components/General/CircledNumber"));
-const BlockLabel = lazy(() => import("../../components/General/BlockLabel"));
-const CustomRadio = lazy(() => import("../../components/General/CustomRadio"));
-const CustomLink = lazy(() => import("../../components/General/CustomLink"));
-const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
+// const NavBar = lazy(() => import("../../components/NavBar"));
+// const CircledNumber = lazy(() => import("../../components/General/CircledNumber"));
+// const BlockLabel = lazy(() => import("../../components/General/BlockLabel"));
+// const CustomRadio = lazy(() => import("../../components/General/CustomRadio"));
+// const CustomLink = lazy(() => import("../../components/General/CustomLink"));
+// const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
+
+import NavBar from '../NavBar';
+import CircledNumber from '../General/CircledNumber';
+import BlockLabel from '../General/BlockLabel';
+import CustomRadio from '../General/CustomRadio';
+import CustomLink from '../General/CustomLink';
+import PurpleButton from '../General/PurpleButton';
 
 const ValidateResultComponent = (props: any) => {
     return (
