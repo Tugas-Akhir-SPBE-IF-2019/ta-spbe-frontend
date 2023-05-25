@@ -66,7 +66,7 @@ const CustomTable = (props: any) => {
                                     <td className="custom-td">{formatDate(item.submitted_date)}</td>
                                     <td className="custom-td">
                                         <Link to={`/result/${item.id}`}><Image src={inspect_img} /></Link>
-                                        <Image src={delete_img} />
+                                        {/* <Image src={delete_img} /> */}
                                     </td>
                                 </tr>
                             )  

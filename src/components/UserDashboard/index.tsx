@@ -5,11 +5,17 @@ import Timeline from 'react-bootstrap-timeline/lib/esm/Timeline';
 import Card from 'react-bootstrap-timeline/lib/esm/Card';
 import { Link } from "react-router-dom";
 
-const NavBar = lazy(() => import("../../components/NavBar"));
-const Search = lazy(() => import("../../components/General/Search"));
-const TextDropdown = lazy(() => import("../../components/General/TextDropdown"));
-const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
-const CustomTable = lazy(() => import("../../components/General/CustomTable"));
+// const NavBar = lazy(() => import("../../components/NavBar"));
+// const Search = lazy(() => import("../../components/General/Search"));
+// const TextDropdown = lazy(() => import("../../components/General/TextDropdown"));
+// const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
+// const CustomTable = lazy(() => import("../../components/General/CustomTable"));
+
+import NavBar from '../NavBar';
+import Search from '../General/Search';
+import TextDropdown from '../General/TextDropdown';
+import PurpleButton from '../General/PurpleButton';
+import CustomTable from '../General/CustomTable';
 
 const UserDashboardComponent = (props: any) => {
     return (
@@ -51,7 +57,7 @@ const UserDashboardComponent = (props: any) => {
                                 </Col>
                                 <Col xs={4} className="custom-shadow">
                                     <h3>Status Penilaian</h3>
-                                    <Timeline>
+                                    {/* <Timeline>
                                         {props?.history?.length !== 0 && (props?.history?.map((item: any, index: number) => {
                                             return (
                                                 <Card
@@ -87,7 +93,7 @@ const UserDashboardComponent = (props: any) => {
                                                 datetime={""}
                                             />
                                         }
-                                    </Timeline>
+                                    </Timeline> */}
                                 </Col>
                             </Row>
                         </Modal.Body>
