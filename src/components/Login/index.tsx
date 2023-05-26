@@ -19,11 +19,11 @@ const LoginComponent = (props: any) => {
         <div className="h-100 d-flex flex-column">
             <NavBar/>
             <Row className="align-items-center flex-grow-1">
-                <Col className="d-flex flex-column text-center justify-content-center align-items-center p-5">
+                <Col xs={{ span: 12, order: 2 }} md={{ span: 6, order: 1 }} className="d-flex flex-column text-center justify-content-center align-items-center p-5">
                     <Image src={welcome_img} fluid className="w-50"/>
                     <p className="text-purple">Sistem berbasis kecerdasan buatan kami siap membantu Anda!</p>
                 </Col>
-                <Col className="d-flex flex-column text-center justify-content-center px-5">
+                <Col xs={{ span: 12, order: 1 }} md={{ span: 6, order: 2 }} className="d-flex flex-column text-center justify-content-center px-5">
                     <h1 className="text-purple mb-5 fw-bold">Selamat Datang!</h1>
                     <p className="text-purple mb-3">Untuk mulai mengotomatisasi penilaian dokumen Sistem Pemerintahan Berbasis Online, </p>
                     <Button onClick={() => handleLogin()} className="google-sign-in bg-white border-0 shadow-sm text-black p-0 align-items-center d-flex justify-content-center py-2 mx-auto">

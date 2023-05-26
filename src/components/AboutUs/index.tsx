@@ -10,7 +10,7 @@ const AboutUsComponent = (props: any) => {
         <div className="h-100 d-flex flex-column">
             <NavBar/>
             <Row className="align-items-center flex-grow-1">
-                <Col xs={12} md={4} className="ps-5 pt-5">
+                <Col xs={12} md={4} className="p-5">
                     <h1 className="text-huge text-purple fw-bolder">Tentang<br/>Kami</h1>
                     <p className="text-big text-purple my-5">Sekelompok mahasiswa yang antusias, pekerja keras, dan cepat beradaptasi</p>
                     <Row className={"text-bigger fw-bold " + (!props?.showLink && "d-none")}>
@@ -25,7 +25,7 @@ const AboutUsComponent = (props: any) => {
                             <a href="https://www.linkedin.com/in/awwalak/" target="_blank" className="text-purple">Awwala</a>
                         </Col>
                     </Row>
-                    <Row className={"pt-5 " + (props?.showLink && "d-none")}>
+                    <Row className={"pb-3 " + (props?.showLink && "d-none")}>
                         <Col xs={12} lg={8} xl={6}>
                             <PurpleButton text="Lanjut Baca" onClick={props?.setShowLink} />
                         </Col>
@@ -33,7 +33,6 @@ const AboutUsComponent = (props: any) => {
                 </Col>
                 <Col xs={12} md={8} className="py-3 z-back">
                     <Image fluid src={about_img}  />
-                    {/* className="px-5 mx-5 pt-5 mt-5" */}
                 </Col>
             </Row>
         </div>
