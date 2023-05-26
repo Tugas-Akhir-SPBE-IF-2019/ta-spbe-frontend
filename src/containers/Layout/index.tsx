@@ -71,7 +71,6 @@ export class LayoutContainer extends PureComponent<any, any> {
                                 return <UserDashboardContainer {...this.props} {...props} />;
                                 }}
                             />
-                            
                             <Route
                                 path={"/about"}
                                 render={(props: any) => {
@@ -128,6 +127,18 @@ export class LayoutContainer extends PureComponent<any, any> {
                                 path={"/"}
                                 render={(props: any) => {
                                 return <GuestDashboardContainer {...this.props} {...props} authToken={authToken} />;
+                                }}
+                            />
+                            <Route
+                                path={"/about"}
+                                render={(props: any) => {
+                                return <AboutUsContainer {...this.props} {...props} />;
+                                }}
+                            />
+                            <Route
+                                path={"/tutorial"}
+                                render={(props: any) => {
+                                return <TutorialContainer {...this.props} {...props} />;
                                 }}
                             />
                             <Route
