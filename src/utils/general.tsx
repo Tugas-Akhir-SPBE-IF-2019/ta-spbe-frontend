@@ -16,6 +16,12 @@ export const getRefreshToken = () => {
     return "";
 };
 
+export const removeTokens = () => {
+    localStorage.removeItem("AUTH_TOKEN");
+    localStorage.removeItem("REFRESH_TOKEN");
+    return "";
+};
+
 export const showToast = (message: string) => {
     toast.error(message);
 };
