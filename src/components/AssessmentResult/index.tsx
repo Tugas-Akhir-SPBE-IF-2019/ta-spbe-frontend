@@ -20,7 +20,7 @@ const AssessmentResultComponent = (props: any) => {
             <Row>
                 <Col>
                     <Row className="custom-shadow custom-border m-3 p-3">
-                        <Col>
+                        <Col xs={12} lg={5} xl={4}>
                             <Row>
                                 <Col className="d-flex align-items-center my-2">
                                     <BlockLabel text="Nama Institusi" />
@@ -40,10 +40,10 @@ const AssessmentResultComponent = (props: any) => {
                                 </Col>
                             </Row>
                         </Col>
-                        <Col>
-                            <Image src={dummy_img} className="width-label d-block m-auto"/>
+                        <Col className="d-flex justify-content-center">
+                            <Image src={dummy_img} className="d-block m-0 width-img"/>
                         </Col>
-                        <Col className="d-flex align-items-center justify-content-center">
+                        <Col className="d-flex align-items-center justify-content-center" xs={12} md={6} lg={4}>
                             <Row>
                                 <Col>
                                     <PurpleButton text="Unduh Hasil Penilaian" onClick={() => props?.handleDownloadFile()} />
@@ -69,7 +69,7 @@ const AssessmentResultComponent = (props: any) => {
                                 </OverlayTrigger>
                             </Row>
                             <Row>
-                                <Col>
+                                <Col className="p-0">
                                     <CustomLink link_list={props?.link_list} />
                                 </Col>
                             </Row>
@@ -165,7 +165,7 @@ const AssessmentResultComponent = (props: any) => {
                                                             <Carousel.Item className="border rounded text-center">
                                                                 <a href={photo.proof_page_document_url} target='_blank' className="text-decoration-none">
                                                                     <p className="text-muted pt-5">{photo.name}</p>
-                                                                    <Image src={photo.proof_image_url} />
+                                                                    <Image src={photo.proof_image_url} fluid />
                                                                 </a>
                                                             </Carousel.Item>
                                                         )
@@ -179,7 +179,7 @@ const AssessmentResultComponent = (props: any) => {
                         )
                     }))}
                     <Row className="justify-content-center my-3">
-                        <Col xs={2}>
+                        <Col xs={6} md={4} lg={2}>
                             <Link to={`/validate/${props?.assessmentId}`}>
                                 <PurpleButton text="Validasi Hasil" />
                             </Link>

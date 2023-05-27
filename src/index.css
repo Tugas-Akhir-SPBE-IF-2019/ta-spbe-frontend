@@ -252,6 +252,10 @@ input[type="range"]::-ms-thumb {
     width: 10rem;
 }
 
+.width-img {
+    max-width: 10rem;
+}
+
 .width-fit {
     width: fit-content;
 }

@@ -11,11 +11,11 @@ const CustomLink = (props: any) => {
                     <>{props?.link_list.includes(item)
                     ?
                         <Nav.Item key={index}>
-                            <Nav.Link href={`#${item}`}><u className={`text-purple ${active===item ? "bg-purple text-white rounded-circle p-2" : ""}`}>{item}</u></Nav.Link>
+                            <Nav.Link href={`#${item}`} className="p-3 ps-2"><u className={`text-purple ${active===item ? "bg-purple text-white rounded-circle p-2" : ""}`}>{item}</u></Nav.Link>
                         </Nav.Item>
                     :
                         <Nav.Item key={index}>
-                            <Nav.Link href={`#${item}`} disabled><u>{item}</u></Nav.Link>
+                            <Nav.Link href={`#${item}`} disabled className="p-3 ps-2"><u>{item}</u></Nav.Link>
                         </Nav.Item>
                     }</>
                 )
