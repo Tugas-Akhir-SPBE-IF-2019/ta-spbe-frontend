@@ -5,8 +5,8 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 const Search = (props: any) => {
     return (
         <>
-            <Row className="my-5">
-                <Col xs={6}>
+            <Row className="mt-5 mb-3">
+                <Col xs={12} lg={6}>
                     <InputGroup className="custom-border">
                         <Form.Control
                             type="text"

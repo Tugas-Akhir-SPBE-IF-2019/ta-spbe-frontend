@@ -6,7 +6,7 @@ import DateRangePicker from 'react-bootstrap-daterangepicker';
 const TextDropdown = (props: any) => {
     return (
         <>
-            <Col xs={props?.xs}>
+            <Col xs={props?.xs} lg={props?.lg} className={props?.text && "my-3"}>
                 {props?.options &&
                     <Form.Select className="custom-border shadow-none text-purple"
                         name={props?.name}

@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Row, Col, Button, Form } from 'react-bootstrap';
+import { Row, Col, Form } from 'react-bootstrap';
 
 const NavBar = lazy(() => import("../../components/NavBar"));
 const Search = lazy(() => import("../../components/General/Search"));
@@ -15,53 +15,55 @@ const GuestDashboardComponent = (props: any) => {
                 <Col>
                     <Row>
                         <Col>
-                            <h1 className="mb-3">Beranda</h1>
+                            <h1 className="mb-3">Daftar Indeks SPBE</h1>
                         </Col>
                     </Row>
                     <Search
                         name="institution"
                         onChange={(e) => props?.handleInputChange(e, "INSTITUTION")}
                     />
-                    <Row className="my-5 align-items-center">
+                    <Row className="align-items-center">
                         <TextDropdown
                             placeholder="Pilih Jumlah Instansi"
-                            xs={4}
+                            xs={12}
+                            lg={4}
                             text
                             name="limit"
                             onChange={(e) => props?.handleInputChange(e, "LIMIT")}
                         />
-                        <Col className="d-flex flex-column">
+                        <Col className="d-flex flex-column my-3">
                             <Row className="justify-content-between">
-                                <Col>
+                                <span className="text-center">Pilih Indeks</span>
+                                <Col xs={6}>
+                                    <span>Indeks Min</span>
+                                    <Form.Range
+                                        min="1"
+                                        max="4"
+                                        step="0.1"
+                                        name="index_min"
+                                        value={props?.index_min}
+                                        onChange={(e: any) => props?.handleInputChange(e, "INDEX")}
+                                    />
                                     <span>{props?.index_min}</span>
                                 </Col>
-                                <Col className="text-center">
-                                    <span>Pilih Indeks</span>
-                                </Col>
-                                <Col className="text-end">
+                                <Col className="text-end" xs={6}>
+                                    <span>Indeks Maks</span>
+                                    <Form.Range
+                                        min="1"
+                                        max="4"
+                                        step="0.1"
+                                        name="index_max"
+                                        value={props?.index_max}
+                                        onChange={(e: any) => props?.handleInputChange(e, "INDEX")}
+                                    />
                                     <span>{props?.index_max}</span>
                                 </Col>
                             </Row>
-                            <Form.Range
-                                min="1"
-                                max="4"
-                                step="0.1"
-                                name="index_min"
-                                value={props?.index_min}
-                                onChange={(e: any) => props?.handleInputChange(e, "INDEX")}
-                            />
-                            <Form.Range
-                                min="1"
-                                max="4"
-                                step="0.1"
-                                name="index_max"
-                                value={props?.index_max}
-                                onChange={(e: any) => props?.handleInputChange(e, "INDEX")}
-                            />
                         </Col>
                         <TextDropdown
                             placeholder="Pilih Tanggal"
-                            xs={4}
+                            xs={12}
+                            lg={4}
                             date
                             onChange={(e) => props?.handleInputChange(e, "DATE")}
                         />
