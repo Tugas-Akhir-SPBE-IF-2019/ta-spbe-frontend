@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Row, Col, Form, OverlayTrigger, Tooltip, Modal } from 'react-bootstrap';
+import { Container, Row, Col, Form, OverlayTrigger, Tooltip, Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
@@ -34,8 +34,8 @@ const UploadDocumentsComponent = (props: any) => {
                     </Row>
                 </Modal.Footer>
             </Modal>
-            <Row className="p-3">
-                <Col className="custom-shadow p-3 me-2">
+            <Row className="p-3 justify-content-center">
+                <Col className="custom-shadow p-3 m-1" xs={12} lg={6}>
                     <Form.Group className="mb-4">
                         <Form.Label className="fw-bold mb-2">Nama Institusi*</Form.Label>
                         <TextDropdown
@@ -224,7 +224,7 @@ const UploadDocumentsComponent = (props: any) => {
                         </Row>
                     </Form.Group>
                 </Col>
-                <Col className="custom-shadow p-3 ms-2">
+                <Col className="custom-shadow p-3 m-1">
                     <Form.Group className="mb-5">
                         <Row>
                             <Col className="d-flex align-items-center mb-2 p-0">
@@ -302,7 +302,7 @@ const UploadDocumentsComponent = (props: any) => {
                 </Col>
             </Row>
             <Row className="justify-content-end m-3">
-                <Col xs={2}>
+                <Col xs={4} lg={2}>
                     <PurpleButton
                         text="Kirim"
                         onClick={(e) => {props?.handleUploadDocuments(e)}}
