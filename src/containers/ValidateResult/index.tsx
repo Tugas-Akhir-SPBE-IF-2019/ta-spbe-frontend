@@ -83,14 +83,18 @@ export class ValidateResultContainer extends PureComponent<any, any> {
         const { listItem } = this.state;
         let val = value;
         let newListItem = [...listItem];
+        let key = name.split("-")[0];
         if (type === "INT") {
             val = parseInt(value);
         }
         else if (type === "BOOL") {
             val = Boolean(Number(value));
+            if (val) {
+                newListItem[idx]["correct_level"] = 0;
+                newListItem[idx]["explanation"] = "";
+            }
         }
 
-        let key = name.split("-")[0];
         newListItem[idx][key] = val;
         this.setState({
             ...this.state,

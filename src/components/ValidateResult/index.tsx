@@ -93,6 +93,7 @@ const ValidateResultComponent = (props: any) => {
                                                 id={`result_correct-${index}`}
                                                 name={`result_correct-${index}`}
                                                 value={1}
+                                                checked={item.result_correct}
                                                 onChange={(e: any) => {props?.handleInputChange(e, "BOOL", index)}}
                                             />
                                         </Col>
@@ -102,6 +103,7 @@ const ValidateResultComponent = (props: any) => {
                                                 id={`result_correct-${index}`}
                                                 name={`result_correct-${index}`}
                                                 value={0}
+                                                checked={!item.result_correct}
                                                 onChange={(e: any) => {props?.handleInputChange(e, "BOOL", index)}}
                                             />
                                         </Col>
@@ -117,6 +119,7 @@ const ValidateResultComponent = (props: any) => {
                                                 name={`correct_level-${index}`}
                                                 value={1}
                                                 disabled={item.result_correct}
+                                                checked={item.correct_level === 1}
                                                 onChange={(e: any) => {props?.handleInputChange(e, "INT", index)}}
                                             />
                                         </Col>
@@ -127,6 +130,7 @@ const ValidateResultComponent = (props: any) => {
                                                 name={`correct_level-${index}`}
                                                 value={2}
                                                 disabled={item.result_correct}
+                                                checked={item.correct_level === 2}
                                                 onChange={(e: any) => {props?.handleInputChange(e, "INT", index)}}
                                             />
                                         </Col>
@@ -137,6 +141,7 @@ const ValidateResultComponent = (props: any) => {
                                                 name={`correct_level-${index}`}
                                                 value={3}
                                                 disabled={item.result_correct}
+                                                checked={item.correct_level === 3}
                                                 onChange={(e: any) => {props?.handleInputChange(e, "INT", index)}}
                                             />
                                         </Col>
@@ -147,6 +152,7 @@ const ValidateResultComponent = (props: any) => {
                                                 name={`correct_level-${index}`}
                                                 value={4}
                                                 disabled={item.result_correct}
+                                                checked={item.correct_level === 4}
                                                 onChange={(e: any) => {props?.handleInputChange(e, "INT", index)}}
                                             />
                                         </Col>
@@ -157,13 +163,14 @@ const ValidateResultComponent = (props: any) => {
                                                 name={`correct_level-${index}`}
                                                 value={5}
                                                 disabled={item.result_correct}
+                                                checked={item.correct_level === 5}
                                                 onChange={(e: any) => {props?.handleInputChange(e, "INT", index)}}
                                             />
                                         </Col>
                                     </Row>
                                 </Col>
                                 <Col className="my-4" xs={12} md={6}>
-                                    <Form.Control disabled={item.result_correct} onChange={(e: any) => {props?.handleInputChange(e, "STR", index)}} as="textarea" name="explanation" rows={8} placeholder="Berikan penjelasan..." className="shadow-none" />
+                                    <Form.Control disabled={item.result_correct} value={item.explanation} onChange={(e: any) => {props?.handleInputChange(e, "STR", index)}} as="textarea" name="explanation" rows={8} placeholder="Berikan penjelasan..." className="shadow-none" />
                                 </Col>
                             </Row>
                         )
