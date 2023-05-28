@@ -30,6 +30,10 @@
     font-size: 35px;
 }
 
+.text-tiny {
+    font-size: 12px;
+}
+
 .z-back {
     z-index: -1;
 }

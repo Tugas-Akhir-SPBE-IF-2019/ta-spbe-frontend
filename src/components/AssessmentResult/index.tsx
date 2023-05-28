@@ -120,7 +120,7 @@ const AssessmentResultComponent = (props: any) => {
                                             <Col xs={4}>
                                                 <h6>Data Dukung</h6>
                                             </Col>
-                                            <Col>
+                                            <Col className="text-truncate">
                                                 {names?.length !== 0 && (names?.map((val: string, idx: number) => {
                                                     return (
                                                         <p key={idx}>{val}</p>
@@ -135,7 +135,7 @@ const AssessmentResultComponent = (props: any) => {
                                             <Col>
                                                 <p className="text-break">{item.explanation}</p>
                                             </Col>
-                                            <Col xs={1}>
+                                            <Col style={{maxWidth: "60px"}} className="p-0">
                                                 <OverlayTrigger
                                                     trigger="click"
                                                     placement="top"
@@ -148,7 +148,10 @@ const AssessmentResultComponent = (props: any) => {
                                                         </Popover>
                                                     }
                                                 >
-                                                    <FontAwesomeIcon icon={faClone} className="pointer text-purple" onClick={() => props?.copyText(item.explanation)} />
+                                                    <div className="d-flex align-items-center" onClick={() => props?.copyText(item.explanation)}>
+                                                        <span className="text-tiny text-purple">Salin</span>
+                                                        <FontAwesomeIcon icon={faClone} className="pointer text-purple ms-1" />
+                                                    </div>
                                                 </OverlayTrigger>
                                             </Col>
                                         </Row>
