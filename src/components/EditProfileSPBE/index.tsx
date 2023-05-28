@@ -33,22 +33,17 @@ const EditProfileSPBEComponent = (props: any) => {
             </Modal>
             <Row className="p-3">
                 <Col>
-                    <Row className="justify-content-end">
-                        <Col xs={2}>
-                            <PurpleButton text="Simpan" onClick={(e: any) => props?.handleUpdateEvaluationData(e)} />
-                        </Col>
-                    </Row>
                     <Row className="text-center mb-5">
                         <Col>
-                            <h5 className="text-purple fw-bold mb-3">Lengkapi profil Anda!</h5>
-                            <Image src={progress_bar_3} />
+                            <h5 className="text-purple fw-bold my-3">Lengkapi profil Anda!</h5>
+                            <Image src={progress_bar_3} fluid />
                         </Col>
                     </Row>
                     {props?.list_items?.map((item: any, index: number) => {
                         return (
                             <>
                                 <Row className="justify-content-center">
-                                    <Col xs={7}>
+                                    <Col xs={12} md={7}>
                                         <Form>
                                             <Form.Group className="my-4">
                                                 <Form.Label className="text-purple mb-2">Peran</Form.Label>
@@ -85,6 +80,11 @@ const EditProfileSPBEComponent = (props: any) => {
                     <Row className="text-center">
                         <Col>
                             <FontAwesomeIcon icon={faPlus} onClick={() => props?.addField()} className="text-purple rounded-circle custom-border-opaque p-3 pointer" />
+                        </Col>
+                    </Row>
+                    <Row className="justify-content-end">
+                        <Col xs={4} lg={2}>
+                            <PurpleButton text="Simpan" onClick={(e: any) => props?.handleUpdateEvaluationData(e)} />
                         </Col>
                     </Row>
                 </Col>
