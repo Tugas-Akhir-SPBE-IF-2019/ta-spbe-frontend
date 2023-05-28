@@ -52,9 +52,10 @@ const ProfileComponent = (props: any) => {
                     <Row className="justify-content-center mt-5">
                         <Col className="mx-4 mb-5 custom-border custom-shadow px-5 py-3" xs={12} xl={5}>
                             <Link to="/edit-profile/biodata" className="text-decoration-none">
-                                <h5 className="text-purple">
+                                <h5 className="d-flex text-purple align-items-center">
                                     Data Diri
-                                    <FontAwesomeIcon icon={faPen} size="sm" className="text-purple ms-2" />
+                                    <FontAwesomeIcon icon={faPen} size="xs" className="text-purple ms-3 me-1" />
+                                    <span className="fs-6">[Edit]</span>
                                 </h5>
                             </Link>
                             <Row className="mt-3">
@@ -92,9 +93,10 @@ const ProfileComponent = (props: any) => {
                         </Col>
                         <Col className="mx-4 mb-5 custom-border custom-shadow px-5 py-3" xs={12} xl={5}>
                             <Link to="/edit-profile/evaluation" className="text-decoration-none">
-                                <h5 className="text-purple">
+                                <h5 className="d-flex text-purple align-items-center">
                                     Data Evaluasi SPBE
-                                    <FontAwesomeIcon icon={faPen} size="sm" className="text-purple ms-2" />
+                                    <FontAwesomeIcon icon={faPen} size="xs" className="text-purple ms-3 me-1" />
+                                    <span className="fs-6">[Edit]</span>
                                 </h5>
                             </Link>
                             {evaluationDataResponse.length === 0
@@ -190,9 +192,10 @@ const ProfileComponent = (props: any) => {
                     <Row className="justify-content-center">
                         <Col className="mx-4 mb-5 custom-border custom-shadow px-5 py-3" xs={12} xl={5}>
                             <Link to="/edit-profile/occupation" className="text-decoration-none">
-                                <h5 className="text-purple">
+                                <h5 className="d-flex text-purple align-items-center">
                                     Data Kerja
-                                    <FontAwesomeIcon icon={faPen} size="sm" className="text-purple ms-2" />
+                                    <FontAwesomeIcon icon={faPen} size="xs" className="text-purple ms-3 me-1" />
+                                    <span className="fs-6">[Edit]</span>
                                 </h5>
                             </Link>
                             {jobDataResponse.length === 0
@@ -285,7 +288,13 @@ const ProfileComponent = (props: any) => {
                             }
                         </Col>
                         <Col className="mx-4 mb-5 custom-border custom-shadow px-5 py-3" xs={12} xl={5}>
-                            <h5 className="text-purple">Data Institusi</h5>
+                            <Link to="/edit-profile/institution" className="text-decoration-none">
+                                <h5 className="d-flex text-purple align-items-center">
+                                    Data Institusi
+                                    <FontAwesomeIcon icon={faPen} size="xs" className="text-purple ms-3 me-1" />
+                                    <span className="fs-6">[Edit]</span>
+                                </h5>
+                            </Link>
                             {institutionDataResponse.length === 0
                             ?
                                 <Row className="align-items-center h-100">
@@ -337,13 +346,6 @@ const ProfileComponent = (props: any) => {
                                                     </>
                                                 )
                                             })}
-                                            <Row className="mt-5 justify-content-center">
-                                                <Col xs={6}>
-                                                    <Link to="/edit-profile/institution">
-                                                        <PurpleButton text="Tambah Institusi" />
-                                                    </Link>
-                                                </Col>
-                                            </Row>
                                         </>
                                     :
                                         <>
