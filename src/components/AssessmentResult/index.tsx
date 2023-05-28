@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 import { Row, Col, Image, Carousel, OverlayTrigger, Popover, Tooltip } from 'react-bootstrap';
-import dummy_img from "../../assets/logo-itb.jpg";
+import logo from "../../assets/logo-spbe.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo, faClone } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
@@ -41,7 +41,7 @@ const AssessmentResultComponent = (props: any) => {
                             </Row>
                         </Col>
                         <Col className="d-flex justify-content-center">
-                            <Image src={dummy_img} className="d-block m-0 width-img"/>
+                            <Image src={logo} className="d-block m-0 my-3 width-img"/>
                         </Col>
                         <Col className="d-flex align-items-center justify-content-center" xs={12} md={6} lg={4}>
                             <Row>

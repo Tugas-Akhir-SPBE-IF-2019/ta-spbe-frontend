@@ -74,7 +74,7 @@ const ValidateResultComponent = (props: any) => {
                     {props?.listItem.length !== 0 && (props.listItem.map((item: any, index: number) => {
                         return (
                             <Row className="custom-border custom-shadow my-3" id={item.indicator_number} key={index}>
-                                <Col>
+                                <Col xs={12} md={6}>
                                     <Row className="align-items-center mt-4">
                                         <Col xs={4}>
                                             <h6>Indikator</h6>
@@ -162,14 +162,14 @@ const ValidateResultComponent = (props: any) => {
                                         </Col>
                                     </Row>
                                 </Col>
-                                <Col className="mt-4">
+                                <Col className="my-4" xs={12} md={6}>
                                     <Form.Control disabled={item.result_correct} onChange={(e: any) => {props?.handleInputChange(e, "STR", index)}} as="textarea" name="explanation" rows={8} placeholder="Berikan penjelasan..." className="shadow-none" />
                                 </Col>
                             </Row>
                         )
                     }))}
                     <Row className="justify-content-center">
-                        <Col xs={2}>
+                        <Col xs={4} md={2}>
                             <PurpleButton text="Kirim" onClick={(e: any) => props?.handleSendValidation(e)} />
                         </Col>
                     </Row>
