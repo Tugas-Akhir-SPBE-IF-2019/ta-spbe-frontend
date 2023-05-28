@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAuthToken, getRefreshToken } from "../utils/general";
+import { getAuthToken, removeTokens } from "../utils/general";
 
 let CANCEL_TOKEN_SOURCE = axios.CancelToken.source();
 
@@ -29,6 +29,13 @@ export const hitApi = (parameters: any) => {
     }).then((res) => {
         clearTimeout(timeout);
         return res;
+    }).catch((err) => {
+        const { response } = err;
+        const { status } = response;
+        if (status === 401) {
+            removeTokens();
+            window.location.href = "/login";
+        }
     });
 };
 

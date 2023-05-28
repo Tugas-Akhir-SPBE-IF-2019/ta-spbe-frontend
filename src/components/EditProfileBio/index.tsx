@@ -31,19 +31,14 @@ const EditProfileBioComponent = (props: any) => {
             </Modal>
             <Row className="p-3">
                 <Col>
-                    <Row className="justify-content-end">
-                        <Col xs={2}>
-                            <PurpleButton text="Simpan" onClick={(e: any) => props?.handleUpdateBiodata(e)} />
-                        </Col>
-                    </Row>
                     <Row className="text-center">
                         <Col>
-                            <h5 className="text-purple fw-bold mb-3">Lengkapi profil Anda!</h5>
-                            <Image src={progress_bar_1} />
+                            <h5 className="text-purple fw-bold my-3">Lengkapi profil Anda!</h5>
+                            <Image src={progress_bar_1} fluid />
                         </Col>
                     </Row>
                     <Row className="mt-5 align-items-center">
-                        <Col xs={4} className="text-center">
+                        <Col xs={12} md={4} className="text-center">
                             <Image src={edit_img} />
                         </Col>
                         <Col>
@@ -104,6 +99,11 @@ const EditProfileBioComponent = (props: any) => {
                                     />
                                 </Form.Group>
                             </Form>
+                        </Col>
+                    </Row>
+                    <Row className="justify-content-end">
+                        <Col xs={4} lg={2}>
+                            <PurpleButton text="Simpan" onClick={(e: any) => props?.handleUpdateBiodata(e)} />
                         </Col>
                     </Row>
                 </Col>
