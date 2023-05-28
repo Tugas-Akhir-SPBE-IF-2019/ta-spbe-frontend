@@ -14,59 +14,104 @@ const TutorialComponent = (props: any) => {
                 <Col>
                     <Tab.Container defaultActiveKey="Beranda">
                         <Row>
-                            <Col xs={1} className="p-0">
-                                <Nav variant="tabs" className="flex-column">
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="Beranda" className="d-flex flex-column justify-content-center text-center py-3">
-                                            Beranda
-                                            <FontAwesomeIcon icon={faHouse} />
-                                        </Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="Masuk" className="d-flex flex-column justify-content-center text-center py-3">
-                                            Masuk
-                                            <FontAwesomeIcon icon={faRightToBracket} />
-                                        </Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="Tentang" className="d-flex flex-column justify-content-center text-center py-3">
-                                            Tentang
-                                            <FontAwesomeIcon icon={faUsers} />
-                                        </Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="Petunjuk" className="d-flex flex-column justify-content-center text-center py-3">
-                                            Petunjuk
-                                            <FontAwesomeIcon icon={faInfo} />
-                                        </Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="Evaluasi" className="d-flex flex-column justify-content-center text-center py-3">
-                                            Evaluasi
-                                            <FontAwesomeIcon icon={faFileArrowUp} />
-                                        </Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="Hasil" className="d-flex flex-column justify-content-center text-center py-3">
-                                            Hasil
-                                            <FontAwesomeIcon icon={faHighlighter} />
-                                        </Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="Validasi" className="d-flex flex-column justify-content-center text-center py-3">
-                                            Validasi
-                                            <FontAwesomeIcon icon={faUserCheck} />
-                                        </Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="Profil" className="d-flex flex-column justify-content-center text-center py-3">
-                                            Profil
-                                            <FontAwesomeIcon icon={faUser} />
-                                        </Nav.Link>
-                                    </Nav.Item>
-                                </Nav>
+                            <Col xs={2} sm={1} className="p-0">
+                                {window.innerWidth > 1200 ?
+                                    <Nav variant="tabs" className="flex-column">
+                                        <Nav.Item>
+                                            <Nav.Link eventKey="Beranda" className="d-flex flex-column justify-content-center text-center py-3">
+                                                Beranda
+                                                <FontAwesomeIcon icon={faHouse} />
+                                            </Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
+                                            <Nav.Link eventKey="Masuk" className="d-flex flex-column justify-content-center text-center py-3">
+                                                Masuk
+                                                <FontAwesomeIcon icon={faRightToBracket} />
+                                            </Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
+                                            <Nav.Link eventKey="Tentang" className="d-flex flex-column justify-content-center text-center py-3">
+                                                Tentang
+                                                <FontAwesomeIcon icon={faUsers} />
+                                            </Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
+                                            <Nav.Link eventKey="Petunjuk" className="d-flex flex-column justify-content-center text-center py-3">
+                                                Petunjuk
+                                                <FontAwesomeIcon icon={faInfo} />
+                                            </Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
+                                            <Nav.Link eventKey="Evaluasi" className="d-flex flex-column justify-content-center text-center py-3">
+                                                Evaluasi
+                                                <FontAwesomeIcon icon={faFileArrowUp} />
+                                            </Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
+                                            <Nav.Link eventKey="Hasil" className="d-flex flex-column justify-content-center text-center py-3">
+                                                Hasil
+                                                <FontAwesomeIcon icon={faHighlighter} />
+                                            </Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
+                                            <Nav.Link eventKey="Validasi" className="d-flex flex-column justify-content-center text-center py-3">
+                                                Validasi
+                                                <FontAwesomeIcon icon={faUserCheck} />
+                                            </Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
+                                            <Nav.Link eventKey="Profil" className="d-flex flex-column justify-content-center text-center py-3">
+                                                Profil
+                                                <FontAwesomeIcon icon={faUser} />
+                                            </Nav.Link>
+                                        </Nav.Item>
+                                    </Nav>
+                                :
+                                    <Nav variant="tabs" className="flex-column">
+                                        <Nav.Item>
+                                            <Nav.Link eventKey="Beranda" className="d-flex flex-column justify-content-center text-center py-3">
+                                                <FontAwesomeIcon icon={faHouse} />
+                                            </Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
+                                            <Nav.Link eventKey="Masuk" className="d-flex flex-column justify-content-center text-center py-3">
+                                                <FontAwesomeIcon icon={faRightToBracket} />
+                                            </Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
+                                            <Nav.Link eventKey="Tentang" className="d-flex flex-column justify-content-center text-center py-3">
+                                                <FontAwesomeIcon icon={faUsers} />
+                                            </Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
+                                            <Nav.Link eventKey="Petunjuk" className="d-flex flex-column justify-content-center text-center py-3">
+                                                <FontAwesomeIcon icon={faInfo} />
+                                            </Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
+                                            <Nav.Link eventKey="Evaluasi" className="d-flex flex-column justify-content-center text-center py-3">
+                                                <FontAwesomeIcon icon={faFileArrowUp} />
+                                            </Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
+                                            <Nav.Link eventKey="Hasil" className="d-flex flex-column justify-content-center text-center py-3">
+                                                <FontAwesomeIcon icon={faHighlighter} />
+                                            </Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
+                                            <Nav.Link eventKey="Validasi" className="d-flex flex-column justify-content-center text-center py-3">
+                                                <FontAwesomeIcon icon={faUserCheck} />
+                                            </Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
+                                            <Nav.Link eventKey="Profil" className="d-flex flex-column justify-content-center text-center py-3">
+                                                <FontAwesomeIcon icon={faUser} />
+                                            </Nav.Link>
+                                        </Nav.Item>
+                                    </Nav>
+                                }
                             </Col>
-                            <Col xs={11} className="custom-tabs">
+                            <Col xs={10} sm={11} className="custom-tabs">
                                 <Tab.Content>
                                     <Tab.Pane eventKey="Beranda" className="p-3">
                                         <p>Pada halaman beranda, Anda dapat melihat riwayat instansi-instansi yang sudah dinilai beserta Indeks Tingkat Kematangan instansi tersebut secara keseluruhan. Berikut kolom-kolom yang tertera pada tabel.</p>

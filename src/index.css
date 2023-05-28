@@ -247,6 +247,8 @@ input[type="range"]::-ms-thumb {
 
 .circle-fit {
     width: 40px;
+    min-width: 40px;
+
 }
 
 .width-label {
