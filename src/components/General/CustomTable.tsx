@@ -44,7 +44,7 @@ const CustomTable = (props: any) => {
                 </Table>
             }
             {props.isUserTable &&
-                <Table className="custom-border custom-shadow text-center">
+                <Table className="custom-border custom-shadow text-center" responsive="md">
                     <thead>
                         <tr className="fw-bold">
                             <td className="custom-td">No</td>
@@ -66,7 +66,6 @@ const CustomTable = (props: any) => {
                                     <td className="custom-td">{formatDate(item.submitted_date)}</td>
                                     <td className="custom-td">
                                         <Link to={`/result/${item.id}`}><Image src={inspect_img} /></Link>
-                                        <Image src={delete_img} />
                                     </td>
                                 </tr>
                             )  

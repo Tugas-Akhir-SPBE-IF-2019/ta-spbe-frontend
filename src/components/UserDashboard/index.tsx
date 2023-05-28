@@ -35,12 +35,12 @@ const UserDashboardComponent = (props: any) => {
                                         return (
                                             <>
                                                 <Row className="text-start my-3 align-items-center" key={index}>
-                                                    <Col xs={8}>
+                                                    <Col xs={7} sm={8} className="text-truncate">
                                                         <a href={item.url} target="_blank" className="text-black">
                                                             {item.name}
                                                         </a>
                                                     </Col>
-                                                    <Col xs={4}>
+                                                    <Col xs={5} sm={4}>
                                                         <h6 className={`${checkDocumentStyle(item.type)} width-fit px-3 py-2 rounded`}>{checkDocumentType(item.type)}</h6>
                                                     </Col>
                                                 </Row>
@@ -49,9 +49,9 @@ const UserDashboardComponent = (props: any) => {
                                         )
                                     }))}
                                 </Col>
-                                <Col xs={4} className="custom-shadow">
+                                <Col xs={12} xl={4} className="custom-shadow">
                                     <h3>Status Penilaian</h3>
-                                    <Timeline>
+                                    <Timeline >
                                         {props?.history?.length !== 0 && (props?.history?.map((item: any, index: number) => {
                                             return (
                                                 <Card
@@ -103,7 +103,7 @@ const UserDashboardComponent = (props: any) => {
                         <Col>
                             <h1 className="mb-3">Dashboard</h1>
                         </Col>
-                        <Col xs={2}>
+                        <Col xs={5} md={4} lg={3} xxl={2}>
                             <Link to="/upload">
                                 <PurpleButton text="Upload Dokumen"/>
                             </Link>
@@ -113,17 +113,19 @@ const UserDashboardComponent = (props: any) => {
                         name="institution"
                         onChange={(e) => props?.handleInputChange(e, "INSTITUTION")}
                     />
-                    <Row className="my-5">
+                    <Row className="align-items-center">
                         <TextDropdown
                             placeholder="Pilih Jumlah Instansi"
-                            xs={4}
+                            xs={12}
+                            lg={4}
                             text
                             name="limit"
                             onChange={(e) => props?.handleInputChange(e, "LIMIT")}
                         />
                         <TextDropdown
                             placeholder="Pilih Status"
-                            xs={4}
+                            xs={12}
+                            lg={4}
                             dict={[
                                 {text: "Sedang Diproses", value: 1},
                                 {text: "Selesai", value: 2},
@@ -134,7 +136,8 @@ const UserDashboardComponent = (props: any) => {
                         />
                         <TextDropdown
                             placeholder="Pilih Tanggal"
-                            xs={4}
+                            xs={12}
+                            lg={4}
                             date
                             onChange={(e) => props?.handleInputChange(e, "DATE")}
                         />

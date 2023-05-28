@@ -225,6 +225,7 @@ hr {
 
 .card h4, .card p {
     text-align: start;
+    width: fit-content;
 }
 
 input[type="range"]::-webkit-slider-thumb {
