@@ -32,7 +32,7 @@ const ProfileComponent = (props: any) => {
             </Modal>
             <Row className="p-5">
                 <Col>
-                    <Row className="text-center my-5">
+                    <Row className="text-center mb-5">
                         <Col>
                             {props?.biodataResponse?.profile_picture_link
                             ?
@@ -46,11 +46,11 @@ const ProfileComponent = (props: any) => {
                     <Row className="text-center">
                         <Col>
                             <h5 className="text-purple fw-bold mb-3">Lengkapi profil Anda!</h5>
-                            <Image src={progress_bar} />
+                            <Image src={progress_bar} fluid />
                         </Col>
                     </Row>
-                    <Row className="my-5">
-                        <Col className="mx-5 custom-border custom-shadow px-5 py-3">
+                    <Row className="justify-content-center mt-5">
+                        <Col className="mx-4 mb-5 custom-border custom-shadow px-5 py-3" xs={12} xl={5}>
                             <Link to="/edit-profile/biodata" className="text-decoration-none">
                                 <h5 className="text-purple">
                                     Data Diri
@@ -58,7 +58,7 @@ const ProfileComponent = (props: any) => {
                                 </h5>
                             </Link>
                             <Row className="mt-3">
-                                <Col xs={4} className="p-0">
+                                <Col xs={12} sm={5} className="p-0">
                                     <p className="fw-bold">Nomor Kontak</p>
                                 </Col>
                                 <Col>
@@ -66,7 +66,7 @@ const ProfileComponent = (props: any) => {
                                 </Col>
                             </Row>
                             <Row className="mt-3">
-                                <Col xs={4} className="p-0">
+                                <Col xs={12} sm={5} className="p-0">
                                     <p className="fw-bold">Email</p>
                                 </Col>
                                 <Col>
@@ -74,7 +74,7 @@ const ProfileComponent = (props: any) => {
                                 </Col>
                             </Row>
                             <Row className="mt-3">
-                                <Col xs={4} className="p-0">
+                                <Col xs={12} sm={5} className="p-0">
                                     <p className="fw-bold">Profil Linkedin</p>
                                 </Col>
                                 <Col>
@@ -82,7 +82,7 @@ const ProfileComponent = (props: any) => {
                                 </Col>
                             </Row>
                             <Row className="mt-3">
-                                <Col xs={4} className="p-0">
+                                <Col xs={12} sm={5} className="p-0">
                                     <p className="fw-bold">Alamat Rumah</p>
                                 </Col>
                                 <Col>
@@ -90,7 +90,7 @@ const ProfileComponent = (props: any) => {
                                 </Col>
                             </Row>
                         </Col>
-                        <Col className="mx-5 custom-border custom-shadow px-5 py-3">
+                        <Col className="mx-4 mb-5 custom-border custom-shadow px-5 py-3" xs={12} xl={5}>
                             <Link to="/edit-profile/evaluation" className="text-decoration-none">
                                 <h5 className="text-purple">
                                     Data Evaluasi SPBE
@@ -114,7 +114,7 @@ const ProfileComponent = (props: any) => {
                                                     <>
                                                         {index > 0 && <hr className="mt-3" />}
                                                         <Row className="mt-3">
-                                                            <Col xs={4} className="p-0">
+                                                            <Col xs={12} sm={5} className="p-0">
                                                                 <p className="fw-bold">Peran</p>
                                                             </Col>
                                                             <Col>
@@ -122,7 +122,7 @@ const ProfileComponent = (props: any) => {
                                                             </Col>
                                                         </Row>
                                                         <Row className="mt-3">
-                                                            <Col xs={4} className="p-0">
+                                                            <Col xs={12} sm={5} className="p-0">
                                                                 <p className="fw-bold">Instansi SPBE</p>
                                                             </Col>
                                                             <Col>
@@ -130,7 +130,7 @@ const ProfileComponent = (props: any) => {
                                                             </Col>
                                                         </Row>
                                                         <Row className="mt-3">
-                                                            <Col xs={4} className="p-0">
+                                                            <Col xs={12} sm={5} className="p-0">
                                                                 <p className="fw-bold">Tahun Evaluasi</p>
                                                             </Col>
                                                             <Col>
@@ -144,7 +144,7 @@ const ProfileComponent = (props: any) => {
                                     :
                                         <>
                                             <Row className="mt-3">
-                                                <Col xs={4} className="p-0">
+                                                <Col xs={12} sm={5} className="p-0">
                                                     <p className="fw-bold">Peran</p>
                                                 </Col>
                                                 <Col>
@@ -152,7 +152,7 @@ const ProfileComponent = (props: any) => {
                                                 </Col>
                                             </Row>
                                             <Row className="mt-3">
-                                                <Col xs={4} className="p-0">
+                                                <Col xs={12} sm={5} className="p-0">
                                                     <p className="fw-bold">Instansi SPBE</p>
                                                 </Col>
                                                 <Col>
@@ -160,33 +160,35 @@ const ProfileComponent = (props: any) => {
                                                 </Col>
                                             </Row>
                                             <Row className="mt-3">
-                                                <Col xs={4} className="p-0">
+                                                <Col xs={12} sm={5} className="p-0">
                                                     <p className="fw-bold">Tahun Evaluasi</p>
                                                 </Col>
                                                 <Col>
                                                     <p>{evaluationDataResponse[0].evaluation_year}</p>
                                                 </Col>
                                             </Row>
-                                            <Row className="mt-3">
-                                                <Col className="text-end p-0">
-                                                    <Button
-                                                        className="text-secondary bg-white border-0 p-0"
-                                                        size="sm"
-                                                        name="showAllEvaluation"
-                                                        onClick={(e: any) => props?.handleShow(e)}
-                                                    >
-                                                        Lihat Semua
-                                                    </Button>
-                                                </Col>
-                                            </Row>
+                                            {evaluationDataResponse.length > 1 &&
+                                                <Row className="mt-3">
+                                                    <Col className="text-end p-0">
+                                                        <Button
+                                                            className="text-secondary bg-white border-0 p-0"
+                                                            size="sm"
+                                                            name="showAllEvaluation"
+                                                            onClick={(e: any) => props?.handleShow(e)}
+                                                        >
+                                                            Lihat Semua
+                                                        </Button>
+                                                    </Col>
+                                                </Row>
+                                            }
                                         </>
                                     }
                                 </>
                             }
                         </Col>
                     </Row>
-                    <Row>
-                        <Col className="mx-5 custom-border custom-shadow px-5 py-3">
+                    <Row className="justify-content-center">
+                        <Col className="mx-4 mb-5 custom-border custom-shadow px-5 py-3" xs={12} xl={5}>
                             <Link to="/edit-profile/occupation" className="text-decoration-none">
                                 <h5 className="text-purple">
                                     Data Kerja
@@ -210,7 +212,7 @@ const ProfileComponent = (props: any) => {
                                                     <>
                                                         {index > 0 && <hr className="mt-3" />}
                                                         <Row className="mt-3">
-                                                            <Col xs={4} className="p-0">
+                                                            <Col xs={12} sm={5} className="p-0">
                                                                 <p className="fw-bold">Pekerjaan/Jabatan</p>
                                                             </Col>
                                                             <Col>
@@ -218,7 +220,7 @@ const ProfileComponent = (props: any) => {
                                                             </Col>
                                                         </Row>
                                                         <Row className="mt-3">
-                                                            <Col xs={4} className="p-0">
+                                                            <Col xs={12} sm={5} className="p-0">
                                                                 <p className="fw-bold">Instansi</p>
                                                             </Col>
                                                             <Col>
@@ -226,7 +228,7 @@ const ProfileComponent = (props: any) => {
                                                             </Col>
                                                         </Row>
                                                         <Row className="mt-3">
-                                                            <Col xs={4} className="p-0">
+                                                            <Col xs={12} sm={5} className="p-0">
                                                                 <p className="fw-bold">Tahun Masuk</p>
                                                             </Col>
                                                             <Col>
@@ -240,7 +242,7 @@ const ProfileComponent = (props: any) => {
                                     :
                                         <>
                                             <Row className="mt-3">
-                                                <Col xs={4} className="p-0">
+                                                <Col xs={12} sm={5} className="p-0">
                                                     <p className="fw-bold">Pekerjaan/Jabatan</p>
                                                 </Col>
                                                 <Col>
@@ -248,7 +250,7 @@ const ProfileComponent = (props: any) => {
                                                 </Col>
                                             </Row>
                                             <Row className="mt-3">
-                                                <Col xs={4} className="p-0">
+                                                <Col xs={12} sm={5} className="p-0">
                                                     <p className="fw-bold">Instansi</p>
                                                 </Col>
                                                 <Col>
@@ -256,31 +258,33 @@ const ProfileComponent = (props: any) => {
                                                 </Col>
                                             </Row>
                                             <Row className="mt-3">
-                                                <Col xs={4} className="p-0">
+                                                <Col xs={12} sm={5} className="p-0">
                                                     <p className="fw-bold">Tahun Masuk</p>
                                                 </Col>
                                                 <Col>
                                                     <p>{jobDataResponse[0].joined_year}</p>
                                                 </Col>
                                             </Row>
-                                            <Row className="mt-3">
-                                                <Col className="text-end p-0">
-                                                    <Button
-                                                        className="text-secondary bg-white border-0 p-0"
-                                                        size="sm"
-                                                        name="showAllJob"
-                                                        onClick={(e: any) => props?.handleShow(e)}
-                                                    >
-                                                        Lihat Semua
-                                                    </Button>
-                                                </Col>
-                                            </Row>
+                                            {jobDataResponse.length > 1 &&
+                                                <Row className="mt-3">
+                                                    <Col className="text-end p-0">
+                                                        <Button
+                                                            className="text-secondary bg-white border-0 p-0"
+                                                            size="sm"
+                                                            name="showAllJob"
+                                                            onClick={(e: any) => props?.handleShow(e)}
+                                                        >
+                                                            Lihat Semua
+                                                        </Button>
+                                                    </Col>
+                                                </Row>
+                                            }
                                         </>
                                     }
                                 </>
                             }
                         </Col>
-                        <Col className="mx-5 custom-border custom-shadow px-5 py-3">
+                        <Col className="mx-4 mb-5 custom-border custom-shadow px-5 py-3" xs={12} xl={5}>
                             <h5 className="text-purple">Data Institusi</h5>
                             {institutionDataResponse.length === 0
                             ?
@@ -299,7 +303,7 @@ const ProfileComponent = (props: any) => {
                                                     <>
                                                         {index > 0 && <hr className="mt-3" />}
                                                         <Row className="mt-3">
-                                                            <Col xs={4} className="p-0">
+                                                            <Col xs={12} sm={5} className="p-0">
                                                                 <p className="fw-bold">Peran</p>
                                                             </Col>
                                                             <Col>
@@ -307,7 +311,7 @@ const ProfileComponent = (props: any) => {
                                                             </Col>
                                                         </Row>
                                                         <Row className="mt-3 align-items-center">
-                                                            <Col xs={4} className="p-0">
+                                                            <Col xs={12} sm={5} className="p-0">
                                                                 <p className="fw-bold">Nama Institusi</p>
                                                             </Col>
                                                             <Col>
@@ -318,7 +322,7 @@ const ProfileComponent = (props: any) => {
                                                             </Col>
                                                         </Row>
                                                         <Row className="mt-3">
-                                                            <Col xs={4} className="p-0">
+                                                            <Col xs={12} sm={5} className="p-0">
                                                                 <p className="fw-bold">Status</p>
                                                             </Col>
                                                             <Col>
@@ -344,7 +348,7 @@ const ProfileComponent = (props: any) => {
                                     :
                                         <>
                                             <Row className="mt-3">
-                                                <Col xs={4} className="p-0">
+                                                <Col xs={12} sm={5} className="p-0">
                                                     <p className="fw-bold">Peran</p>
                                                 </Col>
                                                 <Col>
@@ -352,7 +356,7 @@ const ProfileComponent = (props: any) => {
                                                 </Col>
                                             </Row>
                                             <Row className="mt-3 align-items-center">
-                                                <Col xs={4} className="p-0">
+                                                <Col xs={12} sm={5} className="p-0">
                                                     <p className="fw-bold">Nama Institusi</p>
                                                 </Col>
                                                 <Col>
@@ -363,7 +367,7 @@ const ProfileComponent = (props: any) => {
                                                 </Col>
                                             </Row>
                                             <Row className="mt-3">
-                                                <Col xs={4} className="p-0">
+                                                <Col xs={12} sm={5} className="p-0">
                                                     <p className="fw-bold">Status</p>
                                                 </Col>
                                                 <Col>
@@ -375,18 +379,20 @@ const ProfileComponent = (props: any) => {
                                                     }
                                                 </Col>
                                             </Row>
-                                            <Row className="mt-3">
-                                                <Col className="text-end p-0">
-                                                    <Button
-                                                        className="text-secondary bg-white border-0 p-0"
-                                                        size="sm"
-                                                        name="showAllInstitution"
-                                                        onClick={(e: any) => props?.handleShow(e)}
-                                                    >
-                                                        Lihat Semua
-                                                    </Button>
-                                                </Col>
-                                            </Row>
+                                            {institutionDataResponse.length > 1 &&
+                                                <Row className="mt-3">
+                                                    <Col className="text-end p-0">
+                                                        <Button
+                                                            className="text-secondary bg-white border-0 p-0"
+                                                            size="sm"
+                                                            name="showAllInstitution"
+                                                            onClick={(e: any) => props?.handleShow(e)}
+                                                        >
+                                                            Lihat Semua
+                                                        </Button>
+                                                    </Col>
+                                                </Row>
+                                            }
                                         </>
                                     }
                                 </>
