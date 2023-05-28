@@ -101,7 +101,7 @@ const UserDashboardComponent = (props: any) => {
                     </Modal>
                     <Row className="justify-content-between">
                         <Col>
-                            <h1 className="mb-3">Dashboard</h1>
+                            <h1 className="mb-3">Dashboard Penilaian</h1>
                         </Col>
                         <Col xs={5} md={4} lg={3} xxl={2}>
                             <Link to="/upload">
