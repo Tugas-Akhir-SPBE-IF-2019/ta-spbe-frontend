@@ -50,7 +50,7 @@ const ProfileComponent = (props: any) => {
                         </Col>
                     </Row>
                     <Row className="justify-content-center mt-5">
-                        <Col className="mx-4 mb-5 custom-border custom-shadow px-5 py-3" xs={12} xl={5}>
+                        <Col className="mx-4 mb-5 custom-border custom-shadow px-5 py-3 height-fit" xs={12} xl={5}>
                             <Link to="/edit-profile/biodata" className="text-decoration-none">
                                 <h5 className="d-flex text-purple align-items-center">
                                     Data Diri
@@ -91,7 +91,7 @@ const ProfileComponent = (props: any) => {
                                 </Col>
                             </Row>
                         </Col>
-                        <Col className="mx-4 mb-5 custom-border custom-shadow px-5 py-3" xs={12} xl={5}>
+                        <Col className="mx-4 mb-5 custom-border custom-shadow px-5 py-3 height-fit" xs={12} xl={5}>
                             <Link to="/edit-profile/evaluation" className="text-decoration-none">
                                 <h5 className="d-flex text-purple align-items-center">
                                     Data Evaluasi SPBE
@@ -190,7 +190,7 @@ const ProfileComponent = (props: any) => {
                         </Col>
                     </Row>
                     <Row className="justify-content-center">
-                        <Col className="mx-4 mb-5 custom-border custom-shadow px-5 py-3" xs={12} xl={5}>
+                        <Col className="mx-4 mb-5 custom-border custom-shadow px-5 py-3 height-fit" xs={12} xl={5}>
                             <Link to="/edit-profile/occupation" className="text-decoration-none">
                                 <h5 className="d-flex text-purple align-items-center">
                                     Data Kerja
@@ -287,7 +287,7 @@ const ProfileComponent = (props: any) => {
                                 </>
                             }
                         </Col>
-                        <Col className="mx-4 mb-5 custom-border custom-shadow px-5 py-3" xs={12} xl={5}>
+                        <Col className="mx-4 mb-5 custom-border custom-shadow px-5 py-3 height-fit" xs={12} xl={5}>
                             <Link to="/edit-profile/institution" className="text-decoration-none">
                                 <h5 className="d-flex text-purple align-items-center">
                                     Data Institusi

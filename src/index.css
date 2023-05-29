@@ -276,6 +276,7 @@ input[type="range"]::-ms-thumb {
 
 .height-fit {
     height: fit-content;
+    min-height: 230px;
 }
 
 .form-check-input {
