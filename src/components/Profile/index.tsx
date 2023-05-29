@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Row, Col, Image, Button, Modal } from 'react-bootstrap';
+import { Row, Col, Image, Button, Modal, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import default_img from "../../assets/default-profpic.png";
 import progress_bar from "../../assets/progress-bar.png";
 import { Link } from "react-router-dom";
@@ -337,9 +337,27 @@ const ProfileComponent = (props: any) => {
                                                             <Col>
                                                                 {item.status === "VALID"
                                                                 ?
-                                                                    <p className="text-green bg-green width-fit px-2">DITERIMA</p>
+                                                                    <OverlayTrigger
+                                                                        placement="top"
+                                                                        overlay={
+                                                                            <Tooltip>
+                                                                                Institusi sudah dapat digunakan untuk membuat penilaian
+                                                                            </Tooltip>
+                                                                        }
+                                                                    >
+                                                                        <p className="text-green bg-green width-fit px-2">DITERIMA</p>
+                                                                    </OverlayTrigger>
                                                                 :
-                                                                    <p className="text-orange bg-orange width-fit px-2">DIPROSES</p>
+                                                                    <OverlayTrigger
+                                                                        placement="top"
+                                                                        overlay={
+                                                                            <Tooltip>
+                                                                                Institusi sedang dalam tahap pengecekan oleh administrator
+                                                                            </Tooltip>
+                                                                        }
+                                                                    >
+                                                                        <p className="text-orange bg-orange width-fit px-2">DIPROSES</p>
+                                                                    </OverlayTrigger>
                                                                 }
                                                             </Col>
                                                         </Row>
@@ -375,9 +393,27 @@ const ProfileComponent = (props: any) => {
                                                 <Col>
                                                     {institutionDataResponse[0].status === "VALID"
                                                     ?
-                                                        <p className="text-green bg-green width-fit px-2">DITERIMA</p>
+                                                        <OverlayTrigger
+                                                            placement="top"
+                                                            overlay={
+                                                                <Tooltip>
+                                                                    Institusi sudah dapat digunakan untuk membuat penilaian
+                                                                </Tooltip>
+                                                            }
+                                                        >
+                                                            <p className="text-green bg-green width-fit px-2">DITERIMA</p>
+                                                        </OverlayTrigger>
                                                     :
-                                                        <p className="text-orange bg-orange width-fit px-2">DIPROSES</p>
+                                                        <OverlayTrigger
+                                                            placement="top"
+                                                            overlay={
+                                                                <Tooltip>
+                                                                    Institusi sedang dalam tahap pengecekan oleh administrator
+                                                                </Tooltip>
+                                                            }
+                                                        >
+                                                            <p className="text-orange bg-orange width-fit px-2">DIPROSES</p>
+                                                        </OverlayTrigger>
                                                     }
                                                 </Col>
                                             </Row>
