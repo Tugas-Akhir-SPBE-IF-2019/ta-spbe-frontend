@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const NavBar = lazy(() => import("../../components/NavBar"));
 const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
+const TextDropdown = lazy(() => import("../../components/General/TextDropdown"));
 
 const EditProfileInstitutionComponent = (props: any) => {
     return (
@@ -46,7 +47,19 @@ const EditProfileInstitutionComponent = (props: any) => {
                                         <Form>
                                             <Form.Group className="my-4">
                                                 <Form.Label className="text-purple mb-2">Peran</Form.Label>
-                                                <Form.Control onChange={(e: any) => props?.handleInputChange(e, index)} name="role" value={item.role} type="text" placeholder="Tuliskan Peran" className="py-3 custom-border shadow-none" />
+                                                <TextDropdown
+                                                    placeholder="Pilih Peran"
+                                                    xs={12}
+                                                    dict={[
+                                                        {text: "Asesor Internal", value: "Asesor Internal"},
+                                                        {text: "Asesor Eksternal", value: "Asesor Eksternal"},
+                                                    ]}
+                                                    name="role"
+                                                    value={item.role}
+                                                    onChange={(e: any) => props?.handleInputChange(e, index)}
+                                                    className="py-3"
+                                                />
+                                                {/* <Form.Control onChange={(e: any) => props?.handleInputChange(e, index)} name="role" value={item.role} type="text" placeholder="Tuliskan Peran" className="py-3 custom-border shadow-none" /> */}
                                             </Form.Group>
                                             <Form.Group className="my-4">
                                                 <Form.Label className="text-purple mb-2">Nama Instansi</Form.Label>

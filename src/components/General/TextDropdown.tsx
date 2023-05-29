@@ -21,9 +21,10 @@ const TextDropdown = (props: any) => {
                     </Form.Select>
                 }
                 {props?.dict &&
-                    <Form.Select className="custom-border shadow-none text-purple py-2 px-3"
+                    <Form.Select className={"custom-border shadow-none text-purple py-2 px-3 " + props?.className}
                         name={props?.name}
                         onChange={props?.onChange}
+                        value={props?.value}
                     >
                         <option value="">{props?.placeholder}</option>
                         {props?.dict?.length !== 0 && (props.dict.map((item: any, index: number) => {

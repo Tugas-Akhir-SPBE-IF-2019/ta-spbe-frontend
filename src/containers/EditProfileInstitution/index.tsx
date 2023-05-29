@@ -36,7 +36,9 @@ export class EditProfileInstitutionContainer extends PureComponent<any, any> {
     }
 
     componentDidMount() {
-        this.addField();
+        if (this.state.list_items.length === 0) {
+            this.addField();
+        }
         this.props.getProfileInstitutionData();
     }
 
@@ -120,6 +122,7 @@ export class EditProfileInstitutionContainer extends PureComponent<any, any> {
     render() {
         const { list_items, showModal } = this.state;
         const { institutionDataResponse } = this.props;
+        console.log(list_items);
         return (
             <EditProfileInstitutionComponent
                 list_items={list_items}
