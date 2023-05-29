@@ -38,7 +38,7 @@ const GuestDashboardComponent = (props: any) => {
                                     <span>Indeks Min</span>
                                     <Form.Range
                                         min="1"
-                                        max="4"
+                                        max="5"
                                         step="0.1"
                                         name="index_min"
                                         value={props?.index_min}
@@ -50,7 +50,7 @@ const GuestDashboardComponent = (props: any) => {
                                     <span>Indeks Maks</span>
                                     <Form.Range
                                         min="1"
-                                        max="4"
+                                        max="5"
                                         step="0.1"
                                         name="index_max"
                                         value={props?.index_max}

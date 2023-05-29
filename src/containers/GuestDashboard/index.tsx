@@ -23,7 +23,7 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
             start_date: "",
             end_date: "",
             index_min: 1,
-            index_max: 4,
+            index_max: 5,
             total_pages: 0,
             page_component: [],
         };
