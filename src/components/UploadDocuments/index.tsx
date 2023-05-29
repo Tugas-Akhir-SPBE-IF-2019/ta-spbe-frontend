@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Container, Row, Col, Form, OverlayTrigger, Tooltip, Modal } from 'react-bootstrap';
+import { Button, Row, Col, Form, OverlayTrigger, Tooltip, Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
@@ -48,23 +48,34 @@ const UploadDocumentsComponent = (props: any) => {
                     </Form.Group>
                     <Form.Group>
                         <Row className="py-3">
-                            <Col className="d-flex align-items-center justify-content-between p-0">
+                            <Col>
                                 <Form.Label className="fw-bold">Nomor Indikator*</Form.Label>
-                                <Row>
-                                    <Col className="">
-                                        <PurpleButton
-                                            text="Pilih Semua"
-                                            onClick={() => props?.handleInputChange(
-                                                {
-                                                    target: {
-                                                        name: "indicator_number",
-                                                        value: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
-                                                    }
-                                                }, "SELECTALL"
-                                            )}
-                                        />
-                                    </Col>
-                                </Row>
+                            </Col>
+                            <Col className="d-flex align-items-center" xs={3} md={2} lg={3}>
+                                <Button className="bg-red text-white rounded-pill p-3 border-0 w-100"
+                                    onClick={() => props?.handleInputChange(
+                                        {
+                                            target: {
+                                                name: "indicator_number",
+                                                value: []
+                                            }
+                                        }, "RESET"
+                                    )}>
+                                        Reset
+                                </Button>
+                            </Col>
+                            <Col xs={4} md={3} lg={4} className="p-0">
+                                <PurpleButton
+                                    text="Pilih Semua"
+                                    onClick={() => props?.handleInputChange(
+                                        {
+                                            target: {
+                                                name: "indicator_number",
+                                                value: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+                                            }
+                                        }, "SELECTALL"
+                                    )}
+                                />
                             </Col>
                         </Row>
                         <hr/>
@@ -205,21 +216,6 @@ const UploadDocumentsComponent = (props: any) => {
                                     onChange={(e) => props?.handleInputChange(e, "CHECK")}
                                     checked={props?.isChecked("10")}
                                 />
-                            </Col>
-                        </Row>
-                        <hr/>
-                        <Row>
-                            <Col className="d-flex justify-content-end">
-                                <p className="text-red fw-bold me-4 pe-2 pointer"
-                                    onClick={() => props?.handleInputChange(
-                                        {
-                                            target: {
-                                                name: "indicator_number",
-                                                value: []
-                                            }
-                                        }, "RESET"
-                                    )}
-                                >Reset&nbsp;</p>
                             </Col>
                         </Row>
                     </Form.Group>

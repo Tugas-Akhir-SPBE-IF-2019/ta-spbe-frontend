@@ -144,6 +144,10 @@ hr {
     background-color: var(--orange-bg) !important;
 }
 
+.bg-red {
+    background-color: var(--red) !important;
+}
+
 .text-purple {
     color: var(--purple);
 }
