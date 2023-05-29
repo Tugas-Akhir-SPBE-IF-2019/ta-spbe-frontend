@@ -124,6 +124,10 @@ hr {
     box-shadow: 4px 4px 4px var(--purple25);
 }
 
+.carousel-indicators button {
+    background-color: var(--purple) !important;
+}
+
 .bg-purple {
     background-color: var(--purple) !important;
 }
