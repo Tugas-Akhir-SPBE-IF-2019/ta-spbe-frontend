@@ -42,8 +42,10 @@ export class EditProfileBioContainer extends PureComponent<any, any> {
     componentDidUpdate(prevProps: any) {
         if (prevProps.biodataResponse !== this.props.biodataResponse) {
             let newBio = {...this.props.biodataResponse};
-            delete newBio.house_address;
             delete newBio.profile_picture_link;
+            if (!newBio.linkedin_profile) {
+                newBio.linkedin_profile = "https://www.linkedin.com/in/";
+            }
             this.setState({
                 ...this.state,
                 ...newBio,
@@ -72,7 +74,16 @@ export class EditProfileBioContainer extends PureComponent<any, any> {
 
     private handleUpdateBiodata(e: any): void {
         e.preventDefault();
-        this.props.updateProfileBiodata(this.state);
+        const { email, name, contact_number, linkedin_profile, address, profile_picture } = this.state;
+        const formValues = {
+            email: email,
+            name: name,
+            contact_number: contact_number,
+            linkedin_profile: linkedin_profile === "https://www.linkedin.com/in/" ? "" : linkedin_profile,
+            address: address,
+            profile_picture: profile_picture,
+        }
+        this.props.updateProfileBiodata(formValues);
     }
     
     private toggleModal(): void {
