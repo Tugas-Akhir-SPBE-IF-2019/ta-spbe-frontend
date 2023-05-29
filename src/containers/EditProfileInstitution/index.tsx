@@ -122,7 +122,6 @@ export class EditProfileInstitutionContainer extends PureComponent<any, any> {
     render() {
         const { list_items, showModal } = this.state;
         const { institutionDataResponse } = this.props;
-        console.log(list_items);
         return (
             <EditProfileInstitutionComponent
                 list_items={list_items}

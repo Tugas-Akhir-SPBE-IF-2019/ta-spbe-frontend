@@ -59,7 +59,6 @@ const EditProfileInstitutionComponent = (props: any) => {
                                                     onChange={(e: any) => props?.handleInputChange(e, index)}
                                                     className="py-3"
                                                 />
-                                                {/* <Form.Control onChange={(e: any) => props?.handleInputChange(e, index)} name="role" value={item.role} type="text" placeholder="Tuliskan Peran" className="py-3 custom-border shadow-none" /> */}
                                             </Form.Group>
                                             <Form.Group className="my-4">
                                                 <Form.Label className="text-purple mb-2">Nama Instansi</Form.Label>
