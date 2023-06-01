@@ -1,7 +1,8 @@
-import { SET_ASSESSMENT_LIST, SET_ASSESSMENT_HISTORY } from "./constant";
+import { SET_ASSESSMENT_LIST, SET_ASSESSMENT_HISTORY, SET_INSTITUTION_LIST } from "./constant";
 
 const initialState = {
     assessmentList: [],
+    institutionList: [],
     history: null,
 };
 
@@ -16,6 +17,11 @@ const userDashboardReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 history: action.params,
+            };
+        case SET_INSTITUTION_LIST:
+            return {
+                ...state,
+                institutionList: action.params,
             };
         default:
             return state;

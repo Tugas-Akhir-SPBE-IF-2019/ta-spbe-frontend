@@ -10,4 +10,10 @@ const assessmentHistorySelector = (state: any) => {
         : null;
 };
 
-export { assessmentListSelector, assessmentHistorySelector };
+const institutionListSelector = (state: any) => {
+    return state?.userDashboardReducer?.institutionList
+        ? state.userDashboardReducer.institutionList
+        : [];
+};
+
+export { assessmentListSelector, assessmentHistorySelector, institutionListSelector };

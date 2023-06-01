@@ -112,7 +112,18 @@ const UserDashboardComponent = (props: any) => {
                     <Search
                         name="institution"
                         onChange={(e) => props?.handleInputChange(e, "INSTITUTION")}
+                        value={props?.institution}
+                        onBlur={() => props?.handleOutFocus()}
                     />
+                    {props?.showSuggestions &&
+                        <div className="rounded border position-absolute bg-white z-front position-relative">
+                        {(props?.suggestions.map((sug: any, idx: number) => {
+                                return (
+                                    <option className="custom-option rounded pointer px-3" value={sug.institution_name} key={idx} onClick={() => props?.handleSelectSuggestion(sug.institution_name)}>{sug.institution_name}</option>
+                                )
+                            }))}
+                        </div>
+                    }
                     <Row className="align-items-center">
                         <TextDropdown
                             placeholder="Pilih Jumlah Instansi"
