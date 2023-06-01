@@ -35,10 +35,12 @@ export class ProfileContainer extends PureComponent<any, any> {
             showAllJob: false,
             showAllInstitution: false,
             showModal: false,
+            showAlert: true,
         });
         this.handleShow = this.handleShow.bind(this);
         this.handleDeleteInstitution = this.handleDeleteInstitution.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
+        this.toggleAlert = this.toggleAlert.bind(this);
     }
 
     componentDidMount() {
@@ -66,6 +68,9 @@ export class ProfileContainer extends PureComponent<any, any> {
         if (prevState.showModal !== showModal && prevState.showModal) {
             this.props.getProfileInstitutionData();
         }
+        if (prevProps.institutionDataResponse !== institutionDataResponse) {
+            this.toggleAlert();
+        }
     }
 
     private handleShow(e: any): void {
@@ -87,9 +92,23 @@ export class ProfileContainer extends PureComponent<any, any> {
         });
     }
 
+    private toggleAlert(): void {
+        const { biodataResponse, evaluationDataResponse, jobDataResponse, institutionDataResponse } = this.props;
+        if (evaluationDataResponse.length !== 0 &&
+            jobDataResponse.length !== 0 &&
+            institutionDataResponse.length !== 0 &&
+            biodataResponse.name && biodataResponse.contact_number &&
+            biodataResponse.email && biodataResponse.linkedin_profile && biodataResponse.address) {
+            this.setState({
+                ...this.state,
+                showAlert: false,
+            });
+        }
+    }
+
     render() {
         const { biodataResponse, evaluationDataResponse, jobDataResponse, institutionDataResponse } = this.props;
-        const { showAllEvaluation, showAllJob, showAllInstitution, showModal } = this.state;
+        const { showAllEvaluation, showAllJob, showAllInstitution, showModal, showAlert } = this.state;
         return (
             <ProfileComponent
                 biodataResponse={biodataResponse}
@@ -103,6 +122,7 @@ export class ProfileContainer extends PureComponent<any, any> {
                 handleDeleteInstitution={this.handleDeleteInstitution}
                 showModal={showModal}
                 toggleModal={this.toggleModal}
+                showAlert={showAlert}
             />
         )
     }

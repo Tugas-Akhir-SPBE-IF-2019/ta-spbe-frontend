@@ -1,7 +1,6 @@
 import { lazy } from 'react';
-import { Row, Col, Image, Button, Modal, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Row, Col, Image, Button, Modal, OverlayTrigger, Tooltip, Alert } from 'react-bootstrap';
 import default_img from "../../assets/default-profpic.png";
-import progress_bar from "../../assets/progress-bar.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -30,6 +29,9 @@ const ProfileComponent = (props: any) => {
                     </Row>
                 </Modal.Footer>
             </Modal>
+            {props?.showAlert &&
+                <Alert variant="danger" className="text-center fw-bold">Lengkapi profil Anda!</Alert>
+            }
             <Row className="p-5">
                 <Col>
                     <Row className="text-center mb-5">
@@ -41,12 +43,6 @@ const ProfileComponent = (props: any) => {
                                 <Image src={default_img} />
                             }
                             <h1 className="text-purple fw-bold my-2">{props?.biodataResponse?.name}</h1>
-                        </Col>
-                    </Row>
-                    <Row className="text-center">
-                        <Col>
-                            <h5 className="text-purple fw-bold mb-3">Lengkapi profil Anda!</h5>
-                            <Image src={progress_bar} fluid />
                         </Col>
                     </Row>
                     <Row className="justify-content-center mt-5">
