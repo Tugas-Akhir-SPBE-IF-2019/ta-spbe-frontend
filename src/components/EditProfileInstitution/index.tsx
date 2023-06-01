@@ -60,9 +60,18 @@ const EditProfileInstitutionComponent = (props: any) => {
                                                     className="py-3"
                                                 />
                                             </Form.Group>
-                                            <Form.Group className="my-4">
+                                            <Form.Group className="my-4 position-relative">
                                                 <Form.Label className="text-purple mb-2">Nama Instansi</Form.Label>
                                                 <Form.Control onChange={(e: any) => props?.handleInputChange(e, index)} name="institution_name" value={item.institution_name} type="text" placeholder="Tuliskan Instansi SPBE" className="py-3 custom-border shadow-none" />
+                                                {props?.showSuggestions[index] &&
+                                                    <div className="rounded border position-absolute bg-white z-front position-relative">
+                                                    {(props?.suggestions.map((sug: any, idx: number) => {
+                                                            return (
+                                                                <option className="custom-option rounded pointer px-3" value={sug.institution_name} key={idx} onClick={() => props?.handleSelectSuggestion(sug.institution_name, index)}>{sug.institution_name}</option>
+                                                            )
+                                                        }))}
+                                                    </div>
+                                                }
                                             </Form.Group>
                                         </Form>
                                         <hr className="profile-hr my-3"/>
