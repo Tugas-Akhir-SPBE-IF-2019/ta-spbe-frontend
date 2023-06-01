@@ -65,9 +65,18 @@ export class EditProfileBioContainer extends PureComponent<any, any> {
             });
         }
         else if (value !== null) {
+            let val = value;
+            if (name === "contact_number") {
+                if (parseInt(value)) {
+                    val = parseInt(value);
+                }
+                else {
+                    val = "";
+                }
+            }
             this.setState({
                 ...this.state,
-                [name]: value,
+                [name]: name === "contact_number" ? val : value,
             });
         }
     }
