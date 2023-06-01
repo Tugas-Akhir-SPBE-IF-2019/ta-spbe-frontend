@@ -38,6 +38,10 @@
     z-index: -1;
 }
 
+.z-front {
+    z-index: 10000;
+}
+
 @media only screen and (min-width: 576px) {
 
 }
@@ -170,6 +174,12 @@ hr {
 
 .text-red {
     color: var(--red);
+}
+
+.custom-option:hover {
+    background-color: var(--purple);
+    color: white;
+    border-collapse: collapse;
 }
 
 .page-item:first-child {
