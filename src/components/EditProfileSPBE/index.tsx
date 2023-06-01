@@ -63,7 +63,6 @@ const EditProfileSPBEComponent = (props: any) => {
                                             <Form.Group className="my-4 position-relative">
                                                 <Form.Label className="text-purple mb-2">Instansi SPBE</Form.Label>
                                                 <Form.Control onChange={(e: any) => props?.handleInputChange(e, index)} value={item.institution_name} name="institution_name" type="text" placeholder="Tuliskan Instansi SPBE" className="py-3 custom-border shadow-none" />
-                                                {/* value={props?.findInstitutionName(item.institution_id)} */}
                                                 {props?.showSuggestions[index] &&
                                                     <div className="rounded border position-absolute bg-white z-front position-relative">
                                                     {(props?.suggestions.map((sug: any, idx: number) => {
@@ -74,17 +73,6 @@ const EditProfileSPBEComponent = (props: any) => {
                                                     </div>
                                                 }
                                             </Form.Group>
-                                            {/* <Form.Group className="my-4">
-                                                <Form.Label className="text-purple mb-2">Instansi SPBE</Form.Label>
-                                                <TextDropdown
-                                                    placeholder="Pilih Instansi SPBE"
-                                                    xs={12}
-                                                    items={props?.institutionListResponse}
-                                                    name="institution_id"
-                                                    value={item.institution_id}
-                                                    onChange={(e) => props?.handleInputChange(e, index)}
-                                                />
-                                            </Form.Group> */}
                                             <Form.Group className="my-4">
                                                 <Form.Label className="text-purple mb-2">Tahun Evaluasi</Form.Label>
                                                 <Form.Control type="text" value={item.evaluation_year} onChange={(e: any) => props?.handleInputChange(e, index)} name="evaluation_year" placeholder="Tuliskan Tahun Evaluasi" className="py-3 custom-border shadow-none" />

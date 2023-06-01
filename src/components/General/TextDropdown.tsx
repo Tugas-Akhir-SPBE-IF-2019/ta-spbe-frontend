@@ -83,9 +83,6 @@ const TextDropdown = (props: any) => {
                                 className="px-3 py-2 border border-0 shadow-none"
                             />
                         </DateRangePicker>
-                        <InputGroup.Text id="addon-dropdown" className="px-3 py-2 bg-white border-0">
-                            <FontAwesomeIcon icon={faAngleDown} className="text-purple" />
-                        </InputGroup.Text>
                     </InputGroup>
                 }
             </Col>
