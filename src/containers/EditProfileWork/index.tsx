@@ -85,8 +85,13 @@ export class EditProfileWorkContainer extends PureComponent<any, any> {
 
         let val = value;
         let new_list = [...list_items];
-        if (name === "joined_year" && val !== "") {
-            val = parseInt(val);
+        if (name === "joined_year") {
+            if (parseInt(val)) {
+                val = parseInt(val);
+            }
+            else {
+                val = "";
+            }
         }
         new_list[index][name] = val;
         this.setState({
@@ -99,7 +104,7 @@ export class EditProfileWorkContainer extends PureComponent<any, any> {
         const { list_items } = this.state;
         for (let item of list_items) {
             if (!item.role) {
-                showToast("Peran harus diisi!");
+                showToast("Pekerjaan/Jabatan harus diisi!");
                 return false;
             }
             else if (!item.company) {
