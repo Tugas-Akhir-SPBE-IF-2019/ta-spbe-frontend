@@ -4,4 +4,10 @@ const indexListSelector = (state: any) => {
         : [];
 };
 
-export { indexListSelector };
+const institutionListSelector = (state: any) => {
+    return state?.guestDashboardReducer?.institutionList
+        ? state.guestDashboardReducer.institutionList
+        : [];
+};
+
+export { indexListSelector, institutionListSelector };

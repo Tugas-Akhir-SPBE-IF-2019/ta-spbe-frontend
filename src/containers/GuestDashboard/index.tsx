@@ -1,8 +1,8 @@
-import { lazy, PureComponent } from "react";
+import { lazy, PureComponent, createRef } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { indexListSelector } from "./selector";
-import { getIndexList } from "./action";
+import { indexListSelector, institutionListSelector } from "./selector";
+import { getIndexList, getInstitutionList } from "./action";
 import { Pagination } from 'react-bootstrap';
 
 const GuestDashboardComponent = lazy(() => import("../../components/GuestDashboard"));
@@ -11,7 +11,10 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
     static propTypes = {
         history: PropTypes.any,
         indexResponse: PropTypes.any,
+        institutionListResponse: PropTypes.any,
     };
+
+    private textInput: React.RefObject<HTMLInputElement>;
 
     constructor(props: any) {
         super(props);
@@ -26,15 +29,22 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
             index_max: 5,
             total_pages: 0,
             page_component: [],
+            showSuggestions: false,
+            suggestions: [],
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.submitFilter = this.submitFilter.bind(this);
         this.handleNext = this.handleNext.bind(this);
         this.handlePrev = this.handlePrev.bind(this);
+        this.handleSelectSuggestion = this.handleSelectSuggestion.bind(this);
+        this.handleOutFocus = this.handleOutFocus.bind(this);
+
+        this.textInput = createRef();
     }
 
     componentDidMount() {
         this.props.getIndexData(this.state);
+        this.props.getInstitutionListData({limit: 1000});
     }
 
     componentDidUpdate(prevProps: any, prevState: any) {
@@ -89,6 +99,8 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
     }
 
     private handleInputChange(e: any, type: string): void {
+        let suggestions: any[] = [];
+
         if (type === "DATE") {
             const { value } = e.target;
             let dates = value.split(" - ");
@@ -101,9 +113,16 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
         else {
             // Type === INSTITUTION / LIMIT / PAGE
             const { name, value } = e.target;
+            
+            if (name === "institution" && value) {
+                suggestions = this.props.institutionListResponse.filter((item: any) => item.institution_name.toLowerCase().includes(value.toLowerCase()))
+            }
+
             this.setState({
                 ...this.state,
                 [name]: value,
+                showSuggestions: name === "institution" ? true : false,
+                suggestions: name === "institution" ? suggestions : [],
             });
         }
     }
@@ -142,9 +161,25 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
         }
     }
 
+    private handleSelectSuggestion(value: string): void {
+        this.setState({
+            ...this.state,
+            institution: value,
+            showSuggestions: false,
+        })
+        this.textInput.current?.focus();
+    }
+
+    private handleOutFocus(): void {
+        this.setState({
+            ...this.state,
+            showSuggestions: false,
+        })
+    }
+
     render() {
-        const { indexResponse } = this.props;
-        const { page_component, index_min, index_max } = this.state;
+        const { indexResponse, institutionListResponse } = this.props;
+        const { page_component, index_min, index_max, showSuggestions, suggestions, institution } = this.state;
         return (
             <GuestDashboardComponent
                 indexResponse={indexResponse}
@@ -155,6 +190,13 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
                 handlePrev={this.handlePrev}
                 index_min={index_min}
                 index_max={index_max}
+                institutionListResponse={institutionListResponse}
+                showSuggestions={showSuggestions}
+                suggestions={suggestions}
+                textInput={this.textInput}
+                handleSelectSuggestion={this.handleSelectSuggestion}
+                handleOutFocus={this.handleOutFocus}
+                institution={institution}
             />
         )
     }
@@ -162,12 +204,14 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
 
 const mapStateToProps = (state: any) => {
     return {
+        institutionListResponse: institutionListSelector(state),
         indexResponse: indexListSelector(state),
     };
 };
   
 function mapDispatchToProps(dispatch: any) {
     return {
+        getInstitutionListData: (params: any) => dispatch(getInstitutionList(params)),
         getIndexData: (params: any) => dispatch(getIndexList(params)),
     };
 }

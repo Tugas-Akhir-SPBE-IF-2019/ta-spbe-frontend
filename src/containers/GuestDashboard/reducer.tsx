@@ -1,7 +1,8 @@
-import { SET_INDEX_LIST } from "./constant";
+import { SET_INDEX_LIST, SET_INSTITUTION_LIST } from "./constant";
 
 const initialState = {
     indexList: [],
+    institutionList: [],
 };
 
 const guestDashboardReducer = (state = initialState, action: any) => {
@@ -10,6 +11,11 @@ const guestDashboardReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 indexList: action.params,
+            };
+        case SET_INSTITUTION_LIST:
+            return {
+                ...state,
+                institutionList: action.params,
             };
         default:
             return state;

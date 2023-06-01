@@ -16,9 +16,10 @@ const Search = (props: any) => {
                             className="px-3 py-2 border border-0 shadow-none"
                             name={props?.name}
                             onChange={props?.onChange}
+                            value={props?.value}
                         />
                         <InputGroup.Text id="addon-search" className="px-3 py-2 bg-white border-0">
-                            <FontAwesomeIcon icon={faMagnifyingGlass} className="text-purple" />
+                            <FontAwesomeIcon icon={faMagnifyingGlass} className="text-purple" onClick={props?.onBlur} />
                         </InputGroup.Text>
                     </InputGroup>
                 </Col>
