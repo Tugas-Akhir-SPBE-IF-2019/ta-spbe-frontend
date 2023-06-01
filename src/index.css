@@ -216,6 +216,10 @@ hr {
     border-bottom: none !important;
 }
 
+.Toastify__toast-icon {
+    margin-right: 10px !important;
+}
+
 .container .bg-success {
     background-color: var(--purple) !important;
 }
