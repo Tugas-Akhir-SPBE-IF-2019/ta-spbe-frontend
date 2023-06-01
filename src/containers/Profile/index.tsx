@@ -44,19 +44,10 @@ export class ProfileContainer extends PureComponent<any, any> {
     }
 
     componentDidMount() {
-        const { biodataResponse, evaluationDataResponse, jobDataResponse, institutionDataResponse } = this.props;
-        if (!biodataResponse) {
-            this.props.getProfileBiodata();
-        }
-        if (evaluationDataResponse.length === 0) {
-            this.props.getProfileEvaluationData();
-        }
-        if (jobDataResponse.length === 0) {
-            this.props.getProfileJobData();
-        }
-        if (institutionDataResponse.length === 0) {
-            this.props.getProfileInstitutionData();
-        }
+        this.props.getProfileBiodata();
+        this.props.getProfileEvaluationData();
+        this.props.getProfileJobData();
+        this.props.getProfileInstitutionData();
     }
 
     componentDidUpdate(prevProps: any, prevState: any) {
