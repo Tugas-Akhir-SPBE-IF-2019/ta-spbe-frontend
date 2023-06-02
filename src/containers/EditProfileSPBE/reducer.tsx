@@ -16,6 +16,7 @@ const editEvaluationDataReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 evaluationData: action.params,
+                successMessage: "",
             };
         case SUCCESS_UPDATE_EVALUATION_DATA:
             return {

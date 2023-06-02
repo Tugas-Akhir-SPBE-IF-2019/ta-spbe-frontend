@@ -14,6 +14,7 @@ const editBiodataReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 biodata: action.params,
+                successMessage: "",
             };
         case SUCCESS_UPDATE_BIODATA:
             return {

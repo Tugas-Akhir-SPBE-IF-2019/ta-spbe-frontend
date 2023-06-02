@@ -16,6 +16,7 @@ const editInstitutionDataReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 institutionData: action.params,
+                successMessage: "",
             };
         case SUCCESS_UPDATE_INSTITUTION_DATA:
             return {

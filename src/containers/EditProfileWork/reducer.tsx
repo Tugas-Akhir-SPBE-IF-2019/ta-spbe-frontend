@@ -14,6 +14,7 @@ const editJobDataReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 jobData: action.params,
+                successMessage: "",
             };
         case SUCCESS_UPDATE_JOB_DATA:
             return {
