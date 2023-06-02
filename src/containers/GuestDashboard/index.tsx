@@ -31,6 +31,8 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
             page_component: [],
             showSuggestions: false,
             suggestions: [],
+            showPages: false,
+            pagesNum: [],
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.submitFilter = this.submitFilter.bind(this);
@@ -38,6 +40,8 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
         this.handlePrev = this.handlePrev.bind(this);
         this.handleSelectSuggestion = this.handleSelectSuggestion.bind(this);
         this.handleOutFocus = this.handleOutFocus.bind(this);
+        this.handleSelectPageNum = this.handleSelectPageNum.bind(this);
+        this.handleFocusPage = this.handleFocusPage.bind(this);
 
         this.textInput = createRef();
     }
@@ -45,6 +49,10 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
     componentDidMount() {
         this.props.getIndexData(this.state);
         this.props.getInstitutionListData({limit: 1000});
+        this.setState({
+            ...this.state,
+            pagesNum: Array.from(Array(100).keys()),
+        })
     }
 
     componentDidUpdate(prevProps: any, prevState: any) {
@@ -100,6 +108,8 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
 
     private handleInputChange(e: any, type: string): void {
         let suggestions: any[] = [];
+        let newPagesNum: any[] = [];
+        let show = true;
 
         if (type === "DATE") {
             const { value } = e.target;
@@ -113,6 +123,19 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
         else {
             // Type === INSTITUTION / LIMIT / PAGE
             const { name, value } = e.target;
+
+            if (name === "limit") {
+                if (parseInt(value)) {
+                    newPagesNum = Array.from(Array(100).keys()).filter((item: any) => item.toString().includes(value))
+                }
+                else if (value === "") {
+                    show = false;
+                    newPagesNum = Array.from(Array(100).keys());
+                }
+                else {
+                    return
+                }
+            }
             
             if (name === "institution" && value) {
                 suggestions = this.props.institutionListResponse.filter((item: any) => item.institution_name.toLowerCase().includes(value.toLowerCase()))
@@ -123,6 +146,8 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
                 [name]: value,
                 showSuggestions: name === "institution" ? true : false,
                 suggestions: name === "institution" ? suggestions : [],
+                showPages: name === "limit" ? show : false,
+                pagesNum: name === "limit" ? newPagesNum : Array.from(Array(100).keys()),
             });
         }
     }
@@ -177,9 +202,25 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
         })
     }
 
+    private handleSelectPageNum(value: string): void {
+        this.setState({
+            ...this.state,
+            limit: value,
+            showPages: false,
+        })
+        this.textInput.current?.focus();
+    }
+
+    private handleFocusPage(): void {
+        this.setState({
+            ...this.state,
+            showPages: !this.state.showPages,
+        })
+    }
+
     render() {
         const { indexResponse, institutionListResponse } = this.props;
-        const { page_component, index_min, index_max, showSuggestions, suggestions, institution } = this.state;
+        const { limit, page_component, index_min, index_max, showSuggestions, suggestions, institution, showPages, pagesNum } = this.state;
         return (
             <GuestDashboardComponent
                 indexResponse={indexResponse}
@@ -197,6 +238,11 @@ export class GuestDashboardContainer extends PureComponent<any, any> {
                 handleSelectSuggestion={this.handleSelectSuggestion}
                 handleOutFocus={this.handleOutFocus}
                 institution={institution}
+                limit={limit}
+                showPages={showPages}
+                pagesNum={pagesNum}
+                handleSelectPageNum={this.handleSelectPageNum}
+                handleFocusPage={this.handleFocusPage}
             />
         )
     }

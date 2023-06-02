@@ -124,14 +124,19 @@ const UserDashboardComponent = (props: any) => {
                             }))}
                         </div>
                     }
-                    <Row className="align-items-center">
+                    <Row className="align-items-end">
                         <TextDropdown
                             placeholder="Pilih Jumlah Instansi"
                             xs={12}
                             lg={4}
                             text
+                            value={props?.limit}
                             name="limit"
                             onChange={(e) => props?.handleInputChange(e, "LIMIT")}
+                            showPages={props?.showPages}
+                            pagesNum={props?.pagesNum}
+                            handleSelectPageNum={props?.handleSelectPageNum}
+                            handleFocusPage={props?.handleFocusPage}
                         />
                         <TextDropdown
                             placeholder="Pilih Status"

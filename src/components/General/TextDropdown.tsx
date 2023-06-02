@@ -48,32 +48,9 @@ const TextDropdown = (props: any) => {
                     </Form.Select>
                 }
                 {props?.text &&
-                    <InputGroup className="custom-border">
-                        <Form.Control
-                            type="text"
-                            name={props?.name}
-                            placeholder={props.placeholder}
-                            aria-label={props.placeholder}
-                            aria-describedby="addon-dropdown"
-                            className="px-3 py-2 border border-0 shadow-none"
-                            onChange={props?.onChange}
-                        />
-                        <InputGroup.Text id="addon-dropdown" className="px-3 py-2 bg-white border-0">
-                            <FontAwesomeIcon icon={faAngleDown} className="text-purple" />
-                        </InputGroup.Text>
-                    </InputGroup>
-                }
-                {props?.date &&
-                    <InputGroup className="custom-border">
-                        <DateRangePicker
-                            initialSettings={{
-                                autoApply: true,
-                                locale: {
-                                    format: 'YYYY-MM-DD'
-                                }
-                            }}
-                            onApply={props?.onChange}
-                        >
+                    <Form.Group>
+                        <Form.Label className="mb-2">Jumlah Instansi</Form.Label>
+                        <InputGroup className="custom-border">
                             <Form.Control
                                 type="text"
                                 name={props?.name}
@@ -81,9 +58,48 @@ const TextDropdown = (props: any) => {
                                 aria-label={props.placeholder}
                                 aria-describedby="addon-dropdown"
                                 className="px-3 py-2 border border-0 shadow-none"
+                                onChange={props?.onChange}
+                                value={props?.value}
                             />
-                        </DateRangePicker>
-                    </InputGroup>
+                            <InputGroup.Text id="addon-dropdown" className="px-3 py-2 bg-white border-0 pointer" onClick={() => props?.handleFocusPage()}>
+                                <FontAwesomeIcon icon={faAngleDown} className="text-purple"/>
+                            </InputGroup.Text>
+                            {props?.showPages &&
+                                <div className="rounded border position-absolute bg-white z-front position-relative">
+                                {(props?.pagesNum.map((val: any, idx: number) => {
+                                        return (
+                                            <option className="custom-option rounded pointer px-3" value={val} key={idx} onClick={() => props?.handleSelectPageNum(val)}>{val}</option>
+                                        )
+                                    }))}
+                                </div>
+                            }
+                        </InputGroup>
+                    </Form.Group>
+                }
+                {props?.date &&
+                    <Form.Group>
+                        <Form.Label className="mb-2">Tanggal Penilaian</Form.Label>
+                        <InputGroup className="custom-border">
+                            <DateRangePicker
+                                initialSettings={{
+                                    autoApply: true,
+                                    locale: {
+                                        format: 'YYYY-MM-DD'
+                                    }
+                                }}
+                                onApply={props?.onChange}
+                            >
+                                <Form.Control
+                                    type="text"
+                                    name={props?.name}
+                                    placeholder={props.placeholder}
+                                    aria-label={props.placeholder}
+                                    aria-describedby="addon-dropdown"
+                                    className="px-3 py-2 border border-0 shadow-none"
+                                />
+                            </DateRangePicker>
+                        </InputGroup>
+                    </Form.Group>
                 }
             </Col>
         </>

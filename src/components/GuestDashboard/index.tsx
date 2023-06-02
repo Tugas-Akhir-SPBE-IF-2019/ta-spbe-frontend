@@ -39,8 +39,13 @@ const GuestDashboardComponent = (props: any) => {
                             xs={12}
                             lg={4}
                             text
+                            value={props?.limit}
                             name="limit"
                             onChange={(e) => props?.handleInputChange(e, "LIMIT")}
+                            showPages={props?.showPages}
+                            pagesNum={props?.pagesNum}
+                            handleSelectPageNum={props?.handleSelectPageNum}
+                            handleFocusPage={props?.handleFocusPage}
                         />
                         <Col className="d-flex flex-column my-3">
                             <Row className="justify-content-between">
