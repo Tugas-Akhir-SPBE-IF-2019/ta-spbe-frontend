@@ -11,6 +11,7 @@ const validateResultReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 assessmentResult: action.params,
+                validationMessage: "",
             };
         case SUCCESS_SEND_VALIDATION:
             return {
