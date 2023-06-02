@@ -41,7 +41,7 @@ const AssessmentResultComponent = (props: any) => {
                             </Row>
                         </Col>
                         <Col className="d-flex justify-content-center">
-                            <Image src={logo} className="d-block m-0 my-3 width-img"/>
+                            <Image src={props?.assessmentResultResponse?.institution_image} className="d-block m-0 my-3 width-img"/>
                         </Col>
                         <Col className="d-flex align-items-center justify-content-center" xs={12} md={6} lg={4}>
                             <Row>
