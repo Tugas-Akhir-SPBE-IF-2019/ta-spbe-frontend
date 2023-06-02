@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const NavBar = lazy(() => import("../../components/NavBar"));
 const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
+const PicUpload = lazy(() => import("../../components/General/PicUpload"));
 
 const EditProfileBioComponent = (props: any) => {
     return (
@@ -38,9 +39,10 @@ const EditProfileBioComponent = (props: any) => {
                         </Col>
                     </Row>
                     <Row className="mt-5 align-items-center">
-                        <Col xs={12} md={4} className="text-center">
+                        {/* <Col xs={12} md={4} className="text-center">
                             <Image src={edit_img} />
-                        </Col>
+                        </Col> */}
+                        <PicUpload value={props?.profile_picture?.name} name="profile_picture" onChange={(e: any) => props?.handleInputChange(e)} />
                         <Col>
                             <Form>
                                 <Form.Group className="my-4">

@@ -101,6 +101,11 @@ hr {
     border-top: 1px solid var(--purple50) !important;
 }
 
+.profpic {
+    width: 134px;
+    height: 134px;
+}
+
 .form-select {
     background-image: url("assets/custom-angle.svg") !important;
 }

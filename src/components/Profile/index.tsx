@@ -38,7 +38,7 @@ const ProfileComponent = (props: any) => {
                         <Col>
                             {props?.biodataResponse?.profile_picture_link
                             ?
-                                <Image src={props.biodataResponse.profile_picture_link} />
+                                <Image src={props.biodataResponse.profile_picture_link} className="profpic" roundedCircle />
                             :
                                 <Image src={default_img} />
                             }
