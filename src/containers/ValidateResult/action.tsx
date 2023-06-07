@@ -1,4 +1,11 @@
-import { GET_ASSESSMENT_RESULT, SET_ASSESSMENT_RESULT, SEND_VALIDATION, SUCCESS_SEND_VALIDATION } from "./constant";
+import {
+    GET_ASSESSMENT_RESULT,
+    SET_ASSESSMENT_RESULT,
+    GET_ASSESSMENT_VALIDATION,
+    SET_ASSESSMENT_VALIDATION,
+    SEND_VALIDATION,
+    SUCCESS_SEND_VALIDATION,
+} from "./constant";
 
 export function getAssessmentResult(params: any) {
     return {
@@ -10,6 +17,20 @@ export function getAssessmentResult(params: any) {
 export function setAssessmentResult(params: any) {
     return {
         type: SET_ASSESSMENT_RESULT,
+        params,
+    };
+}
+
+export function getAssessmentValidation(params: any) {
+    return {
+        type: GET_ASSESSMENT_VALIDATION,
+        params
+    };
+}
+
+export function setAssessmentValidation(params: any) {
+    return {
+        type: SET_ASSESSMENT_VALIDATION,
         params,
     };
 }

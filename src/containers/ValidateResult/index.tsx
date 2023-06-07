@@ -1,8 +1,8 @@
 import { lazy, PureComponent } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { assessmentResultSelector, validationMessageSelector } from "./selector";
-import { getAssessmentResult, sendValidation } from "./action";
+import { assessmentResultSelector, assessmentValidationSelector, validationMessageSelector } from "./selector";
+import { getAssessmentResult, getAssessmentValidation, sendValidation } from "./action";
 import { showToast } from "../../utils/general";
 
 const ValidateResultComponent = lazy(() => import("../../components/ValidateResult"));
@@ -11,6 +11,7 @@ export class ValidateResultContainer extends PureComponent<any, any> {
     static propTypes = {
         history: PropTypes.any,
         assessmentResultResponse: PropTypes.object,
+        assessmentValidationResponse: PropTypes.array,
         validationMessageResponse: PropTypes.string,
     };
 
@@ -31,6 +32,7 @@ export class ValidateResultContainer extends PureComponent<any, any> {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSendValidation = this.handleSendValidation.bind(this);
         this.initField = this.initField.bind(this);
+        this.preFillField = this.preFillField.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
         this.validateForm = this.validateForm.bind(this);
     }
@@ -41,14 +43,23 @@ export class ValidateResultContainer extends PureComponent<any, any> {
     }
 
     componentDidUpdate(prevProps: any) {
+        const { id } = this.props.match.params;
         if (prevProps.assessmentResultResponse !== this.props.assessmentResultResponse) {
-            this.initField();
+            if (this.props.assessmentResultResponse.status === 2) {
+                this.initField();
+            }
+            else if (this.props.assessmentResultResponse.status === 3) {
+                this.props.getAssessmentValidationData(id)
+            }
+        }
+        if (prevProps.assessmentValidationResponse !== this.props.assessmentValidationResponse) {
+            this.preFillField();
         }
         if (prevProps.validationMessageResponse !== this.props.validationMessageResponse) {
             this.toggleModal();
         }
     }
-    
+
     private initField(): void {
         const { assessmentResultResponse } = this.props;
         const { item } = this.state;
@@ -69,6 +80,22 @@ export class ValidateResultContainer extends PureComponent<any, any> {
         this.setState({
             ...this.state,
             listItem: list,
+            link_list: newLink,
+        });
+    }
+    
+    private preFillField(): void {
+        const { assessmentResultResponse, assessmentValidationResponse } = this.props;
+        let newLink: any[] = [];
+        assessmentResultResponse.result.forEach(function (el) {
+            if (!newLink.includes(el.indicator_number)) {
+                newLink.push(el.indicator_number);
+            }
+        });
+
+        this.setState({
+            ...this.state,
+            listItem: [],
             link_list: newLink,
         });
     }
@@ -161,6 +188,7 @@ export class ValidateResultContainer extends PureComponent<any, any> {
 const mapStateToProps = (state: any) => {
     return {
         assessmentResultResponse: assessmentResultSelector(state),
+        assessmentValidationResponse: assessmentValidationSelector(state),
         validationMessageResponse: validationMessageSelector(state),
     };
 };
@@ -168,6 +196,7 @@ const mapStateToProps = (state: any) => {
 function mapDispatchToProps(dispatch: any) {
     return {
         getAssessmentResultData: (params: any) => dispatch(getAssessmentResult(params)),
+        getAssessmentValidationData: (params: any) => dispatch(getAssessmentValidation(params)),
         sendValidationData: (params: any) => dispatch(sendValidation(params)),
     };
 }

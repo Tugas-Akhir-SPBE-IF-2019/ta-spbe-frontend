@@ -4,6 +4,12 @@ const assessmentResultSelector = (state: any) => {
         : null;
 };
 
+const assessmentValidationSelector = (state: any) => {
+    return state?.validateResultReducer?.assessmentValidation
+        ? state.validateResultReducer.assessmentValidation
+        : [];
+};
+
 const validationMessageSelector = (state: any) => {
     return state?.validateResultReducer?.validationMessage
         ? state.validateResultReducer.validationMessage
@@ -12,5 +18,6 @@ const validationMessageSelector = (state: any) => {
 
 export {
     assessmentResultSelector,
+    assessmentValidationSelector,
     validationMessageSelector,
 };
