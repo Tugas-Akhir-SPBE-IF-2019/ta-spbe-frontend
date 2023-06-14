@@ -45,16 +45,16 @@ export class ValidateResultContainer extends PureComponent<any, any> {
     componentDidUpdate(prevProps: any) {
         const { id } = this.props.match.params;
         if (prevProps.assessmentResultResponse !== this.props.assessmentResultResponse) {
-            if (this.props.assessmentResultResponse.status === 2) {
+            // if (this.props.assessmentResultResponse.status === 2) {
                 this.initField();
-            }
-            else if (this.props.assessmentResultResponse.status === 3) {
-                this.props.getAssessmentValidationData(id)
-            }
+            // }
+            // else if (this.props.assessmentResultResponse.status === 3) {
+            //     this.props.getAssessmentValidationData(id)
+            // }
         }
-        if (prevProps.assessmentValidationResponse !== this.props.assessmentValidationResponse) {
-            this.preFillField();
-        }
+        // if (prevProps.assessmentValidationResponse !== this.props.assessmentValidationResponse) {
+        //     this.preFillField();
+        // }
         if (prevProps.validationMessageResponse !== this.props.validationMessageResponse) {
             this.toggleModal();
         }
@@ -87,7 +87,7 @@ export class ValidateResultContainer extends PureComponent<any, any> {
     private preFillField(): void {
         const { assessmentResultResponse, assessmentValidationResponse } = this.props;
         let newLink: any[] = [];
-        assessmentResultResponse.result.forEach(function (el) {
+        assessmentValidationResponse.result.forEach(function (el) {
             if (!newLink.includes(el.indicator_number)) {
                 newLink.push(el.indicator_number);
             }
